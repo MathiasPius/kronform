@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infrastructure
+  name: cilium
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/infrastructure
+  path: ./manifests/infrastructure/cilium
   prune: true
   sourceRef:
     kind: GitRepository
