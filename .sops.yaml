@@ -1,8 +1,20 @@
 # .sops.yaml
 ---
 creation_rules:
-  - path_regex: .*.yaml
+  - path_regex: ./manifests/*.yaml
     encrypted_regex: ^(data|stringData)$
     pgp: >-
       BD995FEE3775172B56BF652CF10FF7F3F7265919,
       7668061D49BB2B7BA19118B4031734BEBE51F818
+
+  - path_regex: talosconfig
+    encrypted_regex: ^key$
+    pgp: 7668061D49BB2B7BA19118B4031734BEBE51F818
+
+  - path_regex: kubeconfig
+    encrypted_regex: ^client-key-data$
+    pgp: 7668061D49BB2B7BA19118B4031734BEBE51F818
+
+  - path_regex: secrets.yaml
+    encrypted_regex: ^(secret|bootstraptoken|secretboxencryptionsecret|token|key)$
+    pgp: 7668061D49BB2B7BA19118B4031734BEBE51F818
