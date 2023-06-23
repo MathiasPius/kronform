@@ -1,7 +1,7 @@
 # .sops.yaml
 ---
 creation_rules:
-  - path_regex: ./manifests/*.yaml
+  - path_regex: manifests/.*.yaml
     encrypted_regex: ^(data|stringData)$
     pgp: >-
       BD995FEE3775172B56BF652CF10FF7F3F7265919,
