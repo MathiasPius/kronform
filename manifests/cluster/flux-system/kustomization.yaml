@@ -5,3 +5,4 @@ resources:
 - gotk-sync.yaml
 - cilium.yaml
 - policies.yaml
+- pull-secrets.yaml
