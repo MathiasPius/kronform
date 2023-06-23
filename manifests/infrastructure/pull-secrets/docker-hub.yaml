@@ -5,6 +5,7 @@ kind: Secret
 metadata:
     creationTimestamp: null
     name: docker-hub-pull-secret
+    namespace: default
 type: kubernetes.io/dockerconfigjson
 sops:
     kms: []
