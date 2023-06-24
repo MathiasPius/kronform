@@ -1,7 +1,7 @@
 # manifests/infrastructure/external-dns/hetzner-token.yaml
 apiVersion: v1
 data:
-    HETZNER_TOKEN: ENC[AES256_GCM,data:GbniNj2ibP3iubVoCzMSBApQm2OvXX43kwpS3l3L+0MG62lU8XmRHwhxoNo=,iv:o6qNHWJW4+MfqDKEYB80s6FBzJD28zdma4bECYUmFc8=,tag:my/cMEXF/0pzOdTBHBY/bw==,type:str]
+    HETZNER_TOKEN: ENC[AES256_GCM,data:9KriEPHoxG14pJX67mgbdKd8dYlyB3+1MgCHWkgiKFsjhGyXqitKx/F00ZA=,iv:G52II8qetasavLrdFuGfusVr0zWx770Vb4eqN7EBuhw=,tag:w/3TjeAdwD1b4Fg2h+dt5w==,type:str]
 kind: Secret
 metadata:
     name: hetzner-token
@@ -13,29 +13,29 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-06-24T10:36:25Z"
-    mac: ENC[AES256_GCM,data:AOI/ji6uxS1yCtu8jr+L8iWJHsU8MGd9svr+LhEqFqw3KogBIM6Z3I6T+gXiYX8mZvdXltfIWpnOYfeplwCFFs/EjaUABXqkbPNn7hx9/FfmFzf9WDFXxlhuDEK9Tc5Zjm8E2TQZjmdIlAJU6c8DQotWGDWr5lag2ZTF+aLRNJo=,iv:z2vrrorHvT2oVuWUlpLSjmjyzJIXwM90tN+wdW2lvPU=,tag:wqpnDD+IXfac7rKWp8G2Iw==,type:str]
+    lastmodified: "2023-06-24T12:30:54Z"
+    mac: ENC[AES256_GCM,data:PnF/fidJ5eqvHgGvEXFDgRxYQmNDbkA+buHNDBHpSuYN0/NWI6PzZYsBrNkpDeyheYIIoOOxIQDKC0hHSW9wAgqAPOzBS22bZjXORzLnoZtf1INdDuVrt86FvxZks5RIoXc4KNlHM7DP5Ny2krvxrKStrLJb7uHrymfWuy1Ij60=,iv:lS58WtrgtJ6LPv7EVMdAq9xdjRqxHNFp8++83VgCqD8=,tag:VQF4RDQCKz0m0kORFUsNhw==,type:str]
     pgp:
-        - created_at: "2023-06-24T10:36:25Z"
+        - created_at: "2023-06-24T12:30:54Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hF4DO8XyRaEk3R4SAQdArRAvPY5NflDyCPFOSzk/PWCOVGMIHUcPoCcm5RI90V8w
-            qjbbdE1NsdzuH/tQuuKIHxFhSuoUbaJ5kAX5aRRJuC4oF0135Y6IwxrcKMhYPeQj
-            0l4BMOFLMocmtWwdmTH1UE+ChqAToAspAcIqkqe9suAxhd+p09OY/58HOTlmXAJc
-            HUJqgL7LTdM2GPIsLqJfgCCTib1zH66HoHE8reevaq+wAQzLNSnMW5ktBNvwgqEQ
-            =Iv/z
+            hF4DO8XyRaEk3R4SAQdAyvCjBAM3ppt49KitmLJ5wQDvjipiZ+EyzMNU4uM4r2cw
+            /dX3vEzPbw+V6HMKPURh12dh0u0MqhqjlujnkqUuwnOAAt4OxAp/7pTSgRv4B0sA
+            0l4BLDnWBowsfyByP23kHYaHq3a5WwkdVsAACoGmAJjAUQ/eWN8BS8CQLDETRYcw
+            p9UKlUppuqsmMqir2/pyiV72aFmrPoafqB4Q0wmVPqefOQqGgrbthRKUrhabxX7H
+            =Od79
             -----END PGP MESSAGE-----
           fp: BD995FEE3775172B56BF652CF10FF7F3F7265919
-        - created_at: "2023-06-24T10:36:25Z"
+        - created_at: "2023-06-24T12:30:54Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hF4Dw5+PhuNaN4USAQdAQXJ9iNOPpszWy8kbJUYu5WyeEc1zWeqKBaDeApth9EAw
-            MDqJsbAnJhhSffhoIMufBoMdd3o+MOzrCO2G/hjNadU4fIhm+rdSS+HXXgoC5QW4
-            0l4BVr+1pai1Rd7ok4ih+GhbbrPQpjfOvw0HMLkCdZv48q/NEzgqq2K7I3zdN85n
-            dRnjHgmhndcOykmvwCQ9gu+inJOH2OOyGfLhA29uGaHKFi+NpB/35V0eIZ9eklQJ
-            =f906
+            hF4Dw5+PhuNaN4USAQdAgwrFcjGqyQOI96x1U5todJGD073zFSQVSap6/USP52Qw
+            QYZFqQn9uDU7oDZEv4+WYCyUD6jDEpAS+KSs+iwtbvrzfw8evs7bliLfEwE8pE9m
+            0l4B2N1SZExRcZRiH390eI/zb/3losNoe9ouMVRdinAXBdUQ+nivknugO6yHsNmQ
+            CjZtbs4udNn5lJjyGzpRLGbY3vK1P3qZTOmeLEn3RaoMw1CiQRAWYC13qnTGt3vp
+            =E0NJ
             -----END PGP MESSAGE-----
           fp: 7668061D49BB2B7BA19118B4031734BEBE51F818
     encrypted_regex: ^(data|stringData)$
