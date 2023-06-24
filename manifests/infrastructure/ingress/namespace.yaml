@@ -1,0 +1,6 @@
+# manifests/infrastructure/ingress/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress
