@@ -6,3 +6,4 @@ resources:
 - cilium.yaml
 - policies.yaml
 - pull-secrets.yaml
+- ingress.yaml
