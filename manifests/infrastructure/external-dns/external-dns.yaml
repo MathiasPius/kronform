@@ -1,0 +1,36 @@
+# manifests/infrastructure/ingress-nginx/ingress-nginx.yaml
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 5m0s
+  url: https://kubernetes-sigs.github.io/external-dns/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: external-dns
+      version: ">=v1.13.0 <1.14.0"
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: external-dns
+      interval: 1m
+  values: # https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+    provider: hetzner
+    env:
+    - name: HETZNER_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: hetzner-token
+          key: HETZNER_TOKEN
+
