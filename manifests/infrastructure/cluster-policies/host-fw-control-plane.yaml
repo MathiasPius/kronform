@@ -87,3 +87,14 @@ spec:
         protocol: "TCP"
       - port: "51871"
         protocol: "UDP"
+
+  # Allow HTTP and HTTPS access from anywhere
+  - fromEntities:
+    - world
+    - cluster
+    toPorts:
+    - ports:
+      - port: "80"
+        protocol: "TCP"
+      - port: "443"
+        protocol: "TCP"
