@@ -1,4 +1,4 @@
-# manifests/infrastructure/ingress-nginx/ingress-nginx.yaml
+# manifests/infrastructure/external-dns/external-dns.yaml
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
@@ -25,7 +25,7 @@ spec:
         name: external-dns
         namespace: external-dns
       interval: 1m
-  values: # https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+  values:
     provider: hetzner
     domainFilters:
     - kronform.pius.dev
