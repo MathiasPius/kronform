@@ -31,3 +31,5 @@ spec:
       hostPort:
         enabled: true
       kind: DaemonSet
+      service:
+        enabled: false
