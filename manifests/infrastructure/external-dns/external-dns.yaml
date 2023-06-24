@@ -27,10 +27,11 @@ spec:
       interval: 1m
   values: # https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
     provider: hetzner
+    domainFilters:
+    - kronform.pius.dev
     env:
     - name: HETZNER_TOKEN
       valueFrom:
         secretKeyRef:
           name: hetzner-token
           key: HETZNER_TOKEN
-
