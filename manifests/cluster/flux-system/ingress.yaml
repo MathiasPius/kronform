@@ -25,3 +25,7 @@ spec:
     kind: GitRepository
     name: flux-system
   targetNamespace: external-dns
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
