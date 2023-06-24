@@ -28,7 +28,7 @@ spec:
   values:
     provider: hetzner
     domainFilters:
-    - kronform.pius.dev
+    - pius.dev
     env:
     - name: HETZNER_TOKEN
       valueFrom:
