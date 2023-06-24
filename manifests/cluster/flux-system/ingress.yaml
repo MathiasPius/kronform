@@ -1,13 +1,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: ingress
+  name: ingress-nginx
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/infrastructure/ingress
+  path: ./manifests/infrastructure/ingress-nginx
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  targetNamespace: ingress
+  targetNamespace: ingress-nginx
