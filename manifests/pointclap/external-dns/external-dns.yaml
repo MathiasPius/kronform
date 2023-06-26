@@ -26,7 +26,8 @@ spec:
         namespace: external-dns
       interval: 1m
   values:
-    namespaced: true
+    rbac:
+      create: false
     provider: aws
     domainFilters:
     - pointclap.org
