@@ -1,0 +1,6 @@
+# manifests/pointclap/namespace/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pointclap
