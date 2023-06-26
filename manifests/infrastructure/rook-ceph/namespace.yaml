@@ -1,0 +1,6 @@
+# manifests/infrastructure/rook-ceph/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rook-ceph

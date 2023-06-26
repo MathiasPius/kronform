@@ -7,3 +7,4 @@ resources:
 - cilium.yaml
 - ingress.yaml
 - pointclap.yaml
+- rook-ceph.yaml
