@@ -141,8 +141,6 @@ kind: Service
 metadata:
   name: teamspeak3
   namespace: pointclap
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: ts.pointclap.org
 spec:
   ports:
   - name: ts3
