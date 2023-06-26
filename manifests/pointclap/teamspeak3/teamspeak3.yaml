@@ -1,0 +1,155 @@
+# IAM Permission for account
+# {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#         {
+#             "Effect": "Allow",
+#             "Action": [
+#                 "s3:GetBucketLocation",
+#                 "s3:ListBucket"
+#             ],
+#             "Resource": "arn:aws:s3:::bromidity-ts3-db"
+#         },
+#         {
+#             "Effect": "Allow",
+#             "Action": [
+#                 "s3:PutObject",
+#                 "s3:DeleteObject",
+#                 "s3:GetObject"
+#             ],
+#             "Resource": [
+#                 "arn:aws:s3:::bromidity-ts3-db/*",
+#                 "arn:aws:s3:::bromidity-ts3-db"
+#             ]
+#         }
+#     ]
+# }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: teamspeak3-litestream-config
+  namespace: pointclap
+data:
+  litestream.yml: |
+    dbs:
+    - path: /var/lib/app/ts3server.sqlitedb
+      replicas:
+      - url: s3://bromidity-ts3-db/ts3server.sqlitedb
+        region: eu-north-1
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: teamspeak3
+  namespace: pointclap
+  labels:
+    app.kubernetes.io/name: teamspeak3
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: teamspeak3
+  namespace: pointclap
+  labels:
+    app.kubernetes.io/name: teamspeak3
+spec:
+  serviceName: teamspeak3
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: teamspeak3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: teamspeak3
+    spec:
+      serviceAccountName: teamspeak3
+      initContainers:
+      - name: restore-database
+        image: litestream/litestream:0.3.8
+        args: ['restore', '-if-db-not-exists', '-if-replica-exists', '-v', '/var/lib/app/ts3server.sqlitedb']
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/app
+        - name: litestream-config
+          mountPath: /etc/litestream.yml
+          subPath: litestream.yml
+        env:
+        - name: LITESTREAM_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: teamspeak3-backup
+              key: AWS_ACCESS_KEY_ID
+        - name: LITESTREAM_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: teamspeak3-backup
+              key: AWS_SECRET_ACCESS_KEY
+      containers:
+      - name: teamspeak3
+        imagePullPolicy: IfNotPresent
+        image: docker.io/teamspeak:3.13
+        env:
+        - name: TS3SERVER_LICENSE
+          value: accept
+        resources:
+          requests:
+            memory: 500Mi
+            cpu: 100m
+          limits:
+            memory: 500Mi
+            cpu: 500m
+        ports:
+        - name: ts3
+          containerPort: 9987
+          protocol: UDP
+        volumeMounts:
+        - name: data
+          mountPath: /var/ts3server
+      - name: litestream
+        image: litestream/litestream:0.3.8
+        args: ['replicate']
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/app
+        - name: litestream-config
+          mountPath: /etc/litestream.yml
+          subPath: litestream.yml
+        env:
+        - name: LITESTREAM_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: teamspeak3-backup
+              key: AWS_ACCESS_KEY_ID
+        - name: LITESTREAM_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: teamspeak3-backup
+              key: AWS_SECRET_ACCESS_KEY
+      volumes:
+      - name: litestream-config
+        configMap:
+          name: teamspeak3-litestream-config
+      - name: data
+        emptyDir:
+          sizeLimit: 50Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: teamspeak3
+  namespace: pointclap
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: ts.pointclap.org
+spec:
+  ports:
+  - name: ts3
+    port: 9987
+    protocol: UDP
+    targetPort: 9987
+    nodePort: 30976
+  selector:
+    app.kubernetes.io/name: teamspeak3
+  type: NodePort
