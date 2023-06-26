@@ -88,6 +88,17 @@ spec:
       - port: "51871"
         protocol: "UDP"
 
+  # Allow DHCP Packets
+  - fromEntities:
+    - world
+    - cluster
+    toPorts:
+    - ports:
+      - port: "67"
+        protocol: "UDP"
+      - port: "68"
+        protocol: "UDP"
+
   # Allow HTTP and HTTPS access from anywhere
   - fromEntities:
     - world
