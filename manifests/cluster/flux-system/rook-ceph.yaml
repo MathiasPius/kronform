@@ -10,3 +10,21 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ceph-cluster
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/infrastructure/ceph-cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: rook-ceph
+      namespace: rook-ceph
