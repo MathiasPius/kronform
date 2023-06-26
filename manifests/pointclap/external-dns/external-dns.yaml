@@ -26,6 +26,7 @@ spec:
         namespace: external-dns
       interval: 1m
   values:
+    namespaced: true
     provider: aws
     domainFilters:
     - pointclap.org
