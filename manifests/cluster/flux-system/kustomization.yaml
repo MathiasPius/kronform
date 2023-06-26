@@ -6,3 +6,4 @@ resources:
 - pull-secrets.yaml
 - cilium.yaml
 - ingress.yaml
+- pointclap.yaml
