@@ -43,13 +43,9 @@ spec:
           external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
         hostname: registry.kronform.pius.dev
         tls: true
-        secrets:
-        - name: harbor-core-ingress-tls
       notary:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
         hostname: notary.kronform.pius.dev
         tls: true
-        secrets:
-        - name: harbor-notary-ingress-tls
