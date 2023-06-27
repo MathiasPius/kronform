@@ -26,6 +26,7 @@ spec:
         namespace: harbor-registry
       interval: 1m
   values:
+    externalURL: https://registry.kronform.pius.dev
     existingSecretAdminPassword: harbor-admin-password
     persistence:
       persistentVolumeClaim:
