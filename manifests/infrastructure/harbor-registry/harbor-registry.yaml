@@ -32,6 +32,8 @@ spec:
       persistentVolumeClaim:
         registry:
           size: 50Gi
+    updateStrategy:
+      type: Recreate
     expose:
       tls:
         certSource: "secret"
