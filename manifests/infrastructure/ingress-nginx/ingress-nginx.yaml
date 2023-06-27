@@ -31,5 +31,7 @@ spec:
       hostPort:
         enabled: true
       kind: DaemonSet
+      ingressClassResource:
+        default: true
       service:
         enabled: false
