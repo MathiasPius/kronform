@@ -44,7 +44,7 @@ spec:
         hostname: registry.kronform.pius.dev
         tls: true
         secrets:
-        - harbor-core-ingress-tls
+        - name: harbor-core-ingress-tls
       notary:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
@@ -52,4 +52,4 @@ spec:
         hostname: notary.kronform.pius.dev
         tls: true
         secrets:
-        - harbor-notary-ingress-tls
+        - name: harbor-notary-ingress-tls
