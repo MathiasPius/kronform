@@ -32,21 +32,22 @@ spec:
       persistentVolumeClaim:
         registry:
           size: 50Gi
-    tls:
-      certSource: "secret"
-      enabled: true
-      secret:
-        secretName: "harbor-core-ingress-tls"
-        notarySecretName: "harbor-notary-ingress-tls"
-    ingress:
-      harbor:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
-      notary:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
-      hosts:
-        core: registry.kronform.pius.dev
-        notary: notary.kronform.pius.dev
+    expose:
+      tls:
+        certSource: "secret"
+        enabled: true
+        secret:
+          secretName: "harbor-core-ingress-tls"
+          notarySecretName: "harbor-notary-ingress-tls"
+      ingress:
+        harbor:
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-production
+            external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
+        notary:
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-production
+            external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
+        hosts:
+          core: registry.kronform.pius.dev
+          notary: notary.kronform.pius.dev
