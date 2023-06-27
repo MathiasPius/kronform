@@ -1,0 +1,50 @@
+# manifests/infrastructure/external-dns/external-dns.yaml
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: harbor-registry
+  namespace: harbor-registry
+spec:
+  interval: 5m0s
+  url: https://helm.goharbor.io
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: harbor-registry
+  namespace: harbor-registry
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: harbor
+      version: ">=v1.12.0 <1.13.0"
+      sourceRef:
+        kind: HelmRepository
+        name: harbor-registry
+        namespace: harbor-registry
+      interval: 1m
+  values:
+    existingSecretAdminPassword: harbor-admin-password
+    persistence:
+      persistentVolumeClaim:
+        registry: 50Gi
+    tls:
+      certSource: "secret"
+      enabled: true
+      secret:
+        secretName: "harbor-core-ingress-tls"
+        notarySecretName: "harbor-notary-ingress-tls"
+    ingress:
+      harbor:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
+      notary:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
+      hosts:
+        core: registry.kronform.pius.dev
+        notary: notary.kronform.pius.dev

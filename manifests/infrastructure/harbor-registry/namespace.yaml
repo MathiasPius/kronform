@@ -1,0 +1,6 @@
+# manifests/infrastructure/harbor-registry/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harbor-registry
