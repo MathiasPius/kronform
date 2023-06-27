@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - cluster.yaml
 - replicated-x3-block-store.yaml
+- storage-class-workaround.yaml
