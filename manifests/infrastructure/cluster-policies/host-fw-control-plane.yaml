@@ -121,3 +121,12 @@ spec:
         protocol: "TCP"
       - port: "443"
         protocol: "TCP"
+  
+  # Allow access from inside the cluster to
+  # the admission controller
+  - fromEntities:
+    - cluster
+    toPorts:
+    - ports:
+      - port: "8443"
+        protocol: "TCP"
