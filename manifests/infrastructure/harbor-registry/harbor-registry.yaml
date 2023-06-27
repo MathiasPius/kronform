@@ -35,6 +35,19 @@ spec:
     core:
       updateStrategy:
         type: Recreate
+    jobservice:
+      updateStrategy:
+        type: Recreate
+    registry:
+      updateStrategy:
+        type: Recreate
+    notary:
+      server:
+        updateStrategy:
+          type: Recreate
+      signer:
+        updateStrategy:
+          type: Recreate
     exposureType: ingress
     ingress:
       core:
