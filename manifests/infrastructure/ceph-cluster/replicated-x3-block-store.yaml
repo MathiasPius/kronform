@@ -1,0 +1,41 @@
+# manifests/infrastructure/ceph-cluster/replicated-x3-block.store.yaml
+---
+apiVersion: ceph.rook.io/v1
+kind: CephBlockPool
+metadata:
+  name: replicated-x3-block-store
+  namespace: rook-ceph
+spec:
+  failureDomain: host
+  replicated:
+    size: 3
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: replicated-x3-block-store
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: rook-ceph.rbd.csi.ceph.com
+parameters:
+  # clusterID is the namespace where the rook cluster is running
+  clusterID: rook-ceph
+  # Ceph pool into which the RBD image shall be created
+  pool: replicated-x3-block-store
+
+  imageFormat: "2"
+  # For more information about these features see: https://docs.ceph.com/en/latest/rbd/rbd-config-ref/#image-features
+  # tl;dr: They're available from Linux kernel 5.14 and makes I/O faster.
+  imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+
+  # The secrets contain Ceph admin credentials.
+  csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+  csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+  csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+  csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+  csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+  csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+  csi.storage.k8s.io/fstype: ext4
+# Delete the rbd volume when a PVC is deleted
+reclaimPolicy: Retain
+allowVolumeExpansion: true
