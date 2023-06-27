@@ -30,7 +30,8 @@ spec:
     existingSecretAdminPassword: harbor-admin-password
     persistence:
       persistentVolumeClaim:
-        registry: 50Gi
+        registry:
+          size: 50Gi
     tls:
       certSource: "secret"
       enabled: true
