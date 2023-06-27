@@ -7,7 +7,7 @@ metadata:
   namespace: harbor-registry
 spec:
   interval: 5m0s
-  url: https://helm.goharbor.io
+  url: https://charts.bitnami.com/bitnami
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -19,7 +19,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: ">=v1.12.0 <1.13.0"
+      version: ">=v16.7.0 <16.8.0"
       sourceRef:
         kind: HelmRepository
         name: harbor-registry
@@ -32,24 +32,24 @@ spec:
       persistentVolumeClaim:
         registry:
           size: 50Gi
-    updateStrategy:
-      type: Recreate
-    expose:
-      tls:
-        certSource: "secret"
-        enabled: true
-        secret:
-          secretName: "harbor-core-ingress-tls"
-          notarySecretName: "harbor-notary-ingress-tls"
-      ingress:
-        harbor:
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-production
-            external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
-        notary:
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-production
-            external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
-        hosts:
-          core: registry.kronform.pius.dev
-          notary: notary.kronform.pius.dev
+    core:
+      updateStrategy:
+        type: Recreate
+    exposureType: ingress
+    ingress:
+      core:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
+        hostname: registry.kronform.pius.dev
+        tls: true
+        secrets:
+        - harbor-core-ingress-tls
+      notary:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
+        hostname: notary.kronform.pius.dev
+        tls: true
+        secrets:
+        - harbor-notary-ingress-tls
