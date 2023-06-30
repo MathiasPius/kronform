@@ -33,7 +33,6 @@ spec:
   # Allow kube-proxy-replacement from kube-apiserver
   - fromEntities:
     - kube-apiserver
-    - remote-node
     toPorts:
     - ports:
       - port: "10250"
@@ -130,4 +129,13 @@ spec:
     toPorts:
     - ports:
       - port: "8443"
+        protocol: "TCP"
+    
+  # from metrics-server to kubelet API.
+  - fromEntities:
+    - matchLabels:
+        app.kubernetes.io/name: metrics-server
+    toPorts:
+    - ports:
+      - port: "10250"
         protocol: "TCP"
