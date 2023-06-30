@@ -25,3 +25,6 @@ spec:
         name: metrics-server
         namespace: kube-system
       interval: 1m
+    values:
+      apiService:
+        insecureSkipTLSVerify: true
