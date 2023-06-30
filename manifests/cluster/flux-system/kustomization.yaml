@@ -9,3 +9,4 @@ resources:
 - pointclap.yaml
 - rook-ceph.yaml
 - harbor-registry.yaml
+- metrics-server.yaml
