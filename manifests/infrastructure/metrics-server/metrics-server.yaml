@@ -27,4 +27,4 @@ spec:
       interval: 1m
   values:
     args:
-    - --kubelet-insecure-tls
+    - --kubelet-preferred-address-types=Hostname,InternalDNS,InternalIP,ExternalDNS,ExternalIP
