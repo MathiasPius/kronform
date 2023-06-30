@@ -134,7 +134,7 @@ spec:
   # from metrics-server to kubelet API.
   - fromEndpoints:
     - matchLabels:
-        "k8s:io.kubernetes.app.name": metrics-server
+        "k8s:app.kubernetes.io/name": metrics-server
     toPorts:
     - ports:
       - port: "10250"
