@@ -26,5 +26,5 @@ spec:
         namespace: kube-system
       interval: 1m
   values:
-    apiService:
-      insecureSkipTLSVerify: true
+    args:
+    - --kubelet-insecure-tls
