@@ -132,7 +132,7 @@ spec:
         protocol: "TCP"
     
   # from metrics-server to kubelet API.
-  - fromEntities:
+  - fromEndpoints:
     - matchLabels:
         "k8s:io.kubernetes.app.name": metrics-server
     toPorts:
