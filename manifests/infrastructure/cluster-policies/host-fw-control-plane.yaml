@@ -33,6 +33,7 @@ spec:
   # Allow kube-proxy-replacement from kube-apiserver
   - fromEntities:
     - kube-apiserver
+    - remote-node
     toPorts:
     - ports:
       - port: "10250"
