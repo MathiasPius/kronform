@@ -132,9 +132,8 @@ spec:
         protocol: "TCP"
     
   # from metrics-server to kubelet API.
-  - fromEndpoints:
-    - matchLabels:
-        app: metrics-server
+  - fromEntities:
+    - cluster
     toPorts:
     - ports:
       - port: "10250"
