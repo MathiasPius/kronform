@@ -17,7 +17,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: kubelet-serving-cert-approver
-  namespace: kube-system
+  namespace: flux-system
 spec:
   interval: 10m0s
   path: ./deploy/standalone-install.yaml
