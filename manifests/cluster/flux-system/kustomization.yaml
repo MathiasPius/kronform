@@ -10,3 +10,4 @@ resources:
 - rook-ceph.yaml
 - harbor-registry.yaml
 - metrics-server.yaml
+- kubelet-cert-rotation.yaml
