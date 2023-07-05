@@ -27,7 +27,7 @@ creation_rules:
       67DB96C4F1D4F08F456697CC7668FD88C76CA761
 
   - path_regex: machineconfigs/.*.yaml
-    encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key)$
+    encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     pgp: >-
       7668061D49BB2B7BA19118B4031734BEBE51F818,
       67DB96C4F1D4F08F456697CC7668FD88C76CA761
