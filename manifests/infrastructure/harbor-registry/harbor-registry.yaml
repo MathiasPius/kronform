@@ -32,6 +32,9 @@ spec:
       persistentVolumeClaim:
         registry:
           size: 50Gi
+    postgresql:
+      auth:
+        postgresPassword: null
     core:
       updateStrategy:
         type: Recreate
