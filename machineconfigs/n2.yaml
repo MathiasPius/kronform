@@ -29,7 +29,7 @@ cluster:
         certSANs:
             - api.kronform.pius.dev
         disablePodSecurityPolicy: true
-        image: registry.k8s.io/kube-apiserver:v1.27.2
+        image: registry.k8s.io/kube-apiserver:v1.27.4
     ca:
         crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpakNDQVRDZ0F3SUJBZ0lSQUpacHFJY1c1ejkrQ1NMOWRrdGJHMll3Q2dZSUtvWkl6ajBFQXdJd0ZURVQKTUJFR0ExVUVDaE1LYTNWaVpYSnVaWFJsY3pBZUZ3MHlNekEyTWpJeE1qTTVNek5hRncwek16QTJNVGt4TWpNNQpNek5hTUJVeEV6QVJCZ05WQkFvVENtdDFZbVZ5Ym1WMFpYTXdXVEFUQmdjcWhrak9QUUlCQmdncWhrak9QUU1CCkJ3TkNBQVQ0U1dsVGZ4T3dWUTFVOUhRQWg0ZmdFOUZ2THA2aVhLOVd0amw1Wng1aUxaRjJBUGdXcnZBS21xUkoKY2o4am1Fd1pqTG9kL1J4NG9vV3FTYnJiNGZDQ28yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbApCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPCkJCWUVGRnZXK3RlUmx3MVhqY3BBRkdtUDk5RDZBNkJmTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFEYVpGa3IKZE00dUpwN2docTY2UytRb3R3K0N4blFENkxEQzVpY0pHR3hPakFJZ1lsSlhoSlB4TXZiTXpGS3FPRURmZlZTcwphMGxtajI5UW1jNE13eVNMUkFrPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ENC[AES256_GCM,data:ie2ggU4dTH0xkOw4o2oNhztT3bazaZYiNUIQH6GO70VVce39gghuJJhfplKlTJyvKA0oADRtG8G/OXrsJYXMBK9AIQnOA2h6Z6tB2G3rB+gs1H6K2VSWE2AvEWQa9qoFLn97M0Haqz/p2bI2qJblhpZcqpc7oHQBQLwAmyjdcsvR/hYV444X6/t29yzOTwDOv6wGu6uVYaRaKsQekjIh7FHHpEmprOkP+3EAH5EQqvZFO9Y+cE2l0kTyKwqSbeMRSLmCZiVF9QIHS8xXRdpBsLaGzDBDJ975FWomnxlafsBKprCxMh80z/E93YEeGrdLNOpAxRo+S90M/s5MJYI7v/1iKdeGdVCeitJ+LI5PhVelIqPeGhkGRV7dlp33Sp/n29aS2o3BILZ38aqdTDitiw==,iv:9/oWfCfw5MYFKmWtahvTOA9LoCQ2rsbj/Z3y/y0MZYI=,tag:bKP7Cf5G0TjpNutKh+meNg==,type:str]
@@ -37,7 +37,7 @@ cluster:
     controlPlane:
         endpoint: https://api.kronform.pius.dev:6443
     controllerManager:
-        image: registry.k8s.io/kube-controller-manager:v1.27.2
+        image: registry.k8s.io/kube-controller-manager:v1.27.4
     etcd:
         ca:
             crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJmVENDQVNTZ0F3SUJBZ0lSQU1qU1JNRUZ5RXpDSHRDcUJidDVWN293Q2dZSUtvWkl6ajBFQXdJd0R6RU4KTUFzR0ExVUVDaE1FWlhSalpEQWVGdzB5TXpBMk1qSXhNak01TXpOYUZ3MHpNekEyTVRreE1qTTVNek5hTUE4eApEVEFMQmdOVkJBb1RCR1YwWTJRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFURThzVHdiRjVaCkh0QXVoSTRhNXdsZkNCa3JRY1JhSVd0UDIwc1lOOWhtL2tFREQ0b3IyQ09yWmJnMDc5SmQ5eGFhNmxMQzhVM2UKQm9QMjAzc2oxcU5mbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSApBd0VHQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkhOZXovakNKcmFZClI4WXRaUDhHdndROThDSi9NQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJRTVmbHdSMEpsRGdYOHM2UG1tVE1MSUsKbHBtSElNSlQ5U1A2YTY3ZjZvQXFBaUFzbm9nOWRzS1B4ZTE2bHQzTXY5eGZ3YnR1Z3Y4c3dSaHFNSXArdHJqWgp0Zz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
@@ -53,9 +53,9 @@ cluster:
             - 10.96.0.0/12
     proxy:
         disabled: true
-        image: registry.k8s.io/kube-proxy:v1.27.2
+        image: registry.k8s.io/kube-proxy:v1.27.4
     scheduler:
-        image: registry.k8s.io/kube-scheduler:v1.27.2
+        image: registry.k8s.io/kube-scheduler:v1.27.4
     secret: ENC[AES256_GCM,data:iHDVHUmUiWHT1YTY8pqaP3ubTxYRzhTrRrKI+7UIQc23FvrvDAoMTQHsN30=,iv:FTQYftgeNCk6rYwrrFlF1Gq/mb3PWynaNNZQX3exiA8=,tag:jKaWStpbgZSTBIe2qewZug==,type:str]
     secretboxEncryptionSecret: ENC[AES256_GCM,data:CAFb1PJNhSPdBXSEV9QvTEidiSpqworeZ8YTSaVnuorYK9dS7tvciumuTEU=,iv:v/f8C89QL9niHaeWYMtiuGO3XZNqIYu4G+KZgvCam/s=,tag:lclleYFlTndM6J0gOeH5Dw==,type:str]
     serviceAccount:
@@ -84,8 +84,8 @@ machine:
         defaultRuntimeSeccompProfileEnabled: true
         disableManifestsDirectory: true
         extraArgs:
-            rotate-server-certificates: true
-        image: ghcr.io/siderolabs/kubelet:v1.27.2
+            rotate-server-certificates: "true"
+        image: ghcr.io/siderolabs/kubelet:v1.27.4
     network:
         hostname: n2
         interfaces:
@@ -109,27 +109,22 @@ machine:
             docker.io:
                 endpoints:
                     - https://registry.kronform.pius.dev/v2/docker.io
-                    - https://docker.io/v2
                 overridePath: true
             gcr.io:
                 endpoints:
                     - https://registry.kronform.pius.dev/v2/gcr.io
-                    - https://gcr.io/v2
                 overridePath: true
             ghcr.io:
                 endpoints:
                     - https://registry.kronform.pius.dev/v2/ghcr.io
-                    - https://ghcr.io/v2
                 overridePath: true
             k8s.gcr.io:
                 endpoints:
                     - https://registry.kronform.pius.dev/v2/k8s.gcr.io
-                    - https://k8s.gcr.io/v2
                 overridePath: true
             registry.k8s.io:
                 endpoints:
                     - https://registry.kronform.pius.dev/v2/registry.k8s.io
-                    - https://registry.k8s.io/v2
                 overridePath: true
     token: ENC[AES256_GCM,data:hUVreMITckCLhd/7TXhh7GKivu3zYHY=,iv:W/1zfkgEGyGtXOPocsZR6kz9I6YfEaYp5lbYwU6Q49w=,tag:/xICnXPCf+OepilrT+OgBg==,type:str]
     type: controlplane
@@ -141,8 +136,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-07-05T17:39:07Z"
-    mac: ENC[AES256_GCM,data:V3b+1z/UGBH/RzwtqwRmtcZ8Nzou5ldwfrq6fLs8RxbsFRdUhGQnwGeXeWz2G/icDPa1FvHkKy8WlNyda16Fe4BKMWeqUEjyOLpaisyQeWmMk6fxbsVY4iFCxakrXmndAHa0SsU6VKkf23E34G7sa+68B5Xr7HrvglnzZ9G+BSI=,iv:FMdLTaEP5WH9udqgYXgMm8W6ANfzbc9EzN/xSjI9Jeg=,tag:IPKOrVi2shg6Ao3UEyTScg==,type:str]
+    lastmodified: "2023-07-30T20:18:22Z"
+    mac: ENC[AES256_GCM,data:QoMPOv8+8vFSrrPVHN2yTHM2erYVExETXK2AJpwP68U1XweG2ycq6DNBNbido5be7u8fJ/pDlHoMY1WBdgjyH9d+4VNtpUk7e81mc8h070fEojh6l9i3fTpiQVTlpE64xOjaM7vyWfxSXVTD98EoRsiipjYvL2EWBHKhBjWJKuE=,iv:CihFUnEqtSiF+wSn5s+wwGW31g7kPlRi2JOqKoWdRl4=,tag:tH+ket44dOpwh7ZEVuI5SQ==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:06Z"
           enc: |
