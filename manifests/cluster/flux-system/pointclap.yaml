@@ -30,3 +30,19 @@ spec:
     provider: sops
     secretRef:
       name: sops-gpg
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: pointclap-7daystodie
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/pointclap/7daystodie
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  targetNamespace: pointclap
+  dependsOn:
+  - name: pointclap-namespace
