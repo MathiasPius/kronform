@@ -1,0 +1,52 @@
+apiVersion: v1
+data:
+    token: ENC[AES256_GCM,data:O+GNorSen76EGhlhkn/agb161DejfpCx5lElFVdSOR/2urQv2zov4PmumuXXfw==,iv:yBeTu9jmoJxaBCs2Od01VW8MzaqU4WQxz8fZyaVIx9M=,tag:vZ0WLntqt8hB96EHjPFSmw==,type:str]
+kind: Secret
+metadata:
+    name: telegram-token
+    namespace: notification
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2023-08-14T08:06:04Z"
+    mac: ENC[AES256_GCM,data:h9FnAqTOAxSWHr7MxooVJXo4ZR3BZVLR1h+BtNINfwiHAJcScAe+2RTria4XIq23FOPWkjqzwQq8CetQfOYwQzTRz+TT82Tii4bXZbuNim6SIRRGvK5Reo0N/O9X+jy2EY8S0Oo1L9eMNCptZep0kGaQoImqEZPSuE96HxMuvjs=,iv:X/zwNCNiVey553uNNBpZk2pxh3E2sEuO6yrpTffcpqs=,tag:b1eCn51mqTE3IYkkCvQSbg==,type:str]
+    pgp:
+        - created_at: "2023-08-14T08:06:04Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hF4DO8XyRaEk3R4SAQdAYwM+vn4OJVVyJZrhBAjXE+x27oT7xaq0oZ2e76tRTHUw
+            KSEQgcLcgOHCOW4o5ktuUfRfPnxhMQpFYrCQB0qu7gxiCg6qhAcM6XwOMOvDCTtA
+            0l4BlY2eEaqg5WrtPLfGSUA4DNV89Ce+slQKgFiZmIfZWAFwPNSakmGuixlcLnQ+
+            cCYzjo/Sc2dO/4PEu9IbyWS7lH4NP7G8q/U4Bv6SLUjbQh5Sacfo/En5yHSU8FZb
+            =uGTY
+            -----END PGP MESSAGE-----
+          fp: BD995FEE3775172B56BF652CF10FF7F3F7265919
+        - created_at: "2023-08-14T08:06:04Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hF4Dw5+PhuNaN4USAQdA7LD0Zs8CBPZxm14JwpUUSwivE7mEXGZb5ToQKq9PpDYw
+            Otwpa7otsaSKvjHyws41nR5gm6gEQAcyYZxt9XL2q+L/KqyHJhavINFFvj4bBhLz
+            0l4BjmJ9tWTZev/mB4uQKd3JzirEPUwU7PnBXcH0YXfthdpj3IDXn33s+/HjpEq6
+            UWGFPI6+fsOaljqddh+pGzO3U83J6ksY3IofRD0VHfieAGr7oM+VYjm5d9Nn+UeM
+            =xARw
+            -----END PGP MESSAGE-----
+          fp: 7668061D49BB2B7BA19118B4031734BEBE51F818
+        - created_at: "2023-08-14T08:06:04Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hF4D4cApnFfIi24SAQdAbCYFO7St6R72GDI5QTjTH51hBWHbsOi/+7vlPQ+VCEUw
+            cAJZzPsQjDFAwn7dwZ6t2AQG1l83nHS1S6JNv2VCRBBbRAWf/8NhqmVbi5rUpttX
+            0l4BhpsTdSywTg1cAEkVD9OLu+ButByBDWH1tqNXxhyhUBp0DvCGMOST1aYVdPWA
+            UsOHDJsGNfPZOS6ndBu+QsSSTWl/baMVN46Ns0IE37+XzzaZvNw3AzFUh7VrVXEC
+            =/iLj
+            -----END PGP MESSAGE-----
+          fp: 67DB96C4F1D4F08F456697CC7668FD88C76CA761
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
