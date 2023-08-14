@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-    token: ENC[AES256_GCM,data:O+GNorSen76EGhlhkn/agb161DejfpCx5lElFVdSOR/2urQv2zov4PmumuXXfw==,iv:yBeTu9jmoJxaBCs2Od01VW8MzaqU4WQxz8fZyaVIx9M=,tag:vZ0WLntqt8hB96EHjPFSmw==,type:str]
+    token: ENC[AES256_GCM,data:mRVBa7eH3XYrcV5jAFMbVfCvjNTKjf6xVPMD+zJgGWBkiQs5FLrBu1So7pRh/xE2jlZ5QWmZdkWKjP9L4vdaXg==,iv:498sCQjuruSVLxhBdu5SvUkxDtd9y8/V1PJk8rCp/zM=,tag:i6rNcdrNOK65SyHe9+++uw==,type:str]
 kind: Secret
 metadata:
     name: telegram-token
@@ -12,40 +12,40 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-08-14T08:06:04Z"
-    mac: ENC[AES256_GCM,data:h9FnAqTOAxSWHr7MxooVJXo4ZR3BZVLR1h+BtNINfwiHAJcScAe+2RTria4XIq23FOPWkjqzwQq8CetQfOYwQzTRz+TT82Tii4bXZbuNim6SIRRGvK5Reo0N/O9X+jy2EY8S0Oo1L9eMNCptZep0kGaQoImqEZPSuE96HxMuvjs=,iv:X/zwNCNiVey553uNNBpZk2pxh3E2sEuO6yrpTffcpqs=,tag:b1eCn51mqTE3IYkkCvQSbg==,type:str]
+    lastmodified: "2023-08-14T08:18:13Z"
+    mac: ENC[AES256_GCM,data:QX7mEfNS9fYWGMaibInzHbAAoSQEJvecmsXifwvls4RNNLzNYAeKvj3mwAuLyoiVfV823/eiXRGOz9VGAXjGTrHolMg68mgYBiEvks9yZjV0yiq4fb07YLPqmqofS56zsxzuJ5tr7PF/VQvkaUGEbHnqQIr0tS+1yHqewu9fTMQ=,iv:2Pt4E3QYs2T8RQVot6YhMyynZrPZaFRsG4Y+4uLuJ/k=,tag:H5Oe6WGgamH5zIfqk9LwEw==,type:str]
     pgp:
-        - created_at: "2023-08-14T08:06:04Z"
+        - created_at: "2023-08-14T08:18:13Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hF4DO8XyRaEk3R4SAQdAYwM+vn4OJVVyJZrhBAjXE+x27oT7xaq0oZ2e76tRTHUw
-            KSEQgcLcgOHCOW4o5ktuUfRfPnxhMQpFYrCQB0qu7gxiCg6qhAcM6XwOMOvDCTtA
-            0l4BlY2eEaqg5WrtPLfGSUA4DNV89Ce+slQKgFiZmIfZWAFwPNSakmGuixlcLnQ+
-            cCYzjo/Sc2dO/4PEu9IbyWS7lH4NP7G8q/U4Bv6SLUjbQh5Sacfo/En5yHSU8FZb
-            =uGTY
+            hF4DO8XyRaEk3R4SAQdABuwm8ZJSTCrH2CkmhiHn1z2rp/Mch7HjwPPd9n9Vpj4w
+            +E9vulPf4FspgTXoPf5GQMgb6g8uz2Uzxp4ARMLDE2eXwJeKIQSsZ145x/VnzJOL
+            0lwBoU834Hp3YA+IuFGawcDZMQ2BFNSnRErHJ8QDbVFyV/GMOwFt1P3rRFFHifSh
+            iMKLIVKxBK847WVK94VSJqbvFz2aGfmpoA5eiUoirC4bnqVST9VzvMnG8Ihimg==
+            =b32c
             -----END PGP MESSAGE-----
           fp: BD995FEE3775172B56BF652CF10FF7F3F7265919
-        - created_at: "2023-08-14T08:06:04Z"
+        - created_at: "2023-08-14T08:18:13Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hF4Dw5+PhuNaN4USAQdA7LD0Zs8CBPZxm14JwpUUSwivE7mEXGZb5ToQKq9PpDYw
-            Otwpa7otsaSKvjHyws41nR5gm6gEQAcyYZxt9XL2q+L/KqyHJhavINFFvj4bBhLz
-            0l4BjmJ9tWTZev/mB4uQKd3JzirEPUwU7PnBXcH0YXfthdpj3IDXn33s+/HjpEq6
-            UWGFPI6+fsOaljqddh+pGzO3U83J6ksY3IofRD0VHfieAGr7oM+VYjm5d9Nn+UeM
-            =xARw
+            hF4Dw5+PhuNaN4USAQdARNOvyrASkYsJwhScuM9lIzvos1C26x1UMKLjCw1dBhkw
+            kqgOw9357tJcpy9hoa2lcTaXSw+OiufRcezi7iWEh4zXad+7k4k3rtLj42HQAvIB
+            0lwBVmDDq2U8c/ul23xE5MD5m9HtU9O8t5jnqTkG6hg1AU7u1thWklk8cQMfdpVl
+            BK012HtfSejVMrFNYULZgtw9ZXWWr0HjGErhBcnFHpB/8ZP3k9zsvLWHXO1sqA==
+            =5vgx
             -----END PGP MESSAGE-----
           fp: 7668061D49BB2B7BA19118B4031734BEBE51F818
-        - created_at: "2023-08-14T08:06:04Z"
+        - created_at: "2023-08-14T08:18:13Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hF4D4cApnFfIi24SAQdAbCYFO7St6R72GDI5QTjTH51hBWHbsOi/+7vlPQ+VCEUw
-            cAJZzPsQjDFAwn7dwZ6t2AQG1l83nHS1S6JNv2VCRBBbRAWf/8NhqmVbi5rUpttX
-            0l4BhpsTdSywTg1cAEkVD9OLu+ButByBDWH1tqNXxhyhUBp0DvCGMOST1aYVdPWA
-            UsOHDJsGNfPZOS6ndBu+QsSSTWl/baMVN46Ns0IE37+XzzaZvNw3AzFUh7VrVXEC
-            =/iLj
+            hF4D4cApnFfIi24SAQdAos8m9eAZ3mtGL7QTdjLT5bkCsunWasPMLEJu5ZQ3iAUw
+            QHfzfj3nFgdEM2gmJufE1C9ou3DCNG46KpDfeFQ8Bwv6Ak/6TsoYZu2nXDVqt7Ll
+            0lwB8m51Zj9SsnxbWbM3Nbdqu5piOm7cGUTyy8BetIFC9O1ZEfzo+irIUgl0yIb6
+            FOjA7XJiiD8Ta612s3LZyC2l8H21alkKmzWEEAuBsgEQN54QHXptRveCkCKb5A==
+            =+E8Y
             -----END PGP MESSAGE-----
           fp: 67DB96C4F1D4F08F456697CC7668FD88C76CA761
     encrypted_regex: ^(data|stringData)$
