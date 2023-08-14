@@ -5,3 +5,4 @@ resources:
 - namespace.yaml
 - telegram-token.yaml
 - telegram-provider.yaml
+- alerts.yaml
