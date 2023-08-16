@@ -138,3 +138,12 @@ spec:
     - ports:
       - port: "10250"
         protocol: "TCP"
+        
+  # Allow DNS lookup from anywhere to the node-port running CoreDNS
+  - fromEntities:
+    - world
+    - cluster
+    toPorts:
+    - ports:
+      - port: "53"
+        protocol: "UDP"
