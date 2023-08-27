@@ -56,3 +56,8 @@ USER ${UID}
 
 # Copy all the tools from our installer stage.
 COPY --chown=user:user --from=installer /tools/* /usr/local/bin/
+
+# We'll mount the kronform repository in /data
+RUN mkdir /data
+WORKDIR /data
+
