@@ -10,7 +10,7 @@ ARG SOPS_VERSION="3.7.3"
 ARG FLUX_VERSION="2.1.0"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
-RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+RUN apt-get update \
     && apt-get -y install --no-install-recommends ca-certificates curl \
     && apt-get clean
 
@@ -36,6 +36,7 @@ RUN curl -L -o sops https://github.com/getsops/sops/releases/download/v${SOPS_VE
 
 RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${FLUX_VERSION}/flux_${FLUX_VERSION}_linux_amd64.tar.gz \
     && tar -xf flux.tar.gz \
+    && rm flux.tar.gz \
     && chmod u+x flux \
     && chown ${UID}:${GID} flux
 
