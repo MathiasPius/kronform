@@ -41,12 +41,18 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
 # cause all kinds of ownership issues.
 FROM debian:bookworm-slim AS workspace
 
+# Install gnupg for decryption and encryption of SOPS secrets,
+# as well as vim for editing"
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends gpg vim \
+    && apt-get clean
+
 # Create group and user.
 ARG UID=1000
 ARG GID=1000
 
 RUN groupadd -g ${GID} user
-RUN useradd -M -s /bin/bash -u ${UID} -g ${GID} user
+RUN useradd -m -s /bin/bash -u ${UID} -g ${GID} user
 
 # We'll mount the kronform repository in /data
 RUN mkdir /data && chown user:user /data
