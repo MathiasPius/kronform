@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get -y install --no-install-recommends ca-certificates curl \
     && apt-get clean
 
+# Create a /tools directory so we can copy all of them over wholesale.
 RUN mkdir -p /tools
 WORKDIR /tools
 
