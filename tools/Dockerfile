@@ -19,27 +19,21 @@ RUN mkdir -p /tools
 WORKDIR /tools
 
 RUN curl -L -o kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
-    && chmod u+x kubectl \
-    && chown ${UID}:${GID} kubectl
+    && chmod u+x kubectl
 
 RUN curl -L -o talosctl https://github.com/siderolabs/talos/releases/download/v${TALOSCTL_VERSION}/talosctl-linux-amd64 \
-    && chmod u+x talosctl \
-    && chown ${UID}:${GID} talosctl
+    && chmod u+x talosctl
 
 RUN curl -L -o yq https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 \
-    && chmod u+x yq \
-    && chown ${UID}:${GID} yq
+    && chmod u+x yq
 
 RUN curl -L -o sops https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64 \
-    && chmod u+x sops \
-    && chown ${UID}:${GID} sops
+    && chmod u+x sops
 
 RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${FLUX_VERSION}/flux_${FLUX_VERSION}_linux_amd64.tar.gz \
     && tar -xf flux.tar.gz \
     && rm flux.tar.gz \
-    && chmod u+x flux \
-    && chown ${UID}:${GID} flux
-
+    && chmod u+x flux
 
 # ===========================================================================
 # Stage which contains only the tools required, set up to run as the default
