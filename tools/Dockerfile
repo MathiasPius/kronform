@@ -52,12 +52,13 @@ ARG GID=1000
 
 RUN groupadd -g ${GID} user
 RUN useradd -M -s /bin/bash -u ${UID} -g ${GID} user
-USER ${UID}
+
+# We'll mount the kronform repository in /data
+RUN mkdir /data && chown user:user /data
+WORKDIR /data
 
 # Copy all the tools from our installer stage.
 COPY --chown=user:user --from=installer /tools/* /usr/local/bin/
 
-# We'll mount the kronform repository in /data
-RUN mkdir /data
-WORKDIR /data
+USER ${UID}
 
