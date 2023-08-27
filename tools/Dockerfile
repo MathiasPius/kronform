@@ -8,6 +8,7 @@ ARG TALOSCTL_VERSION="v1.4.7"
 ARG YQ_VERSION="v4.35.1"
 ARG SOPS_VERSION="v3.7.3"
 
+# Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get -y install --no-install-recommends ca-certificates curl \
     && apt-get clean
