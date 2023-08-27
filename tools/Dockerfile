@@ -38,7 +38,7 @@ RUN curl -L -o sops https://github.com/getsops/sops/releases/download/${SOPS_VER
 # non-root linux user, so that mounting our working directory into it won't
 # cause all kinds of ownership issues.
 FROM debian:bookworm-slim AS workspace
-t
+
 # Create group and user.
 ARG UID=1000
 ARG GID=1000
