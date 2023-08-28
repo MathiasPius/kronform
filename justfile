@@ -6,5 +6,4 @@ tools:
         -v $(pwd):/data                       \
         -v /run/user/1000/:/run/user/1000/:ro \
         -v $HOME/.gnupg:/home/user/.gnupg:ro  \
-        -v $HOME/.kube:/home/user/.kube:ro    \
         tools:latest

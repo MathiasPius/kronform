@@ -61,5 +61,9 @@ WORKDIR /data
 # Copy all the tools from our installer stage.
 COPY --chown=user:user --from=installer /tools/* /usr/local/bin/
 
+# Copy in our entrypoint which is used for setting up the environment.
+COPY --chown=user:user --chmod=0700 entrypoint.sh /usr/bin/local/entrypoint
+
 USER ${UID}
+ENTRYPOINT ["/usr/bin/local/entrypoint"]
 
