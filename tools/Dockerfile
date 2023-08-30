@@ -40,11 +40,12 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
 # non-root linux user, so that mounting our working directory into it won't
 # cause all kinds of ownership issues.
 FROM debian:bookworm-slim AS workspace
+ENV EDITOR=vim
 
 # Install gnupg for decryption and encryption of SOPS secrets,
 # as well as vim for editing"
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends gpg vim \
+    && apt-get -y install --no-install-recommends gpg $EDITOR \
     && apt-get clean
 
 # Create group and user.
