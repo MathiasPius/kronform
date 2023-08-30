@@ -67,4 +67,3 @@ COPY --chown=user:user --chmod=0700 entrypoint.sh /usr/bin/local/entrypoint
 
 USER ${UID}
 ENTRYPOINT ["/usr/bin/local/entrypoint"]
-
