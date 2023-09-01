@@ -147,3 +147,12 @@ spec:
     - ports:
       - port: "53"
         protocol: "UDP"
+
+  # Temporary access to unmanic cluster
+  - fromEntities:
+    - world
+    - cluster
+    toPorts:
+    - ports:
+      - port: "8888"
+        protocol: "TCP"
