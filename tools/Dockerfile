@@ -3,7 +3,7 @@
 FROM debian:bookworm-slim AS installer
 
 # Using arguments allows us to update the tools easily in the future.
-ARG KUBECTL_VERSION="1.27.4"
+ARG KUBECTL_VERSION="1.27.5"
 ARG TALOSCTL_VERSION="1.5.1"
 ARG YQ_VERSION="4.35.1"
 ARG SOPS_VERSION="3.7.3"
