@@ -2,7 +2,7 @@
 version: v1alpha1
 # Enable verbose logging to the console.
 debug: false
-# Indicates whether to pull the machine config upon every boot.
+# description: |
 persist: true
 # Provides machine specific configuration options.
 machine:
@@ -21,7 +21,7 @@ machine:
     # Used to provide additional options to the kubelet.
     kubelet:
         # The `image` field is an optional reference to an alternative kubelet image.
-        image: ghcr.io/siderolabs/kubelet:v1.27.4
+        image: ghcr.io/siderolabs/kubelet:v1.27.5
         # The `extraArgs` field is used to provide additional flags to the kubelet.
         extraArgs:
             rotate-server-certificates: "true"
@@ -91,8 +91,8 @@ machine:
     # bond:
     #     # The interfaces that make up the bond.
     #     interfaces:
-    #         - eth0
-    #         - eth1
+    #         - enp2s0
+    #         - enp2s1
     #     # Picks a network device using the selector.
     #     deviceSelectors:
     #         - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
@@ -104,8 +104,8 @@ machine:
     # bridge:
     #     # The interfaces that make up the bridge.
     #     interfaces:
-    #         - eth0
-    #         - eth1
+    #         - enxda4042ca9a51
+    #         - enxae2a6774c259
     #     # A bridge option.
     #     stp:
     #         enabled: true # Whether Spanning Tree Protocol (STP) is enabled.
@@ -163,7 +163,7 @@ machine:
             # busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0
             # busPath: /pci0000:00/*
         # Allows for supplying the image used to perform the installation.
-        image: ghcr.io/siderolabs/installer:v1.4.6
+        image: ghcr.io/siderolabs/installer:v1.5.1
         # Indicates if a bootloader should be installed.
         bootloader: true
         # Indicates if the installation disk should be wiped at installation time.
@@ -362,6 +362,10 @@ machine:
 #             - # Deterministically generated key from the node UUID and PartitionLabel.
 #               nodeID: {}
 #               slot: 0 # Key slot number for LUKS2 encryption.
+#               
+#               # # KMS managed encryption key.
+#               # kms:
+#               #     endpoint: https://192.168.88.21:4443 # KMS endpoint to Seal/Unseal the key.
 #         
 #         # # Cipher kind to use for the encryption. Depends on the encryption provider.
 #         # cipher: aes-xts-plain64
@@ -442,7 +446,7 @@ cluster:
     # API server specific configuration options.
     apiServer:
         # The container image used in the API server manifest.
-        image: registry.k8s.io/kube-apiserver:v1.27.4
+        image: registry.k8s.io/kube-apiserver:v1.27.5
         # Extra certificate subject alternative names for the API server's certificate.
         certSANs:
             - api.kronform.pius.dev
@@ -477,17 +481,17 @@ cluster:
     # Controller manager server specific configuration options.
     controllerManager:
         # The container image used in the controller manager manifest.
-        image: registry.k8s.io/kube-controller-manager:v1.27.4
+        image: registry.k8s.io/kube-controller-manager:v1.27.5
     # Kube-proxy server-specific configuration options
     proxy:
         # Disable kube-proxy deployment on cluster bootstrap.
         disabled: true
         # The container image used in the kube-proxy manifest.
-        image: registry.k8s.io/kube-proxy:v1.27.4
+        image: registry.k8s.io/kube-proxy:v1.27.5
     # Scheduler server specific configuration options.
     scheduler:
         # The container image used in the scheduler manifest.
-        image: registry.k8s.io/kube-scheduler:v1.27.4
+        image: registry.k8s.io/kube-scheduler:v1.27.5
     # Etcd specific configuration options.
     etcd:
         # The `ca` is the root certificate authority of the PKI.
@@ -507,8 +511,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-09-04T18:49:03Z"
-    mac: ENC[AES256_GCM,data:13fDdJBjVvqj6QBlBczPGteWW7bAY5mF3wD6ewG8fCrZF7wm4jLevamQO3UkPu50YJKgbTYtmoBF+FJdZ00N38ZUtmqzRJhpsI/lkE5jsmjFA+ThFI/QfTDfW81jG5QuBWWHXaM7kmPhyahIef3fZZuL+h1THFNMxmAr/X8c5LQ=,iv:u7GTZT6YZmig1T1C3u85Sm12S2SlPZlyeA8205eh7Ic=,tag:nzkTMO5b5XNHfIs85vGeOw==,type:str]
+    lastmodified: "2023-09-04T20:27:40Z"
+    mac: ENC[AES256_GCM,data:9e9mbXjeH6HW27siACoKGHv3UPWp7ubnSbS5MWtgxvsoL/BSyCDNV48/6Va21HR13XVZPvI5g3N3AyNRSfDjGuYMlUnYVF5/hKsNFg5xVe9xtiY2wUldBG0/W2yEx154Ugv0p/C89YzUGkK3ztJAXc62qqKKtm3cblZA2SUyEBw=,iv:4mDMkYNKlZfcYqRS0igRwW5o9CBu0Ghwmc/3792N/90=,tag:LP3vRTdc0h7Jnj3Gtf50xw==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:05Z"
           enc: |
