@@ -1,0 +1,7 @@
+# manifests/infrastructure/kubevirt/kustomization.yaml
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- https://github.com/kubevirt/kubevirt/releases/download/v1.0.0/kubevirt-operator.yaml
+- https://github.com/kubevirt/kubevirt/releases/download/v1.0.0/kubevirt-cr.yaml
