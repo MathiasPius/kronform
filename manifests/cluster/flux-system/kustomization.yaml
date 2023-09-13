@@ -12,3 +12,4 @@ resources:
 - metrics-server.yaml
 - kubelet-cert-rotation.yaml
 - notification.yaml
+- kubevirt.yaml
