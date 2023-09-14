@@ -147,3 +147,22 @@ spec:
     - ports:
       - port: "53"
         protocol: "UDP"
+
+  # Allow kube-ovn access from other nodes
+  - fromEntities:
+    - remote-node
+    toPorts:
+    - ports:
+      # ovn-central
+      - port: "6641"
+        protocol: "TCP"
+      - port: "6642"
+        protocol: "TCP"
+      - port: "6643"
+        protocol: "TCP"
+      - port: "6644"
+        protocol: "TCP"
+
+      # ovs-ovn
+      - port: "6081"
+        protocol: "UDP"
