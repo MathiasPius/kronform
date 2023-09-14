@@ -166,3 +166,11 @@ spec:
       # ovs-ovn
       - port: "6081"
         protocol: "UDP"
+      
+      # metrics
+      - port: "10660"
+        protocol: "TCP"
+      - port: "10661"
+        protocol: "TCP"
+      - port: "10665"
+        protocol: "TCP"
