@@ -163,7 +163,7 @@ machine:
             # busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0
             # busPath: /pci0000:00/*
         # Allows for supplying the image used to perform the installation.
-        image: ghcr.io/siderolabs/installer:v1.5.1
+        image: ghcr.io/siderolabs/installer:v1.5.3
         # Indicates if a bootloader should be installed.
         bootloader: true
         # Indicates if the installation disk should be wiped at installation time.
@@ -511,8 +511,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-09-04T20:27:40Z"
-    mac: ENC[AES256_GCM,data:OIzPlNE98xVjHqkZ3S6el0e/mjUKmdl38vxh5LM01S0tBC0/oD5babMHMlLsdLrrGdiFcV17bApxxyCKZVTTen7WTcnX5nEPTskTsvQ2RD6G+Omdk+4fKf6BrXQzZSENW8Ps2u8QOc+RYC2sG1E5N3BbPD7klRHxZPGv3jPCz1o=,iv:eylRwCbffldIyVsmvOVrcNDe9B3OKfXDRVUp2WJCUD8=,tag:n6TmN1/8BQxxI1K9TvdChg==,type:str]
+    lastmodified: "2023-09-28T08:55:00Z"
+    mac: ENC[AES256_GCM,data:gfc6bzM+qqLr53WO7CKQ7c1L4fzNn4Otk5EPVu5oUPT44We43esBHCbT3Uub0zVarOT+0VyD2tS6FP2H1qFsUWidw2b8BjZs2lCA9cscpErsxCcM2srwXPSyDO+dRgacIJFDzXS9Ufgbx9lvcu7/fRwXiER5m5vMPYw6FRcywZY=,iv:QCFNCm3MfI6TDt+1iTBU9ylTdJTB1A6L3kQZml0D/5I=,tag:SOntvF72Qg9y++Zqyw+brA==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:06Z"
           enc: |
