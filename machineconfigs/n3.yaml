@@ -2,7 +2,6 @@
 version: v1alpha1
 # Enable verbose logging to the console.
 debug: false
-# description: |
 persist: true
 # Provides machine specific configuration options.
 machine:
@@ -21,7 +20,7 @@ machine:
     # Used to provide additional options to the kubelet.
     kubelet:
         # The `image` field is an optional reference to an alternative kubelet image.
-        image: ghcr.io/siderolabs/kubelet:v1.27.5
+        image: ghcr.io/siderolabs/kubelet:v1.29.1
         # The `extraArgs` field is used to provide additional flags to the kubelet.
         extraArgs:
             rotate-server-certificates: "true"
@@ -35,9 +34,10 @@ machine:
         #     - 169.254.2.53
     # # The `extraMounts` field is used to add additional mounts to the kubelet container.
     # extraMounts:
-    #     - destination: /var/lib/example
-    #       type: bind
-    #       source: /var/lib/example
+    #     - destination: /var/lib/example # Destination is the absolute path where the mount will be placed in the container.
+    #       type: bind # Type specifies the mount kind.
+    #       source: /var/lib/example # Source specifies the source path of the mount.
+    #       # Options are fstab style mount options.
     #       options:
     #         - bind
     #         - rshared
@@ -45,6 +45,20 @@ machine:
     # # The `extraConfig` field is used to provide kubelet configuration overrides.
     # extraConfig:
     #     serverTLSBootstrap: true
+    # # The `KubeletCredentialProviderConfig` field is used to provide kubelet credential configuration.
+    # credentialProviderConfig:
+    #     apiVersion: kubelet.config.k8s.io/v1
+    #     kind: CredentialProviderConfig
+    #     providers:
+    #         - apiVersion: credentialprovider.kubelet.k8s.io/v1
+    #           defaultCacheDuration: 12h
+    #           matchImages:
+    #             - '*.dkr.ecr.*.amazonaws.com'
+    #             - '*.dkr.ecr.*.amazonaws.com.cn'
+    #             - '*.dkr.ecr-fips.*.amazonaws.com'
+    #             - '*.dkr.ecr.us-iso-east-1.c2s.ic.gov'
+    #             - '*.dkr.ecr.us-isob-east-1.sc2s.sgov.gov'
+    #           name: ecr-credential-provider
     # # The `nodeIP` field is used to configure `--node-ip` flag for the kubelet.
     # nodeIP:
     #     # The `validSubnets` field configures the networks to pick kubelet node IP from.
@@ -171,7 +185,6 @@ machine:
         # busPath: /pci0000:00/*
         # Allows for supplying the image used to perform the installation.
         image: ghcr.io/siderolabs/installer:v1.5.3
-        # Indicates if a bootloader should be installed.
         bootloader: true
         # Indicates if the installation disk should be wiped at installation time.
         wipe: false
@@ -355,6 +368,7 @@ machine:
 # sysctls:
 #     kernel.domainname: talos.dev
 #     net.ipv4.ip_forward: "0"
+#     net/ipv6/conf/eth0.100/disable_ipv6: "1"
 # # Used to configure the machine's sysfs.
 # # MachineSysfs usage example.
 # sysfs:
@@ -408,6 +422,10 @@ machine:
 # # node labels example.
 # nodeLabels:
 #     exampleLabel: exampleLabelValue
+# # Configures the node taints for the machine. Effect is optional.
+# # node taints example.
+# nodeTaints:
+#     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
 # # Provides machine specific control plane configuration options.
@@ -453,7 +471,7 @@ cluster:
     # API server specific configuration options.
     apiServer:
         # The container image used in the API server manifest.
-        image: registry.k8s.io/kube-apiserver:v1.27.5
+        image: registry.k8s.io/kube-apiserver:v1.29.1
         # Extra certificate subject alternative names for the API server's certificate.
         certSANs:
             - api.kronform.pius.dev
@@ -488,17 +506,17 @@ cluster:
     # Controller manager server specific configuration options.
     controllerManager:
         # The container image used in the controller manager manifest.
-        image: registry.k8s.io/kube-controller-manager:v1.27.5
+        image: registry.k8s.io/kube-controller-manager:v1.29.1
     # Kube-proxy server-specific configuration options
     proxy:
         # Disable kube-proxy deployment on cluster bootstrap.
         disabled: true
         # The container image used in the kube-proxy manifest.
-        image: registry.k8s.io/kube-proxy:v1.27.5
+        image: registry.k8s.io/kube-proxy:v1.29.1
     # Scheduler server specific configuration options.
     scheduler:
         # The container image used in the scheduler manifest.
-        image: registry.k8s.io/kube-scheduler:v1.27.5
+        image: registry.k8s.io/kube-scheduler:v1.29.1
     # Etcd specific configuration options.
     etcd:
         # The `ca` is the root certificate authority of the PKI.
@@ -506,7 +524,7 @@ cluster:
             crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJmVENDQVNTZ0F3SUJBZ0lSQU1qU1JNRUZ5RXpDSHRDcUJidDVWN293Q2dZSUtvWkl6ajBFQXdJd0R6RU4KTUFzR0ExVUVDaE1FWlhSalpEQWVGdzB5TXpBMk1qSXhNak01TXpOYUZ3MHpNekEyTVRreE1qTTVNek5hTUE4eApEVEFMQmdOVkJBb1RCR1YwWTJRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFURThzVHdiRjVaCkh0QXVoSTRhNXdsZkNCa3JRY1JhSVd0UDIwc1lOOWhtL2tFREQ0b3IyQ09yWmJnMDc5SmQ5eGFhNmxMQzhVM2UKQm9QMjAzc2oxcU5mbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSApBd0VHQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkhOZXovakNKcmFZClI4WXRaUDhHdndROThDSi9NQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJRTVmbHdSMEpsRGdYOHM2UG1tVE1MSUsKbHBtSElNSlQ5U1A2YTY3ZjZvQXFBaUFzbm9nOWRzS1B4ZTE2bHQzTXY5eGZ3YnR1Z3Y4c3dSaHFNSXArdHJqWgp0Zz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
             key: ENC[AES256_GCM,data:Q1q/m1r7bRNgGVIVB1WebyZBgUhvFxoD+N6sDEVrwHd7mrVc9sFe91J0m7y3hVLimAEirMkkFzX/iPRazHP1B9Y1mzw7jwflHvZkScZPm1FX61hZ6m1qaioQMQcJ+B4vwnH9LMxYhnzQWs4C8AKF37Oq5uBg810gHMju9EWypEMwyRsSrqzQGXB1fsCJJD6UhM0OVl2IOKeBON8Cpwuu1dNphNGIpsKDy1sZnblroTSjbcgwyFZZOKu/LWrRR2OaQVDZJax4YAmgGSJC2EBQEGuYqtCVO7rn6uowms0m3O4JZ1u74cfI7KwkZqlDKLeobfkrdfqTvU9oNaeJko2YM4WyZXLDT7iwoUxLlgT/49QF0IiUqdCYVqTaZiScd/Iq8LBCnhu0tWNh1+sTjdS9cQ==,iv:JSdp8DoIItA3P6qEdIFglR+Qa14SILthySvRUcvuDRU=,tag:V3mmYeQqwUd7f8v3r4cBbw==,type:str]
             # # The container image used to create the etcd service.
-            # image: gcr.io/etcd-development/etcd:v3.5.9
+            # image: gcr.io/etcd-development/etcd:v3.5.11
     # # The `advertisedSubnets` field configures the networks to pick etcd advertised IP from.
     # advertisedSubnets:
     #     - 10.0.0.0/8
@@ -518,8 +536,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-01-28T10:18:26Z"
-    mac: ENC[AES256_GCM,data:HqBSnVoEM9q/N297uWtSZZe1nMRk+G1L8PVd5gKtbA1G9Mq2c94wHAKpOA97kyjJnIeRqfuGFB0wDyXlmelRUEdDLtvnoJnVqrSBDSyvO9WXlDkAJ/WJOkMmiKkFHZ7+sF7knLnKJSfsovGgL/3+6KMSa7VLl/0pY57glUlsNUA=,iv:iTdyB8SYFPCm+lYaXDSx+elM7zAdHAdDR46du8aeKWI=,tag:XKhtvikvEWgCTz01quA8jQ==,type:str]
+    lastmodified: "2024-01-28T13:46:08Z"
+    mac: ENC[AES256_GCM,data:RoDvGpbM0oa6jZcHBFWPzxYGP8wVNEzVFvu+MhIDxsz8USiPgew1M8DW50IOjYN84mKpJqCgrRdq4Fi59Z0OGmrG82grMHC7dYZjvqLmkYZK0quXUem9SoTkkuiOO9q5teJQ2Lo4E66xvGzsXgJeZ42B48qAfzwUyYLR4gmiLCA=,iv:CSCG5sZK0KyTqHr/ViVmNxZpxl2g/VLMQxhFLM7ku8Y=,tag:YQZKDj267m+mREZThJGKlA==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:07Z"
           enc: |
