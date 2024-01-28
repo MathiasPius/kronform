@@ -5,10 +5,9 @@ FROM debian:bookworm-slim AS installer
 # Using arguments allows us to update the tools easily in the future.
 ARG KUBECTL_VERSION="1.29.1"
 ARG TALOSCTL_VERSION="1.6.3"
-ARG YQ_VERSION="4.35.1"
-ARG SOPS_VERSION="3.7.3"
-ARG FLUX_VERSION="2.1.0"
-ARG VIRTCTL_VERSION="1.0.0"
+ARG YQ_VERSION="4.40.5"
+ARG SOPS_VERSION="3.8.1"
+ARG FLUX_VERSION="2.2.2"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN apt-get update \
@@ -35,9 +34,6 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
     && tar -xf flux.tar.gz \
     && rm flux.tar.gz \
     && chmod u+x flux
-    
-RUN curl -L -o virtctl https://github.com/kubevirt/kubevirt/releases/download/v${VIRTCTL_VERSION}/virtctl-v${VIRTCTL_VERSION}-linux-amd64 \
-    && chmod u+x virtctl
 
 # ===========================================================================
 # Stage which contains only the tools required, set up to run as the default
