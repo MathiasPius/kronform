@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: cilium
-      version: ">=1.13.0 <1.14.0"
+      version: ">=1.14.0 <1.15.0"
       sourceRef:
         kind: HelmRepository
         name: cilium
@@ -30,7 +30,7 @@ spec:
         clusterDomain: local.kronform.pius.dev
     etcd:
       clusterDomain: local.kronform.pius.dev
-    kubeProxyReplacement: strict
+    kubeProxyReplacement: true
     securityContext:
       capabilities:
         ciliumAgent:
