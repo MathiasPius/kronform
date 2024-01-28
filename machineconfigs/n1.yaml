@@ -255,7 +255,7 @@ machine:
                     # Optional registry authentication.
                     username: robot$proxy-cache
                     # Optional registry authentication.
-                    password: ENC[AES256_GCM,data:AvqABwOO16h7zAL1G6CsEavunj+8pEFMYjdzjxE5kvc=,iv:XqyneMXncQwxJAg46zu4adUy5hwdLowfiUffqJrOEfY=,tag:7+GQKl2KZL8lcyHuVxpGZQ==,type:str]
+                    password: ENC[AES256_GCM,data:CDeMRu4NGLmglnBUACrtaPirIk7Ny4AmUhv+ZV10Yjc=,iv:Y02uGV5aosGVLHbCQKYoy17hwvuzRmewzbXVRPGN9+Y=,tag:051gXXYj0HuzMUYZKfXrPw==,type:str]
                     # # The TLS configuration for the registry.
                     # tls:
                     #     # Enable mutual TLS authentication with the registry.
@@ -511,8 +511,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-09-28T08:55:00Z"
-    mac: ENC[AES256_GCM,data:QO/dozYwhiXO1SbYvFQ48dGLLhCPuuy6goET+rfouL10gTR1UIq2jBiZgo5FTbIrPUvwe7dYbsepLzT80LJnFdBzY+nWGgLNtosLRQ/q3nbVvb+mGEYTPAKCJXY7ySk7fkbVIuJRlhQ3PXQgh50iAQHmR1RHR46iO1UWzNZaHhY=,iv:ICcWwhIaJo8J7364MZWFC14dJdEvRteIoQ1R1QbQd3M=,tag:Ff3ZUlMsrYs9vfdLL/Ayqg==,type:str]
+    lastmodified: "2024-01-28T10:18:25Z"
+    mac: ENC[AES256_GCM,data:3F+RxBi6Myo73bBDLqxqSSCGQZhIITRuZ7jY74MePv3gvKia9tefvlsPVxDIx5FyTzo1/YrfVZ81MEH6uy4FvsoqeKVOilzso2sVJDc7ZJqwg63K8sR/Zt9XXNPsjT0LQy2eLJK1vSORY01PkG8M0n8Yb9htLeMhW1ygPGuhyWw=,iv:osv1zTdO8H61W9axRkbD0l8qeF/Oxfu693DUsEyp1SU=,tag:RoZn3rCAUbrjeUQ/+grLCw==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:05Z"
           enc: |
