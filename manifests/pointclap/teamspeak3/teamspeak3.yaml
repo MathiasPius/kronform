@@ -90,7 +90,7 @@ spec:
       containers:
       - name: teamspeak3
         imagePullPolicy: IfNotPresent
-        image: registry.kronform.pius.dev/docker/teamspeak:3.13
+        image: registry.kronform.pius.dev/docker.io/teamspeak:3.13
         env:
         - name: TS3SERVER_LICENSE
           value: accept
