@@ -77,96 +77,96 @@ machine:
               # Indicates if DHCP should be used to configure the interface.
               dhcp: true
               # # Picks a network device using the selector.
+        # # select a device with bus prefix 00:*.
+        # deviceSelector:
+        #     busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
+        # # select a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
+        # deviceSelector:
+        #     hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
+        #     driver: virtio # Kernel driver, supports matching by wildcard.
+        # # select a device with bus prefix 00:*, a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
+        # deviceSelector:
+        #     - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
+        #     - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
+        #       driver: virtio # Kernel driver, supports matching by wildcard.
+        # # Assigns static IP addresses to the interface.
+        # addresses:
+        #     - 10.5.0.0/16
+        #     - 192.168.3.7
+        # # A list of routes associated with the interface.
+        # routes:
+        #     - network: 0.0.0.0/0 # The route's network (destination).
+        #       gateway: 10.5.0.1 # The route's gateway (if empty, creates link scope route).
+        #     - network: 10.2.0.0/16 # The route's network (destination).
+        #       gateway: 10.2.0.1 # The route's gateway (if empty, creates link scope route).
+        # # Bond specific options.
+        # bond:
+        #     # The interfaces that make up the bond.
+        #     interfaces:
+        #         - enp2s0
+        #         - enp2s1
+        #     # Picks a network device using the selector.
+        #     deviceSelectors:
+        #         - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
+        #         - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
+        #           driver: virtio # Kernel driver, supports matching by wildcard.
+        #     mode: 802.3ad # A bond option.
+        #     lacpRate: fast # A bond option.
+        # # Bridge specific options.
+        # bridge:
+        #     # The interfaces that make up the bridge.
+        #     interfaces:
+        #         - enxda4042ca9a51
+        #         - enxae2a6774c259
+        #     # A bridge option.
+        #     stp:
+        #         enabled: true # Whether Spanning Tree Protocol (STP) is enabled.
+        # # DHCP specific options.
+        # dhcpOptions:
+        #     routeMetric: 1024 # The priority of all routes received via DHCP.
+        # # Wireguard specific configuration.
+        # # wireguard server example
+        # wireguard:
+        #     privateKey: ABCDEF... # Specifies a private key configuration (base64 encoded).
+        #     listenPort: 51111 # Specifies a device's listening port.
+        #     # Specifies a list of peer configurations to apply to a device.
+        #     peers:
+        #         - publicKey: ABCDEF... # Specifies the public key of this peer.
+        #           endpoint: 192.168.1.3 # Specifies the endpoint of this peer entry.
+        #           # AllowedIPs specifies a list of allowed IP addresses in CIDR notation for this peer.
+        #           allowedIPs:
+        #             - 192.168.1.0/24
+        # # wireguard peer example
+        # wireguard:
+        #     privateKey: ABCDEF... # Specifies a private key configuration (base64 encoded).
+        #     # Specifies a list of peer configurations to apply to a device.
+        #     peers:
+        #         - publicKey: ABCDEF... # Specifies the public key of this peer.
+        #           endpoint: 192.168.1.2:51822 # Specifies the endpoint of this peer entry.
+        #           persistentKeepaliveInterval: 10s # Specifies the persistent keepalive interval for this peer.
+        #           # AllowedIPs specifies a list of allowed IP addresses in CIDR notation for this peer.
+        #           allowedIPs:
+        #             - 192.168.1.0/24
+        # # Virtual (shared) IP address configuration.
+        # # layer2 vip example
+        # vip:
+        #     ip: 172.16.199.55 # Specifies the IP address to be used.
+        # # Used to statically set the nameservers for the machine.
+        # nameservers:
+        #     - 8.8.8.8
+        #     - 1.1.1.1
+        # # Allows for extra entries to be added to the `/etc/hosts` file
+        # extraHostEntries:
+        #     - ip: 192.168.1.100 # The IP of the host.
+        #       # The host alias.
+        #       aliases:
+        #         - example
+        #         - example.domain.tld
+        # # Configures KubeSpan feature.
+        # kubespan:
+        #     enabled: true # Enable the KubeSpan feature.
     # Used to provide instructions for installations.
     install:
-    # # select a device with bus prefix 00:*.
-    # deviceSelector:
-    #     busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
-    # # select a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
-    # deviceSelector:
-    #     hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-    #     driver: virtio # Kernel driver, supports matching by wildcard.
-    # # select a device with bus prefix 00:*, a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
-    # deviceSelector:
-    #     - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
-    #     - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-    #       driver: virtio # Kernel driver, supports matching by wildcard.
-    # # Assigns static IP addresses to the interface.
-    # addresses:
-    #     - 10.5.0.0/16
-    #     - 192.168.3.7
-    # # A list of routes associated with the interface.
-    # routes:
-    #     - network: 0.0.0.0/0 # The route's network (destination).
-    #       gateway: 10.5.0.1 # The route's gateway (if empty, creates link scope route).
-    #     - network: 10.2.0.0/16 # The route's network (destination).
-    #       gateway: 10.2.0.1 # The route's gateway (if empty, creates link scope route).
-    # # Bond specific options.
-    # bond:
-    #     # The interfaces that make up the bond.
-    #     interfaces:
-    #         - enp2s0
-    #         - enp2s1
-    #     # Picks a network device using the selector.
-    #     deviceSelectors:
-    #         - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
-    #         - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-    #           driver: virtio # Kernel driver, supports matching by wildcard.
-    #     mode: 802.3ad # A bond option.
-    #     lacpRate: fast # A bond option.
-    # # Bridge specific options.
-    # bridge:
-    #     # The interfaces that make up the bridge.
-    #     interfaces:
-    #         - enxda4042ca9a51
-    #         - enxae2a6774c259
-    #     # A bridge option.
-    #     stp:
-    #         enabled: true # Whether Spanning Tree Protocol (STP) is enabled.
-    # # DHCP specific options.
-    # dhcpOptions:
-    #     routeMetric: 1024 # The priority of all routes received via DHCP.
-    # # Wireguard specific configuration.
-    # # wireguard server example
-    # wireguard:
-    #     privateKey: ABCDEF... # Specifies a private key configuration (base64 encoded).
-    #     listenPort: 51111 # Specifies a device's listening port.
-    #     # Specifies a list of peer configurations to apply to a device.
-    #     peers:
-    #         - publicKey: ABCDEF... # Specifies the public key of this peer.
-    #           endpoint: 192.168.1.3 # Specifies the endpoint of this peer entry.
-    #           # AllowedIPs specifies a list of allowed IP addresses in CIDR notation for this peer.
-    #           allowedIPs:
-    #             - 192.168.1.0/24
-    # # wireguard peer example
-    # wireguard:
-    #     privateKey: ABCDEF... # Specifies a private key configuration (base64 encoded).
-    #     # Specifies a list of peer configurations to apply to a device.
-    #     peers:
-    #         - publicKey: ABCDEF... # Specifies the public key of this peer.
-    #           endpoint: 192.168.1.2:51822 # Specifies the endpoint of this peer entry.
-    #           persistentKeepaliveInterval: 10s # Specifies the persistent keepalive interval for this peer.
-    #           # AllowedIPs specifies a list of allowed IP addresses in CIDR notation for this peer.
-    #           allowedIPs:
-    #             - 192.168.1.0/24
-    # # Virtual (shared) IP address configuration.
-    # # layer2 vip example
-    # vip:
-    #     ip: 172.16.199.55 # Specifies the IP address to be used.
-    # # Used to statically set the nameservers for the machine.
-    # nameservers:
-    #     - 8.8.8.8
-    #     - 1.1.1.1
-    # # Allows for extra entries to be added to the `/etc/hosts` file
-    # extraHostEntries:
-    #     - ip: 192.168.1.100 # The IP of the host.
-    #       # The host alias.
-    #       aliases:
-    #         - example
-    #         - example.domain.tld
-    # # Configures KubeSpan feature.
-    # kubespan:
-    #     enabled: true # Enable the KubeSpan feature.
         # The disk used for installations.
         disk: none
         # Look up disk using disk attributes like model, size, serial and others.
@@ -305,6 +305,7 @@ machine:
         #     # The list of Kubernetes namespaces Talos API access is available from.
         #     allowedKubernetesNamespaces:
         #         - kube-system
+    # # Provides machine specific control plane configuration options.
 # # ControlPlane definition example.
 # controlPlane:
 #     # Controller manager machine specific configuration options.
@@ -428,7 +429,6 @@ machine:
 #     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
-# # Provides machine specific control plane configuration options.
     # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
     id: 1SCx9nytxUjQfEf4w_6GoQLnv3OYAyO5fWZ39OHP7iU=
     # Shared secret of cluster (base64 encoded random 32 bytes).
@@ -536,8 +536,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-01-28T13:46:08Z"
-    mac: ENC[AES256_GCM,data:RoDvGpbM0oa6jZcHBFWPzxYGP8wVNEzVFvu+MhIDxsz8USiPgew1M8DW50IOjYN84mKpJqCgrRdq4Fi59Z0OGmrG82grMHC7dYZjvqLmkYZK0quXUem9SoTkkuiOO9q5teJQ2Lo4E66xvGzsXgJeZ42B48qAfzwUyYLR4gmiLCA=,iv:CSCG5sZK0KyTqHr/ViVmNxZpxl2g/VLMQxhFLM7ku8Y=,tag:YQZKDj267m+mREZThJGKlA==,type:str]
+    lastmodified: "2024-02-17T09:06:23Z"
+    mac: ENC[AES256_GCM,data:IryLlxzclSo51xM+BceRWbFohnOQAWJdK1ENpnCbL6kjwlsa7wurql8L/6jMQx6R+Dh2LKtGFpHstL/aGglbZQPWzn4j3aGOZlPv53b+65lZnspu+bOIXUvViPjFBTVrm+EJiEQu04Ap6+dj+lxgFGbEn11w6UFVHARDiUYGI/g=,iv:EFDR7yJqn/hIUOeDc6gaF0DOF+dDVsOfE3lEXy70aHw=,tag:RzTWJsdEuK2Fa8bSoq9kpg==,type:str]
     pgp:
         - created_at: "2023-07-05T17:39:07Z"
           enc: |
@@ -562,4 +562,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 67DB96C4F1D4F08F456697CC7668FD88C76CA761
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
-    version: 3.7.3
+    version: 3.8.1
