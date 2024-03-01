@@ -19,13 +19,14 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: ">=v16.7.0 <16.8.0"
+      version: ">=v19.0.0 <20.0.0"
       sourceRef:
         kind: HelmRepository
         name: harbor-registry
         namespace: harbor-registry
       interval: 1m
   values:
+    clusterDomain: local.kronform.pius.dev
     externalURL: https://registry.kronform.pius.dev
     adminPassword: changeme
     persistence:
@@ -41,13 +42,6 @@ spec:
     registry:
       updateStrategy:
         type: Recreate
-    notary:
-      server:
-        updateStrategy:
-          type: Recreate
-      signer:
-        updateStrategy:
-          type: Recreate
     exposureType: ingress
     ingress:
       core:
@@ -55,10 +49,4 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
         hostname: registry.kronform.pius.dev
-        tls: true
-      notary:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/hostname: notary.kronform.pius.dev
-        hostname: notary.kronform.pius.dev
         tls: true
