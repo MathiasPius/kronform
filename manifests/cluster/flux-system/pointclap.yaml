@@ -25,11 +25,11 @@ spec:
     name: flux-system
   targetNamespace: pointclap
   dependsOn:
-  - name: pointclap-namespace
+    - name: pointclap-namespace
   decryption:
     provider: sops
     secretRef:
-      name: sops-gpg
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -45,4 +45,4 @@ spec:
     name: flux-system
   targetNamespace: pointclap
   dependsOn:
-  - name: pointclap-namespace
+    - name: pointclap-namespace
