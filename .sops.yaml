@@ -4,7 +4,7 @@ creation_rules:
   - path_regex: manifests/.*.yaml
     encrypted_regex: ^(data|stringData)$
     age: >-
-      age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+      age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez,
       age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
 
   - path_regex: talosconfig

@@ -12,42 +12,27 @@ sops:
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    age: []
+    age:
+        - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2L2FrVmFEd0NSNElIVHM4
+            TEdzRlNEWnJQaGU3YjVkLzh0a21LbUNjM1JJCit3aTc5MlRWVnBkRTBpakJudjkr
+            ZUY1TnFuTjVDdEcyWGNLcEFCcTlOVTAKLS0tIG8vMmNTQ1FiSXE2ZDlsZHBmQTk5
+            cXVhOFZxZ2FlQjd1NC9OZWtOb2FDUUUKt/jDD2fbcSQ4aXqnMdsAaOVCZpi+765c
+            wdwuidT0YC9iOPthNm8U3A3FA48cict0CbevRsXlmUvqhtDhE9b1SQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVK1d5VGRCUUhTMi9wN29F
+            d0lTUnM0TzhEWWJqeUJsUHJ1M2Nzc1QwQUJZClByd0ptQ3pRcW8zMm9iRUJQVk1P
+            OVB5VUVrNENyT09weDdWZmg2aXdjancKLS0tIEZkTkFMcmtPSzZYWXZZYktMRXJD
+            Vnl5b3AwcW8zZjhqM3dIVVJuNzI5RUkKzKOW9/DgHHVHLThzSLTbZWxiKSceoy/M
+            YDjbw8ksnn2UD/SogbpRrA4s8iih7Ag2Vl9Wlzf3SOkQ6OI78+Jyfg==
+            -----END AGE ENCRYPTED FILE-----
     lastmodified: "2023-06-25T19:54:07Z"
     mac: ENC[AES256_GCM,data:5BB7dzttfc30MUnF89KfsnFo7V0Wumi88B58aRWrp6oA0TawJFn0yzLLpy/JBcZAYkhBZCK+Otc4SDxeIChEdReTsbeX5Uw7lo1vT45UaLMiyANznX9ximStX0AahuFeAMMCjPddxDDE1707vSMiU/+nzcEz72He/UEmI0DN/D4=,iv:SFXsHtdiJTfqlfdug452CCe/zyKjwu+QCINjVRRPTik=,tag:9KHSWgHj+q44JbisVbGtFw==,type:str]
-    pgp:
-        - created_at: "2023-06-25T19:54:07Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hF4DO8XyRaEk3R4SAQdAOFc6CUhbRrZU3d1S76scp3VD1PmohQG8bhbIpiNw9HAw
-            8KtTTuX0vIE+3I6vxge0xWHLVCystnS2t6kR5W4e87WGy+LDaMinp+iXWLHAphtv
-            0l4Beg26oba0dhaoxyPrVYJWFoFQVU6DGf4ZRQ8sS1N3PdhZXOLjCmPngKwtShvD
-            2EiFtO8t9ya5VleHSN8s//wGoEFZo5zPMVYTVZeAC/jhIPhT2vAcln4EIQaWgwYs
-            =AEnB
-            -----END PGP MESSAGE-----
-          fp: BD995FEE3775172B56BF652CF10FF7F3F7265919
-        - created_at: "2023-06-25T19:54:07Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hF4Dw5+PhuNaN4USAQdAnrrXfEVmlkuJo783WfDqpfbgpbDtVwY6ak6F+wcUnVMw
-            Oe+sJ3o0r9evCdoUVJeF5Z6Y/aohPohthKm4AV6qJlU5THLkqI6cvdtavSpQbxlu
-            0l4B6wetpLRK7/V7eiNAukVIdYE2PG+9Or+ffga6jMwBeTpM6rM0D5W2Um4luj/s
-            rTuIIeUUPiY5ruXfxHULZTl6r6ak/3/8UQ+L9Ewe6qUSSOUcutBj5TW+/btvFxef
-            =X+Vs
-            -----END PGP MESSAGE-----
-          fp: 7668061D49BB2B7BA19118B4031734BEBE51F818
-        - created_at: "2023-06-25T19:54:07Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hF4D4cApnFfIi24SAQdA9/CY406rCcUzmr6fTmpAWyfh6zbeJydcsi+7QEoENQsw
-            RT6iWcmXRx0hbVjQ26lapXThJ7sH1mw2NK8EIWpQZGlP1UcqkF1ICRVoiicQ0z0p
-            0l4BESFp/ngaTW6BncgicNUxIH8s9XFX3hdbp5GPThr1kN6CpUSV/PXDs8tBNSJf
-            e5vOyC1PJk/OkCKa2HtrKo9P4YPDyTqLD2qCGvaQgnK/P+9cX0yILrHfyv2U2V40
-            =XXGc
-            -----END PGP MESSAGE-----
-          fp: 67DB96C4F1D4F08F456697CC7668FD88C76CA761
+    pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3

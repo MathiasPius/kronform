@@ -142,31 +142,18 @@ sops:
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    age: []
+    age:
+        - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpK2hjQVlrYm9nM2d1dStq
+            ZEdkVDA4ZEFGOWp2QWFQOFJISnZlSXJncWpRClo3UVR5eHdhbk9NdmRtckNPZktn
+            NXJFSnFSSXNCbW45elJ0WTBpMnBpdEEKLS0tIGdscHhyRHFZWGhDeVloMm5GcEVl
+            UGhGUUJnZmQ0alMwbEo3Q2NKVldtZWsK8kGbJk4UTJysVvn1PmQ3TzmSlCgTsDM5
+            GNGiaSS7zQneQia0gQaQfjo/fTFFjy57S6cZbhrRVULwfPtKuPNjaA==
+            -----END AGE ENCRYPTED FILE-----
     lastmodified: "2024-02-19T12:55:02Z"
     mac: ENC[AES256_GCM,data:79uOmuhaLaLR++NDV2tZ3d5h9mz6xpT7ZAVKx4k0WfbeNhnhzpkFPmOXyIWqE/e6MZemMjtzEu0ZAXGJbu3ghN3LTriIm8Ue5nEsDT8tct/4qVgm4QhSspr4IxEr8cjR8cu3s0Q+hYRy9AqrjRs2uGhhTVfqY/NDZ5QyInQHCNg=,iv:+cOLdy37uEULioBKwPn1Kj3AAs1X3AOVum6vnnWq7L8=,tag:I2XJVvruvjBKAcIibUIdtQ==,type:str]
-    pgp:
-        - created_at: "2023-07-05T17:39:07Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hF4Dw5+PhuNaN4USAQdAcct+SOSJ9gV1K1SwGUDw5aHwY9naMiK6ofX8hNbAak4w
-            JYgrD96rMw7FTSB8Via3bLCo8Fnkw9H4ME6peOZB65HB2igswi/QoSnk3mCyuMjc
-            0lwBDJ2VNQKJxCChxVMErb/8nzXIzW684o0DKvOBYL3wIBkl/diWowHy7yfc1e2r
-            PcdLDWvr6LfBcTACW4sRBYBaL/fxpMajLeFHHKDIYGYabaQPLbFRL6OQQGslAg==
-            =lnVc
-            -----END PGP MESSAGE-----
-          fp: 7668061D49BB2B7BA19118B4031734BEBE51F818
-        - created_at: "2023-07-05T17:39:07Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hF4D4cApnFfIi24SAQdAdBzia4WPPVCINCfJGpjI3uG029rEsQBBCGRc7JN90lww
-            m+H/RIQiNsV2QCWkH3SzCDQJIjJnapVZR2YB0HVxoOLOjbBRX/51aFYzHzdjdmHt
-            0lwBhD3cBCCSCKW3vnlD9u3442qjzeBXn3WW2dHHZQS3BgWpris2X8Syo9+WT4IQ
-            9xArv5sGaMViQPHNpAABlEVTotT5LN3cMz7SU97hgVPO9O4RnhDOz6ij5InJpQ==
-            =afgR
-            -----END PGP MESSAGE-----
-          fp: 67DB96C4F1D4F08F456697CC7668FD88C76CA761
+    pgp: []
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     version: 3.8.1
