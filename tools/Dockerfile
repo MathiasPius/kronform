@@ -42,10 +42,9 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
 FROM debian:bookworm-slim AS workspace
 ENV EDITOR=vim
 
-# Install gnupg for decryption and encryption of SOPS secrets,
-# as well as vim for editing"
+# Install vim for editing
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends gpg $EDITOR \
+    && apt-get -y install --no-install-recommends $EDITOR \
     && apt-get clean
 
 # Create group and user.

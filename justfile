@@ -10,11 +10,11 @@ build:
 # /etc/resolv.conf won't work with plain DNS traffic, breaking
 # resolution within the container.
 tools:
-    docker run -it --rm                     \
-    --dns 8.8.8.8			                \
-    -v $(pwd):/data                         \
-    -v /run/user/1000/:/run/user/1000/:ro   \
-    -v $HOME/.gnupg:/home/user/.gnupg:ro    \
+    docker run -it --rm                                 \
+    --dns 8.8.8.8			                            \
+    -v $(pwd):/data                                     \
+    -v /run/user/1000/:/run/user/1000/:ro               \
+    -v $HOME/.config/sops:/home/user/.config/sops:ro    \
     tools:latest || true
 
 rotate-keys:
