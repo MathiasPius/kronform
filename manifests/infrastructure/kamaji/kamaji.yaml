@@ -29,5 +29,3 @@ spec:
     installCRDs: true
     etcd:
       deploy: false
-    datastore:
-      enabled: false
