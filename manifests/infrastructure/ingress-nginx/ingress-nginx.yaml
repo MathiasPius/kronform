@@ -36,4 +36,4 @@ spec:
       service:
         enabled: false
       extraArgs:
-        - "--enable-ssl-passthrough"
+        "--enable-ssl-passthrough": "true"
