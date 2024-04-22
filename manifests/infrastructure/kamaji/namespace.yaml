@@ -1,9 +1,0 @@
-# manifests/infrastructure/kamaji/namespace.yaml
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: kamaji-system
-  labels:
-    #pod-security.kubernetes.io/enforce: privileged
-    #pod-security.kubernetes.io/enforce-version: latest
