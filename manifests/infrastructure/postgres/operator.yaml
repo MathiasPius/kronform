@@ -32,8 +32,8 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: postgres-operator
-  namespace: postgres-operator-ui
+  name: postgres-operator-ui
+  namespace: postgres-operator
 spec:
   interval: 5m0s
   url: https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui
