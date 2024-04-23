@@ -54,3 +54,8 @@ spec:
         name: postgres-operator-ui
         namespace: postgres-operator
       interval: 1m
+  values:
+    envs:
+      targetNamespace: "*"
+      teams:
+        - default
