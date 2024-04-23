@@ -13,3 +13,4 @@ resources:
   - kubelet-cert-rotation.yaml
   - notification.yaml
   - kamaji.yaml
+  - postgres.yaml
