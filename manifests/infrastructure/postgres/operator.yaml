@@ -28,30 +28,29 @@ spec:
   values:
     configKubernetes:
       cluster_domain: local.kronform.pius.dev
-# ---
-# apiVersion: source.toolkit.fluxcd.io/v2beta2
-# kind: HelmRepository
-# metadata:
-#   name: postgres-operator
-#   namespace: postgres-operator-ui
-# spec:
-#   interval: 5m0s
-#   url: https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: postgres-operator-ui
-#   namespace: postgres-operator
-# spec:
-#   interval: 5m
-#   chart:
-#     spec:
-#       chart: postgres-operator-ui
-#       version: ">=1.11.0 <1.12.0"
-#       sourceRef:
-#         kind: HelmRepository
-#         name: postgres-operator-ui
-#         namespace: postgres-operator
-#       interval: 1m
-#   values:
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: postgres-operator
+  namespace: postgres-operator-ui
+spec:
+  interval: 5m0s
+  url: https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: postgres-operator-ui
+  namespace: postgres-operator
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: postgres-operator-ui
+      version: ">=1.11.0 <1.12.0"
+      sourceRef:
+        kind: HelmRepository
+        name: postgres-operator-ui
+        namespace: postgres-operator
+      interval: 1m
