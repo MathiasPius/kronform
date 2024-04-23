@@ -1,0 +1,6 @@
+# manifests/infrastructure/postgres-operator/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: postgres-operator
