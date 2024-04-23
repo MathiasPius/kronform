@@ -8,6 +8,7 @@ ARG TALOSCTL_VERSION="1.6.4"
 ARG YQ_VERSION="4.40.5"
 ARG SOPS_VERSION="3.8.1"
 ARG FLUX_VERSION="2.2.2"
+ARG HELM_VERSION="3.14.4"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN apt-get update \
@@ -34,6 +35,13 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
     && tar -xf flux.tar.gz \
     && rm flux.tar.gz \
     && chmod u+x flux
+
+
+RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+    && tar -xf helm.tar.gz \
+    && rm helm.tar.gz \
+    && mv linux-amd64/helm helm \
+    && chmod u+x helm
 
 # ===========================================================================
 # Stage which contains only the tools required, set up to run as the default
