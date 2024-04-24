@@ -32,7 +32,7 @@ spec:
     renovate:
       config: |-
         {
-          "extends": ["config:recommended", "group:all"],
+          "extends": ["config:recommended"],
           "labels": ["renovate", "dependencies"],
           "platform": "github",
           "repositories": ["MathiasPius/kronform"]
