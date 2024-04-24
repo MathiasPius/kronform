@@ -68,7 +68,7 @@ spec:
       serviceAccountName: teamspeak3
       initContainers:
       - name: restore-database
-        image: litestream/litestream:0.3.8
+        image: litestream/litestream:0.3.13
         args: ['restore', '-if-db-not-exists', '-if-replica-exists', '-v', '/var/lib/app/ts3server.sqlitedb']
         volumeMounts:
         - name: data
@@ -109,7 +109,7 @@ spec:
         - name: data
           mountPath: /var/ts3server
       - name: litestream
-        image: litestream/litestream:0.3.8
+        image: litestream/litestream:0.3.13
         args: ['replicate']
         volumeMounts:
         - name: data
