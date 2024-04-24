@@ -26,9 +26,8 @@ spec:
         namespace: renovate
       interval: 1m
   values:
-    envFrom:
-      - secretRef:
-          name: renovate-env
+    cronjob:
+      schedule: "*/5 * * * *"
     renovate:
       config: |-
         {
@@ -43,3 +42,18 @@ spec:
             "fileMatch": ["^manifests/.+\\.yaml$"]
           }
         }
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+            - ALL
+    envFrom:
+      - secretRef:
+          name: renovate-env
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
