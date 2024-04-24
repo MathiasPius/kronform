@@ -1,4 +1,4 @@
-# manifests/infrastructure/postgres-operator/namespace.yaml
+# manifests/infrastructure/renovate/namespace.yaml
 ---
 apiVersion: v1
 kind: Namespace

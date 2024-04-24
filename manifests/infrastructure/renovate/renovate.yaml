@@ -1,4 +1,4 @@
-# manifests/infrastructure/postgres/operator.yaml
+# manifests/infrastructure/renovate/renovate.yaml
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
