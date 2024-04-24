@@ -14,3 +14,4 @@ resources:
   - notification.yaml
   - kamaji.yaml
   - postgres.yaml
+  - renovate.yaml
