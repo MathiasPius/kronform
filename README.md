@@ -13,4 +13,4 @@ The process for setting up the cluster was/is being documented in a blog series 
 * [Part VI: Persistent Storage with Rook Ceph](https://datavirke.dk/posts/bare-metal-kubernetes-part-6-persistent-storage-with-rook-ceph/)
 * [Part VII: Private Registry with Harbor](https://datavirke.dk/posts/bare-metal-kubernetes-part-7-private-registry-with-harbor/)
 * [Part VIII: Containerizing our Work Environment](https://datavirke.dk/posts/bare-metal-kubernetes-part-8-containerizing-our-work-environment/)
-
+* [Part IX: Renovating old Deployments](https://datavirke.dk/posts/bare-metal-kubernetes-part-9-renovating-old-deployments/)
