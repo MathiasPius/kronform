@@ -35,5 +35,11 @@ spec:
           "extends": ["config:recommended"],
           "labels": ["renovate", "dependencies"],
           "platform": "github",
-          "repositories": ["MathiasPius/kronform"]
+          "repositories": ["MathiasPius/kronform"],
+          "kubernetes": {
+            "fileMatch": ["^manifests/.+\\.yaml$"]
+          },
+          "flux": {
+            "fileMatch": ["^manifests/.+\\.yaml$"]
+          }
         }
