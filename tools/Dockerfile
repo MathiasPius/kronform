@@ -64,6 +64,7 @@ RUN useradd -m -s /bin/bash -u ${UID} -g ${GID} user
 
 # We'll mount the kronform repository in /data
 RUN mkdir /data && chown user:user /data
+RUN mkdir -p /home/user/.config/helm && chown 1000:1000 /home/user/.config/helm
 WORKDIR /data
 
 # Copy all the tools from our installer stage.
