@@ -1,6 +1,6 @@
 # manifests/infrastructure/cert-manager/cert-manager.yaml
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
+apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: jetstack
