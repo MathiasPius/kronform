@@ -1,6 +1,6 @@
 # manifests/infrastructure/external-dns/external-dns.yaml
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: external-dns
@@ -28,10 +28,10 @@ spec:
   values:
     provider: hetzner
     domainFilters:
-    - pius.dev
+      - pius.dev
     env:
-    - name: HETZNER_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: hetzner-token
-          key: HETZNER_TOKEN
+      - name: HETZNER_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: hetzner-token
+            key: HETZNER_TOKEN
