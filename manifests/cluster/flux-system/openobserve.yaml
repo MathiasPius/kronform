@@ -1,12 +1,12 @@
-# manifests/cluster/flux-system/postgres.yaml
+# manifests/cluster/flux-system/openobserve.yaml
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: postgres
+  name: openobserve
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/infrastructure/postgres
+  path: ./manifests/infrastructure/openobserve
   prune: true
   sourceRef:
     kind: GitRepository

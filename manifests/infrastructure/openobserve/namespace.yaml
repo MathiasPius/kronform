@@ -1,0 +1,6 @@
+# manifests/infrastructure/openobserve/namespace.yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openobserve
