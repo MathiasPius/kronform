@@ -34,6 +34,7 @@ spec:
     ingress:
       enabled: true
       annotations:
+        cert-manager.io/issuer: ""
         cert-manager.io/cluster-issuer: letsencrypt-production
         nginx.ingress.kubernetes.io/enable-cors: "true"
       hosts:
