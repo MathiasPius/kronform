@@ -12,7 +12,6 @@ resources:
   - metrics-server.yaml
   - kubelet-cert-rotation.yaml
   - notification.yaml
-  - kamaji.yaml
   - postgres.yaml
   - renovate.yaml
   - openobserve.yaml
