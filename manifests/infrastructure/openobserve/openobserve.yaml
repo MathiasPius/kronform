@@ -1,0 +1,59 @@
+# manifests/infrastructure/postgres/operator.yaml
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: openobserve
+  namespace: openobserve
+spec:
+  interval: 5m0s
+  url: https://charts.openobserve.ai
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: openobserve
+  namespace: openobserve
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: openobserve
+      version: <0.11.0
+      sourceRef:
+        kind: HelmRepository
+        name: openobserve-standalone
+        namespace: openobserve
+      interval: 1m
+  values:
+    config:
+      ZO_TELEMETRY: "false"
+      ZO_TELEMETRY_URL: "http://127.0.0.1"
+      ZO_WEB_URL: "https://obs.kronform.pius.dev"
+    persistence:
+      size: 50Gi
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/issuer: letsencrypt-production
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+      hosts:
+        - host: obs.kronform.pius.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: obs.kronform.pius.dev-tls
+          hosts:
+            - obs.kronform.pius.dev
+    extraEnv:
+      - name: ZO_ROOT_USER_EMAIL
+        valueFrom:
+          secretKeyRef:
+            name: openobserve-credentials
+            key: ZO_ROOT_USER_EMAIL
+      - name: ZO_ROOT_USER_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: openobserve-credentials
+            key: ZO_ROOT_USER_PASSWORD
