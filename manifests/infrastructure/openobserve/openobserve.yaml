@@ -2,57 +2,172 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: openobserve
-  namespace: openobserve
+    name: openobserve
+    namespace: openobserve
 spec:
-  interval: 5m0s
-  url: https://charts.openobserve.ai
+    interval: 5m0s
+    url: https://charts.openobserve.ai
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0L0kvSVhtbi9aWU16eVpU
+            STRmYnFGc2RxMmUxamNCajR6blo5MVQ3QkRnCnRXbTRXSlI3bkEwZVdUd1huYlFU
+            ZmZQMWJSQ3hUcC9DUW84eHNBSHlLUDQKLS0tIEZJQmRacWQyVkVlNlRUdnlUUTRG
+            S0gweStxWUVwUjZsMExzUmk4dE0wZTgKs3r/R74jBBvt/stML8JS6kucp9DEZ5ZZ
+            PukZocM6bYldwyg9G/V3GMl3c0KaNQYXwS/n0WmOsweT7819/rtk5g==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1UDdRNmtNOGw5Yk9kOCtG
+            cXBGekMyWjE2TkhDa2w2dTJsQ3VKRXlTblFVCnBscndmOG5xV2lFdXd5STYyVW1Y
+            RDdCbkp6OCtiWGRBZHk0SGZ3alI3K2MKLS0tIHo5TnNDMVhGUDZ2QTdndEFSVWNG
+            d0hxNnhwamNsemZubnBjazc1UXVNY0UKfs05gFzo92r42KTeiYbroBBJI3kdJTog
+            XH/aqb1Z+dt2kDsEXb+mm8yM/jXerRs5opA3DILNBOY6s3kO4Rx3Iw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-13T12:20:40Z"
+    mac: ENC[AES256_GCM,data:OcTBnaWKdW6lltp9RNdwA3nV8/6cI47ihLcbmYvLGyawvnTks5LiL7WBg09r+b/Dii+CV2kTUJ92ouMPy6r2zQ2phfJaWQ8Co9VTuX4nitKWrvww42jSpcszqTkJ4eQf4BtWv2+R0j9sGh42zlKZsxj85vrewKObW80t0tFoTg8=,iv:aZPuY73RHX58H63QQo5dPSOPtr4hUHutMT1wBElfeEI=,tag:4mOmh4vVcWZYdz3ZSRoLLQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|Authorization)$
+    version: 3.8.1
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: openobserve
-  namespace: openobserve
+    name: openobserve
+    namespace: openobserve
 spec:
-  interval: 5m
-  chart:
-    spec:
-      chart: openobserve-standalone
-      version: <0.11.0
-      sourceRef:
-        kind: HelmRepository
-        name: openobserve
-        namespace: openobserve
-      interval: 1m
-  values:
-    config:
-      ZO_TELEMETRY: "false"
-      ZO_TELEMETRY_URL: "http://127.0.0.1"
-      ZO_WEB_URL: "https://obs.kronform.pius.dev"
-    persistence:
-      size: 50Gi
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        nginx.ingress.kubernetes.io/enable-cors: "true"
-      hosts:
-        - host: obs.kronform.pius.dev
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-      tls:
-        - secretName: obs.kronform.pius.dev-tls
-          hosts:
-            - obs.kronform.pius.dev
-    extraEnv:
-      - name: ZO_ROOT_USER_EMAIL
-        valueFrom:
-          secretKeyRef:
-            name: openobserve-credentials
-            key: ZO_ROOT_USER_EMAIL
-      - name: ZO_ROOT_USER_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: openobserve-credentials
-            key: ZO_ROOT_USER_PASSWORD
+    interval: 5m
+    chart:
+        spec:
+            chart: openobserve-standalone
+            version: <0.11.0
+            sourceRef:
+                kind: HelmRepository
+                name: openobserve
+                namespace: openobserve
+            interval: 1m
+    values:
+        config:
+            ZO_TELEMETRY: "false"
+            ZO_TELEMETRY_URL: http://127.0.0.1
+            ZO_WEB_URL: https://obs.kronform.pius.dev
+        persistence:
+            size: 50Gi
+        ingress:
+            enabled: true
+            annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-production
+                nginx.ingress.kubernetes.io/enable-cors: "true"
+            hosts:
+                - host: obs.kronform.pius.dev
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+            tls:
+                - secretName: obs.kronform.pius.dev-tls
+                  hosts:
+                    - obs.kronform.pius.dev
+        extraEnv:
+            - name: ZO_ROOT_USER_EMAIL
+              valueFrom:
+                secretKeyRef:
+                    name: openobserve-credentials
+                    key: ZO_ROOT_USER_EMAIL
+            - name: ZO_ROOT_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                    name: openobserve-credentials
+                    key: ZO_ROOT_USER_PASSWORD
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0L0kvSVhtbi9aWU16eVpU
+            STRmYnFGc2RxMmUxamNCajR6blo5MVQ3QkRnCnRXbTRXSlI3bkEwZVdUd1huYlFU
+            ZmZQMWJSQ3hUcC9DUW84eHNBSHlLUDQKLS0tIEZJQmRacWQyVkVlNlRUdnlUUTRG
+            S0gweStxWUVwUjZsMExzUmk4dE0wZTgKs3r/R74jBBvt/stML8JS6kucp9DEZ5ZZ
+            PukZocM6bYldwyg9G/V3GMl3c0KaNQYXwS/n0WmOsweT7819/rtk5g==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1UDdRNmtNOGw5Yk9kOCtG
+            cXBGekMyWjE2TkhDa2w2dTJsQ3VKRXlTblFVCnBscndmOG5xV2lFdXd5STYyVW1Y
+            RDdCbkp6OCtiWGRBZHk0SGZ3alI3K2MKLS0tIHo5TnNDMVhGUDZ2QTdndEFSVWNG
+            d0hxNnhwamNsemZubnBjazc1UXVNY0UKfs05gFzo92r42KTeiYbroBBJI3kdJTog
+            XH/aqb1Z+dt2kDsEXb+mm8yM/jXerRs5opA3DILNBOY6s3kO4Rx3Iw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-13T12:20:40Z"
+    mac: ENC[AES256_GCM,data:OcTBnaWKdW6lltp9RNdwA3nV8/6cI47ihLcbmYvLGyawvnTks5LiL7WBg09r+b/Dii+CV2kTUJ92ouMPy6r2zQ2phfJaWQ8Co9VTuX4nitKWrvww42jSpcszqTkJ4eQf4BtWv2+R0j9sGh42zlKZsxj85vrewKObW80t0tFoTg8=,iv:aZPuY73RHX58H63QQo5dPSOPtr4hUHutMT1wBElfeEI=,tag:4mOmh4vVcWZYdz3ZSRoLLQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|Authorization)$
+    version: 3.8.1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: openobserve
+    namespace: openobserve
+spec:
+    interval: 5m
+    chart:
+        spec:
+            chart: openobserve-collector
+            version: <0.4.0
+            sourceRef:
+                kind: HelmRepository
+                name: openobserve
+                namespace: openobserve
+            interval: 1m
+    values:
+        exporters:
+            otlphttp/openobserve:
+                endpoint: https://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev/api/default/
+                headers:
+                    Authorization: ENC[AES256_GCM,data:TGd8FVFoTcXtMO2zz6+j09Zd0SbXTjI/yFcRPy/yEzDuZwb2JLvEvUAtU0B+pUGjEQGdPWq7Kn2fYw==,iv:Z/+DkZQe+0BgLS4NOmOwb946B93O3QZGo3wyvHnmIBc=,tag:autvuf1YBwG6eJSr5+WC2g==,type:str]
+            otlphttp/openobserve_k8s_events:
+                endpoint: https://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev/api/default/
+                headers:
+                    Authorization: ENC[AES256_GCM,data:nF36wXcqxDSZddP4wfbDeL6czuSkVyjjFlQtEx7jt/y2TczIdGYY1ocbHdaRBffUB7MAPnOgC9mx+A==,iv:aBM58rlzx2XxKSRToig5nm0zhhT0Ywe0AP7Upn+aPAU=,tag:Hz5eqxlqHdlKuJ8Mw43siw==,type:str]
+                    stream-name: k8s_events
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0L0kvSVhtbi9aWU16eVpU
+            STRmYnFGc2RxMmUxamNCajR6blo5MVQ3QkRnCnRXbTRXSlI3bkEwZVdUd1huYlFU
+            ZmZQMWJSQ3hUcC9DUW84eHNBSHlLUDQKLS0tIEZJQmRacWQyVkVlNlRUdnlUUTRG
+            S0gweStxWUVwUjZsMExzUmk4dE0wZTgKs3r/R74jBBvt/stML8JS6kucp9DEZ5ZZ
+            PukZocM6bYldwyg9G/V3GMl3c0KaNQYXwS/n0WmOsweT7819/rtk5g==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1UDdRNmtNOGw5Yk9kOCtG
+            cXBGekMyWjE2TkhDa2w2dTJsQ3VKRXlTblFVCnBscndmOG5xV2lFdXd5STYyVW1Y
+            RDdCbkp6OCtiWGRBZHk0SGZ3alI3K2MKLS0tIHo5TnNDMVhGUDZ2QTdndEFSVWNG
+            d0hxNnhwamNsemZubnBjazc1UXVNY0UKfs05gFzo92r42KTeiYbroBBJI3kdJTog
+            XH/aqb1Z+dt2kDsEXb+mm8yM/jXerRs5opA3DILNBOY6s3kO4Rx3Iw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-13T12:20:40Z"
+    mac: ENC[AES256_GCM,data:OcTBnaWKdW6lltp9RNdwA3nV8/6cI47ihLcbmYvLGyawvnTks5LiL7WBg09r+b/Dii+CV2kTUJ92ouMPy6r2zQ2phfJaWQ8Co9VTuX4nitKWrvww42jSpcszqTkJ4eQf4BtWv2+R0j9sGh42zlKZsxj85vrewKObW80t0tFoTg8=,iv:aZPuY73RHX58H63QQo5dPSOPtr4hUHutMT1wBElfeEI=,tag:4mOmh4vVcWZYdz3ZSRoLLQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|Authorization)$
+    version: 3.8.1
