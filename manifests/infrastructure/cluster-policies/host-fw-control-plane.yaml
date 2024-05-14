@@ -148,15 +148,15 @@ spec:
             - port: "10250"
               protocol: "TCP"
 
-    # Allow DNS lookup from anywhere to the node-port running CoreDNS
-    - fromEntities:
-        - all
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: "UDP"
-            - port: "53"
-              protocol: "TCP"
+    # # Allow DNS lookup from anywhere to the node-port running CoreDNS
+    # - fromEntities:
+    #     - all
+    #   toPorts:
+    #     - ports:
+    #         - port: "53"
+    #           protocol: "UDP"
+    #         - port: "53"
+    #           protocol: "TCP"
 
     # Allow kube-ovn access from other nodes
     - fromEntities:
