@@ -9,177 +9,180 @@ spec:
     matchLabels:
       node-role.kubernetes.io/control-plane: ""
   ingress:
-  # Allow access to kube api from anywhere.
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "6443"
-        protocol: "TCP"
+    # Allow access to kube api from anywhere.
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "6443"
+              protocol: "TCP"
 
-  # Allow access to talos from anywhere.
-  # https://www.talos.dev/v1.4/learn-more/talos-network-connectivity/
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "50000"
-        protocol: "TCP"
-      - port: "50001"
-        protocol: "TCP"
+    # Allow access to talos from anywhere.
+    # https://www.talos.dev/v1.4/learn-more/talos-network-connectivity/
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "50000"
+              protocol: "TCP"
+            - port: "50001"
+              protocol: "TCP"
 
-  # Allow kube-proxy-replacement from kube-apiserver
-  - fromEntities:
-    - kube-apiserver
-    toPorts:
-    - ports:
-      - port: "10250"
-        protocol: "TCP"
-      - port: "4244"
-        protocol: "TCP"
+    # Allow kube-proxy-replacement from kube-apiserver
+    - fromEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "10250"
+              protocol: "TCP"
+            - port: "4244"
+              protocol: "TCP"
 
-  # Allow access from hubble-relay to hubble-peer (running on the node)
-  - fromEndpoints:
-    - matchLabels:
-        k8s-app: hubble-relay
-    toPorts:
-    - ports:
-      - port: "4244"
-        protocol: "TCP"
+    # Allow access from hubble-relay to hubble-peer (running on the node)
+    - fromEndpoints:
+        - matchLabels:
+            k8s-app: hubble-relay
+      toPorts:
+        - ports:
+            - port: "4244"
+              protocol: "TCP"
 
-   # Allow metrics-server to scrape
-  - fromEndpoints:
-    - matchLabels:
-        k8s-app: metrics-server
-    toPorts:
-    - ports:
-      - port: "10250"
-        protocol: "TCP"
+      # Allow metrics-server to scrape
+    - fromEndpoints:
+        - matchLabels:
+            k8s-app: metrics-server
+      toPorts:
+        - ports:
+            - port: "10250"
+              protocol: "TCP"
 
-  # Allow ICMP Ping from/to anywhere.
-  - icmps:
-    - fields:
-      - type: 8
-        family: IPv4
-      - type: 128
-        family: IPv6
+    # Allow ICMP Ping from/to anywhere.
+    - icmps:
+        - fields:
+            - type: 8
+              family: IPv4
+            - type: 128
+              family: IPv6
 
-  # Allow cilium tunnel/health checks from other nodes.
-  - fromEntities:
-    - remote-node
-    toPorts:
-    - ports:
-      - port: "8472"
-        protocol: "UDP"
-      - port: "4240"
-        protocol: "TCP"
+    # Allow cilium tunnel/health checks from other nodes.
+    - fromEntities:
+        - remote-node
+      toPorts:
+        - ports:
+            - port: "8472"
+              protocol: "UDP"
+            - port: "4240"
+              protocol: "TCP"
 
-  # Allow access to etcd and api from other nodes.
-  - fromEntities:
-    - remote-node
-    toPorts:
-    - ports:
-      - port: "2379"
-        protocol: "TCP"
-      - port: "2380"
-        protocol: "TCP"
-      - port: "51871"
-        protocol: "UDP"
+    # Allow access to etcd and api from other nodes.
+    - fromEntities:
+        - remote-node
+      toPorts:
+        - ports:
+            - port: "2379"
+              protocol: "TCP"
+            - port: "2380"
+              protocol: "TCP"
+            - port: "51871"
+              protocol: "UDP"
 
-  # Allow access to etcd and api from unconfigured nodes
-  - fromCIDR:
-    - 159.69.60.182/32
-    - 88.99.105.56/32
-    - 46.4.77.66/32
-    toPorts:
-    - ports:
-      - port: "2379"
-        protocol: "TCP"
-      - port: "2380"
-        protocol: "TCP"
+    # Allow access to etcd and api from unconfigured nodes
+    - fromCIDR:
+        - 159.69.60.182/32
+        - 88.99.105.56/32
+        - 46.4.77.66/32
+      toPorts:
+        - ports:
+            - port: "2379"
+              protocol: "TCP"
+            - port: "2380"
+              protocol: "TCP"
 
-  # Allow wireguard/KubeSpan access from anywhere
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "51820"
-        protocol: "UDP"
+    # Allow wireguard/KubeSpan access from anywhere
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "51820"
+              protocol: "UDP"
 
-  # Allow DHCP Packets
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "67"
-        protocol: "UDP"
-      - port: "68"
-        protocol: "UDP"
+    # Allow DHCP Packets
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "67"
+              protocol: "UDP"
+            - port: "68"
+              protocol: "UDP"
 
-  # Allow HTTP and HTTPS access from anywhere
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "80"
-        protocol: "TCP"
-      - port: "443"
-        protocol: "TCP"
-  
-  # Allow access from inside the cluster to
-  # the admission controller
-  - fromEntities:
-    - cluster
-    toPorts:
-    - ports:
-      - port: "8443"
-        protocol: "TCP"
-    
-  # from metrics-server to kubelet API.
-  - fromEntities:
-    - cluster
-    toPorts:
-    - ports:
-      - port: "10250"
-        protocol: "TCP"
-        
-  # Allow DNS lookup from anywhere to the node-port running CoreDNS
-  - fromEntities:
-    - world
-    - cluster
-    toPorts:
-    - ports:
-      - port: "53"
-        protocol: "UDP"
+    # Allow HTTP and HTTPS access from anywhere
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "80"
+              protocol: "TCP"
+            - port: "443"
+              protocol: "TCP"
 
-  # Allow kube-ovn access from other nodes
-  - fromEntities:
-    - remote-node
-    toPorts:
-    - ports:
-      # ovn-central
-      - port: "6641"
-        protocol: "TCP"
-      - port: "6642"
-        protocol: "TCP"
-      - port: "6643"
-        protocol: "TCP"
-      - port: "6644"
-        protocol: "TCP"
+    # Allow access from inside the cluster to
+    # the admission controller
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "8443"
+              protocol: "TCP"
 
-      # ovs-ovn
-      - port: "6081"
-        protocol: "UDP"
-      
-      # metrics
-      - port: "10660"
-        protocol: "TCP"
-      - port: "10661"
-        protocol: "TCP"
-      - port: "10665"
-        protocol: "TCP"
+    # from metrics-server to kubelet API.
+    - fromEntities:
+        - cluster
+      toPorts:
+        - ports:
+            - port: "10250"
+              protocol: "TCP"
+
+    # Allow DNS lookup from anywhere to the node-port running CoreDNS
+    - fromEntities:
+        - world
+        - cluster
+        - host
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: "UDP"
+            - port: "53"
+              protocol: "TCP"
+
+    # Allow kube-ovn access from other nodes
+    - fromEntities:
+        - remote-node
+      toPorts:
+        - ports:
+            # ovn-central
+            - port: "6641"
+              protocol: "TCP"
+            - port: "6642"
+              protocol: "TCP"
+            - port: "6643"
+              protocol: "TCP"
+            - port: "6644"
+              protocol: "TCP"
+
+            # ovs-ovn
+            - port: "6081"
+              protocol: "UDP"
+
+            # metrics
+            - port: "10660"
+              protocol: "TCP"
+            - port: "10661"
+              protocol: "TCP"
+            - port: "10665"
+              protocol: "TCP"
