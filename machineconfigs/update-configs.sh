@@ -95,7 +95,8 @@ function update_config() {
   
   # Fetch the node's machineconfig, extracting only the spec itself, and 
   # storing it in our temp file.
-  talosctl -e "$1" -n "$2"  get machineconfig -o yaml | yq '.spec' > "$TEMP_MACHINECONFIG_FILE"
+  echo "Fetching machineconfig for $2 from $1.."
+  talosctl -e "$1" -n "$2"  get machineconfig v1alpha1 -o yaml | yq '.spec' > "$TEMP_MACHINECONFIG_FILE"
 
   # Invoke sops' edit mode for the target file, causing it to decrypt
   # into a temp file and in turn invoke this script as EDITOR.

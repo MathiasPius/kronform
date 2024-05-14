@@ -22,7 +22,8 @@ machine:
             - interface: eth0
               dhcp: true
         kubespan:
-            enabled: true
+            enabled: false
+            mtu: 1300
     install:
         disk: none
         diskSelector:
@@ -69,6 +70,9 @@ machine:
         rbac: true
         stableHostname: true
         apidCheckExtKeyUsage: true
+        hostDNS:
+            enabled: true
+            resolveMemberNames: true
 cluster:
     id: 1SCx9nytxUjQfEf4w_6GoQLnv3OYAyO5fWZ39OHP7iU=
     secret: ENC[AES256_GCM,data:iHDVHUmUiWHT1YTY8pqaP3ubTxYRzhTrRrKI+7UIQc23FvrvDAoMTQHsN30=,iv:FTQYftgeNCk6rYwrrFlF1Gq/mb3PWynaNNZQX3exiA8=,tag:jKaWStpbgZSTBIe2qewZug==,type:str]
@@ -152,8 +156,8 @@ sops:
             aTdMcVphbVJZQ2xHNnpCSytFZjJpRkkKjFWwSubO//RR2oWC3BZUJnDVbihEElNm
             7t4bEyDLERWrSgtaNWFJDPTybBmJZb6gCZc014DyxJHq1saZTab5fA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-02-19T12:55:01Z"
-    mac: ENC[AES256_GCM,data:0wF8DPXYYEXPR4K2zcnNiEV5gziLy9/o7+CvCDkJGx6MnYAlX//RcefqamRki88U38NbYZ3vi5dqF+lTrAG0QVM8Xh/KqWhOGUHsJ+uLhcjWthm2M95ul8WeRSHdYg3BHk8ec2KkQxKeyyJLaPfq6XD2YDn12K639PXVAzc4bTk=,iv:5XZM9ZVaDLPpTmHkuNhiUqvg9nIE8vLYj+E3LQPXSAM=,tag:LoRZ3UeM31XTOsf/u13Bog==,type:str]
+    lastmodified: "2024-05-14T09:07:50Z"
+    mac: ENC[AES256_GCM,data:WuVvvaAfDEkpgcbym+4RLRt+3Sf3lvPjJs61b2itI56ItuClHaqtn5jwjj4DXGEOSK9dkay4Y3EyFETgYlYurf7hycbFcoPuhbFofY39NZs+AaC5Lb2dfPLFvhMcmuIt6DoKCTI1fWZmtdQySCLJxieO8Jnkfdg9DfJQyTO5S3Y=,iv:kn6xe8ibj9fsewn+K5wMXkgg+p0nCnfPB52zgTQ7mcY=,tag:ecNzTGpor+UxdVul7tRSJw==,type:str]
     pgp: []
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     version: 3.8.1
