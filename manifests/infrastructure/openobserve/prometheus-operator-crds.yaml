@@ -9,8 +9,6 @@ spec:
   interval: 1m0s
   ref:
     semver: "<0.74.0"
-  secretRef:
-    name: flux-system
   url: https://github.com/prometheus-operator/prometheus-operator.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
