@@ -9,11 +9,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:vhvgwEIg4Go7rnF8uUKO5wO4uHSzrySz13HOWDJ8SuaV019p7csmOvZZUw9/3w6g0SVfu63Cp2tx3A==,iv:YRfKtWrFQMKVpJUGctbSyOI9sFpBcWPYIpCq+voI9OM=,tag:L6MQsgB18YMPb1F4kq7KWA==,type:str]
+          Authorization: ENC[AES256_GCM,data:xjijayKfuPoRWJibf5ctJ54Ezae/ZcjaJh0nxNF3DGQ90+Uf4qM0GsJFpNphr0X2S6BZa7xEBzACmw==,iv:uiRpJN68I+C6TaUZPCH4TBaX6CM+K6iF2EcEExqI5Hw=,tag:3o6NKhUBhTxPzetyTkZhXg==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:egBRz8To8LMkBvgcNCGcQPHmAU+8vU1vw68nPzi2RqnADR0jClbEoXfMO87nkCZPLYa0w1lquXIe3w==,iv:SnZbtuMBOVblxm9SR9b0ejCMXdHVxQEBq3/V2X5OMcc=,tag:jBIXe63aKgCrwTdBLXOmgg==,type:str]
+          Authorization: ENC[AES256_GCM,data:qhagwtzI9byLiSq9+E1OSniBIbcIBw80CVgIlWQCH5alFORLjRThlajImiyfjLm49vA+4sGrDtBVZw==,iv:OXs8xNR9YqqFnNLpypLZU+DiMFlxgP7sbMCUVIjPtTo=,tag:DQj94AmN26DJakcNIN6eYg==,type:str]
           stream-name: k8s_events
     extensions:
       zpages: {}
@@ -198,7 +198,7 @@ spec:
       kubeletstats:
         auth_type: serviceAccount
         collection_interval: 15s
-        endpoint: https://${env:K8S_NODE_NAME}:10250
+        endpoint: https://${env:K8S_NODE_IP}:10250
         extra_metadata_labels:
           - container.id
           - k8s.volume.type
@@ -258,10 +258,10 @@ spec:
           receivers:
             - otlp
   env:
-    # - name: K8S_NODE_IP
-    #   valueFrom:
-    #     fieldRef:
-    #       fieldPath: spec.hostIP
+    - name: K8S_NODE_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
     - name: K8S_NODE_NAME
       valueFrom:
         fieldRef:
@@ -323,23 +323,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2WkVMVE91VUROSzl4RFZx
-        eEoxYkgxRGQ2amVwNTFOTThOU2dPMjhSalZvCkR4dWc1WlY4aGR1VnlDMmozR1RY
-        WDBOb1lzWHpvWEduejVMVnNJTVovL2sKLS0tIDJLc2VhRDVXakJIbkFmK295NDFl
-        QnJkZlJ0bmFSb052d3hQUHpVMlhTOE0KAS8nKXxoO/TMRcwKMeIrXK6lFkPNG3A3
-        Nx2YLfsnRv6NCI8FBk3un9hwBDcFQv4Dd04KRJ4/oGqYQ3JNMzpu9g==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUQkZoOEozRHh0MkxEVDFx
+        b1VXYkYwVUsySnZJdVo0SkFpQTJ3K2xuNGdFCnJ1bE9mRWs4VlFtSXBnYWVJdGJB
+        UDduelBDSUZhUHhpS2dRSU05KytaejQKLS0tIDZiWFk5T2Q1VFlVMEU5cHdnTXJJ
+        NzJpTzZNd2NMMlVGYTRqdWhoUmlmZlkKw623THb0Bj6N+UuEEToTdE/6j4j4Wc/l
+        aAsYxhdDBD1gbvPpwge4bGsd6hQEVPMMjOvbOWYFtNEkO5r7MXeNqA==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvRGlmMHgxdjFxU2NzeERi
-        YU5jM2NpZDlTYUhOZWx2b1gvOXJ6elFzdzNZCko0bzlUd09LdU1LTjZaTy9xRXUy
-        RHFwRDJmanVhNUhLbHdEVnpwNElRZU0KLS0tIGZQMUg4TmpMaFpRYWJadzRyUWsv
-        VzRjb1hETEpDZEZIVFlFNnhVNldEZVEKgS9oBx+nwncymveMHtzFkqXKNZKQyLdC
-        FVZJb2Qvj8hJbLcjGx4qlikPe/92GH6Ds749zHFr6XirAJ2TWuyjRA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RW1BSWIrNDRwYmtFR2dL
+        YzkwT3FRc3F3QzdSOXE4NDVlUWY5NHIwVUhjCmtSbjlLa0EzMThiYU51ZlZja1Y5
+        U1hjSkxqeFExVUR1Si96VHBqd1VJR2MKLS0tIGdsS3E3Zlp1NnhLUzhhTitucjZJ
+        MmZKZUNncjVWVHZhTUplRG9sOWdDZzQK8EcPqCe1/OQ5b0JGr2YLubve8REWWvPi
+        XXD7rV2eS9lSYITX1ytwoOJKaL6Hs+uUBUhPWcXRj/06/zZ/hZkTZQ==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-14T10:32:40Z"
-  mac: ENC[AES256_GCM,data:Gw46SKNL/5gJ4tda1I/2NPE2EHzLa9HFMwXnqmk/zUOQX/cdRuBHmnupZ1POmqg/VAzjBwPvw5gWlGD6UppROpZ42X2A7ut13/7hjzJgNASJOyl3mWUTAHC8NIzBJBbyrNxfgo8n3+cl2pHlZq/jxhxKIsbFE4H8wH487Obt13s=,iv:h6blA3Z8fj4YDmzsPNPQa9lRmIIrFEjn3ZRRWgBH0+s=,tag:cxP/nlNHUE4Rggn7Qe6eoA==,type:str]
+  lastmodified: "2024-05-14T19:46:05Z"
+  mac: ENC[AES256_GCM,data:NDL4SZm85EaS3MvEziECdGEoiVKz8+kmVvvHbaYVfqE4hAGgUepslxOjI9IuseANQbSEzejY+tzf2YwjeFxE1DhrVkjnuPkmYHS8+klQkEyfVYb4iWWIXuqzJKm1Pus128zAlBBzm+Cmh4K5SWW01Zf/VquWCT0CH823x/kJJQI=,iv:Wbaxs0cO98Y4ny/UVfs1W9quIdS909E6mzfBC0fLWJ0=,tag:HJfgGHMzxbuBCyG+V2QzyQ==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
