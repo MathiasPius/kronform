@@ -11,7 +11,7 @@ spec:
     semver: "<0.74.0"
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/prometheus-operator/prometheus-operator
+  url: https://github.com/prometheus-operator/prometheus-operator.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
