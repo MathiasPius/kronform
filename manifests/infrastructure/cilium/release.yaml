@@ -21,6 +21,8 @@ spec:
       mode: kubernetes
     hostFirewall:
       enabled: true
+    bpf:
+      masquerade: false
     hubble:
       relay:
         enabled: true
