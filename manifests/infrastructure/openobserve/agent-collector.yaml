@@ -9,11 +9,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:xjijayKfuPoRWJibf5ctJ54Ezae/ZcjaJh0nxNF3DGQ90+Uf4qM0GsJFpNphr0X2S6BZa7xEBzACmw==,iv:uiRpJN68I+C6TaUZPCH4TBaX6CM+K6iF2EcEExqI5Hw=,tag:3o6NKhUBhTxPzetyTkZhXg==,type:str]
+          Authorization: ENC[AES256_GCM,data:guTMZgn2s3kdC1IQLsgrwvwyFwQlXD9kdHLASgbVavEusbvvsq0FTNdM7mJTjWeQTK3a+fJPrO/9Yg==,iv:UoxokjfiO94aYWzxthtfxz/KNrACA8n6BlEZvBV6/4M=,tag:WXiCuHdUOe1KCoRqmfJtlQ==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:qhagwtzI9byLiSq9+E1OSniBIbcIBw80CVgIlWQCH5alFORLjRThlajImiyfjLm49vA+4sGrDtBVZw==,iv:OXs8xNR9YqqFnNLpypLZU+DiMFlxgP7sbMCUVIjPtTo=,tag:DQj94AmN26DJakcNIN6eYg==,type:str]
+          Authorization: ENC[AES256_GCM,data:dqf6fpHkxzqglh8Kg0LWXoAAyF67zvG2lyFp5PrFO5k43vii8ru7gVylQFIi5lehj104RyFDgPIcvQ==,iv:mE2m3EAhANoNfar1spbPDVHnJwqtaNKnAAFsMy8GzdU=,tag:W60ev6ubMgExPkZOdipGug==,type:str]
           stream-name: k8s_events
     extensions:
       zpages: {}
@@ -87,7 +87,7 @@ spec:
           - /var/log/pods/*/otel-collector/*.log
           - /var/log/pods/*/otc-container/*.log
         include:
-          - /var/log/pods/*/*/*.log
+          - /var/log/pods/**/*.log
         include_file_name: false
         include_file_path: true
         operators:
@@ -323,23 +323,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUQkZoOEozRHh0MkxEVDFx
-        b1VXYkYwVUsySnZJdVo0SkFpQTJ3K2xuNGdFCnJ1bE9mRWs4VlFtSXBnYWVJdGJB
-        UDduelBDSUZhUHhpS2dRSU05KytaejQKLS0tIDZiWFk5T2Q1VFlVMEU5cHdnTXJJ
-        NzJpTzZNd2NMMlVGYTRqdWhoUmlmZlkKw623THb0Bj6N+UuEEToTdE/6j4j4Wc/l
-        aAsYxhdDBD1gbvPpwge4bGsd6hQEVPMMjOvbOWYFtNEkO5r7MXeNqA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2M1pRaGE5NjhaN0hUN0dr
+        NkNlVERDeE9lY1QvVG1jVlJ2aWN2NFp2SFRvCjdzR241MTIzNXg4VzB6K1cvNXVG
+        cCtyZ2RibFZmNEFjUzl4NHdHZ2RUQ2cKLS0tIE5SL000c1Q5elRtYk9Da2tFWnh1
+        aERXSU1NcWFmUjY4WlM5anpvMWYvdFUKAT/CwDsyvSUXWPtWbRywcpqJX0jyypom
+        yrbzjeQ4L39IUK5Jk5xVSWH0BU7Za3cpL49WVA1Cz09FZLXYh6vCuA==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RW1BSWIrNDRwYmtFR2dL
-        YzkwT3FRc3F3QzdSOXE4NDVlUWY5NHIwVUhjCmtSbjlLa0EzMThiYU51ZlZja1Y5
-        U1hjSkxqeFExVUR1Si96VHBqd1VJR2MKLS0tIGdsS3E3Zlp1NnhLUzhhTitucjZJ
-        MmZKZUNncjVWVHZhTUplRG9sOWdDZzQK8EcPqCe1/OQ5b0JGr2YLubve8REWWvPi
-        XXD7rV2eS9lSYITX1ytwoOJKaL6Hs+uUBUhPWcXRj/06/zZ/hZkTZQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBPSWNSajdMb0JMZEQ0Z2pk
+        OUM5aFpaa2Jpc2IwYUhtQ3NyYVlPV1N3Q1dBCklPdVI5ZEhGVkhpSUlhZ2RPdkRx
+        cXprMkQyL3lJYnI2WVBxcGY2djlQSzgKLS0tIEFSN2h6M3VpRFA2bks3a2EzbWln
+        N2VuVUxZTDdOa1BWaUdZK29Tc2daMzQKVB2DwhFgv2N0qd+HsetyV3lS5DqCLdUA
+        sjiCGOOTMZiTwj3AXZgIIUQ5fTPaWRKa2fGTVSQyj0xe2X4Pd9Cc6w==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-14T19:46:05Z"
-  mac: ENC[AES256_GCM,data:NDL4SZm85EaS3MvEziECdGEoiVKz8+kmVvvHbaYVfqE4hAGgUepslxOjI9IuseANQbSEzejY+tzf2YwjeFxE1DhrVkjnuPkmYHS8+klQkEyfVYb4iWWIXuqzJKm1Pus128zAlBBzm+Cmh4K5SWW01Zf/VquWCT0CH823x/kJJQI=,iv:Wbaxs0cO98Y4ny/UVfs1W9quIdS909E6mzfBC0fLWJ0=,tag:HJfgGHMzxbuBCyG+V2QzyQ==,type:str]
+  lastmodified: "2024-05-14T20:49:52Z"
+  mac: ENC[AES256_GCM,data:OGViOMTgAXG55LcKzaoFyV/JuqDdD1Ki0I0lLf1CcmL3w8v/2yQYpFM8WoNbxohgOcvBPabIcq+Zx/ksg/FuaLHMcPbk8I+8JdsA+AAGPt7PwNEnrTlUv8ANzyaXpPYGgHYvqOim4NTuc5AlmYBreg8/OkS589W/nWqf945surc=,iv:Dnsz/Qo+gCpHbC0V72VO2wS3nTAac8XCqxsAT5u4dRM=,tag:ZND9pPof6FvbSOnoNXfgNA==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
