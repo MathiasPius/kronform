@@ -23,6 +23,8 @@ spec:
       enabled: true
     bpf:
       masquerade: true
+    ipMasqAgent:
+      enabled: true
     hubble:
       relay:
         enabled: true
