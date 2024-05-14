@@ -1,6 +1,6 @@
 # manifests/infrastructure/postgres/operator.yaml
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: postgres-operator
@@ -29,7 +29,7 @@ spec:
     configKubernetes:
       cluster_domain: local.kronform.pius.dev
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: postgres-operator-ui
