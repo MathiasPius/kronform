@@ -150,9 +150,7 @@ spec:
 
     # Allow DNS lookup from anywhere to the node-port running CoreDNS
     - fromEntities:
-        - world
-        - cluster
-        - host
+        - all
       toPorts:
         - ports:
             - port: "53"
