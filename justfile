@@ -27,3 +27,14 @@ rotate-keys:
             --input-type yaml "$file";      \
     done
     exit 0
+
+update-flux:
+    docker run -it --rm                                 \
+    --dns 8.8.8.8			                            \
+    -v $(pwd):/data                                     \
+    -v /run/user/1000/:/run/user/1000/:ro               \
+    -v $HOME/.config/sops:/home/user/.config/sops:ro    \
+    tools:latest flux install                           \
+        --cluster-domain "local.kronform.pius.dev"      \
+        --components-extra="image-reflector-controller,image-automation-controller" \
+        --export > manifests/cluster/flux-system/gotk-components.yaml
