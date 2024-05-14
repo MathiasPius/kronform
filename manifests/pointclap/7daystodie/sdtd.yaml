@@ -239,7 +239,7 @@ spec:
       initContainers:
       - name: sdtd-init-settings
         imagePullPolicy: IfNotPresent
-        image: docker.io/vinanrra/7dtd-server:v0.7.1
+        image: docker.io/vinanrra/7dtd-server:v0.7.2
         command: ["/bin/bash", "-c", "cp /home/sdtdserver/serverfiles/sdtdserver{.ro,}.xml && chown 1000:1000 /home/sdtdserver/serverfiles/sdtdserver.xml"]
         securityContext:
           seccompProfile:
@@ -264,7 +264,7 @@ spec:
           mountPath: /home/sdtdserver/serverfiles/
       - name: sdtd-init
         imagePullPolicy: IfNotPresent
-        image: docker.io/vinanrra/7dtd-server:v0.7.1
+        image: docker.io/vinanrra/7dtd-server:v0.7.2
         securityContext:
           seccompProfile:
             type: RuntimeDefault
@@ -300,7 +300,7 @@ spec:
       containers:
       - name: sdtd
         imagePullPolicy: IfNotPresent
-        image: docker.io/vinanrra/7dtd-server:v0.7.1
+        image: docker.io/vinanrra/7dtd-server:v0.7.2
         #securityContext:
         #  runAsNonRoot: true
         #  runAsUser: 1000
