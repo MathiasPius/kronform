@@ -22,7 +22,7 @@ spec:
     hostFirewall:
       enabled: true
     bpf:
-      masquerade: false
+      masquerade: true
     hubble:
       relay:
         enabled: true
