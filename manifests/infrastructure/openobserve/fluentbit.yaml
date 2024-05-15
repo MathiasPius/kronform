@@ -106,7 +106,7 @@ spec:
           Host                 openobserve-collector-gateway-collector
           Port                 4418
           Log_response_payload True
-          Tls                  On
+          Tls                  Off
           Tls.verify           Off
           logs_body_key $message
           logs_span_id_message_key span_id
