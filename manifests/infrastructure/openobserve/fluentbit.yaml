@@ -101,12 +101,6 @@ spec:
 
       outputs: |
         [OUTPUT]
-          Name    stdout
-          Alias   stdout
-          Match   *
-          Format  json_lines
-
-        [OUTPUT]
           Name                 opentelemetry
           Match                *
           Host                 openobserve-collector-gateway-collector.openobserve.svc.local.kronform.pius.dev
