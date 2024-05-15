@@ -53,11 +53,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:TD09bUc83DB6/e+3TGd356RxKP4Yu6IiE4AtqCZHwwHb8mgzAJodTe5d10u8Y9yI1pkL++iX+wHJxw==,iv:4VhwxjwEUi6RgcRqcYLz/W2qHqDvuzVRBu53GXjuGN4=,tag:6d6Zc4W+xkcUpNcZgtaR8Q==,type:str]
+          Authorization: ENC[AES256_GCM,data:QGYGTw4OowejDOb/iaIE4iCWmyA3lWaRe5l9HdbAwGexEvyYYK4VJNnaBOrZOlRqz7pUOLyxqajLAw==,iv:RX/2+xCqhAs/rRqT+N4H+7mw1g4u12ToYCY0yQi8ySM=,tag:aVnwze7dWCoYcEDHaBA6iA==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:P4dcmM0OrrOb/g9xP74DS9Voj3vQj7acrPFe5jbVrKfHX/raWmvJBwF7AalqKyWZnPV8zYkX8jp+Iw==,iv:B2Nkasnusp6MJSS2cfBFY2jK/ka5NVMltaNXV8vSPco=,tag:uo5BNHofy0FK8/f+l2y7ZA==,type:str]
+          Authorization: ENC[AES256_GCM,data:EkUxQVwUAwDS/+I+qughDjREKtahRjXBzSXyTLpLPLOo8ifks6D+j/kfvoj7YNmTo5dOlW7EIWEs2Q==,iv:GRFaic/J42jb31npyVM6ZoTtSCcC9hSqG2GYahPQLqk=,tag:65JVRRX4xOhaDo+3CtmXGw==,type:str]
           stream-name: k8s_events
     processors:
       batch:
@@ -165,6 +165,10 @@ spec:
       otlp:
         protocols:
           grpc: {}
+          http: {}
+      otlp/logs:
+        protocols:
+          grpc: {}
           http:
             endpoint: 0.0.0.0:4318
       prometheus:
@@ -172,6 +176,13 @@ spec:
           scrape_configs: []
     service:
       pipelines:
+        logs/fluentbit-forward:
+          exporters:
+            - otlphttp/openobserve
+          processors:
+            - batch
+          receivers:
+            - otlp/logs
         logs/k8s_events:
           exporters:
             - otlphttp/openobserve_k8s_events
@@ -181,7 +192,6 @@ spec:
             - resourcedetection
           receivers:
             - k8s_events
-            - otlp
         metrics:
           exporters:
             - otlphttp/openobserve
@@ -249,23 +259,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUMHVsT3FjazV4Q1JIazV1
-        UkJKQkp3bCtFb1U2cHhWOHhaWE5oSnlGQms0CjNYM0dqSlhaZWxLYjhBTzdNOWdy
-        UUU0MDJRaGgyZDUxZ1NCQmQwV1B1TGcKLS0tIDNVZ01PNjNHRFdtTXFKQTNud0U5
-        Zkg5RXZYa1ZNRFJzaW9KOExSckVsSEEKWj3hz3m+UWHb4BtHcqBGU/qYRzGQ36oR
-        SvQmn30YEUlpAtZCTl0ttEAgOEdSrOcFRA6ac9IZ40OnEN8i/vdqAQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4YkMrRDFKM0JHWlZ4L3FX
+        bG9ZY2s5RU5SaVUrYU92U2lSc1RMSkxhSkJjCk9qTHJNNFJFV25peHZyZUVQVmFa
+        bDU5d2NCcGF3T3ZhdVBtcGxaMjAxdEkKLS0tIHQ0emx1VDNid0Q5RHlGY0FURXZ1
+        cXh2Z1NBWXQrN3RiN1VpdHJ0SmpNNGMK92n+Lv/H0QzPpnXOubFJrPCNlcy0ugYT
+        eTF6bSc3pLIH3cH/OUYF/PJqWxt6uJHTGd21uyXkcN966GzjuP8xTQ==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDM1FGaElLWFNUMEFTeHFW
-        KzdMVmdiR3pJNVFtMFpTVUZkQitHSVBLRFhZCkdZRnM0VTVHb21PODgwdVlodkxy
-        V3BxbmtZN0EwUDhLYkZHWnIydys3THMKLS0tIDdIN2l4WExvWC9BN1FuM3VTbU91
-        dUo4TCtnZXM0cDdTeGgvbmp2bk5oL0UKIpHswSimGHa/CoRfB6z9obzl2yWlXaYj
-        qJP1DHLOU57Qb2SC04LuSAAXUwx5LvtFL0/B9pGtXMDN89wZC1dEMQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSM2FWcWg5MGZCODBrcVAw
+        N0JsM1pjbkdvbVhqVS9Kck92SmNrbFVzclh3ClFKbnVoa1ZpdzNEMnlZUUJTbTZE
+        dk0rNlo4T2t3dVMvMndGVmx3VGRUc2MKLS0tIGZOSGM0a2cvL1VJaGp0Y01YYk9m
+        dU05SHdjcU9SRnJkN09xbUlGYTh2eE0K/O1gnA6DUbzCpZ7yuRV8iDGDBz0m2KcZ
+        YdzNWsbMXsl00iz1SFBb9AnA5n7npb6OvV8oaxdjZOsL1gvSZ0vS9A==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-15T23:23:16Z"
-  mac: ENC[AES256_GCM,data:V/WqEZYLw3qm4o71EH7ERDhM+SVrJIQgSyhn6acRqwBShkuBW7hs8tQ1jfZSfSKEX6tZPh8KfAtSzRCTD5nvbv03CrKpupy3VIVFKIlIzenwVkbnJ7WmImWM1Fk2VDBpvlmQhK91SATA930448Qq1kqaPXBez2tKL/TFUWeh8I0=,iv:FgflyVLuZkRhK5jzat6Gi4rnl6CQ0x5tXlroyfGvqno=,tag:kiCivcxvqmo6jM/smB0X2g==,type:str]
+  lastmodified: "2024-05-15T23:30:28Z"
+  mac: ENC[AES256_GCM,data:/oyQvivyzRc0n1lqEGXU+1ALJ7G/mqQRITFVoKQg35HfX/D7XJknxqc/MMVTppDBxi2Q36z4Tp5GYVxKTe2LYvH4ZSa9I+R0LV3P2j7yVpqQsAxRhrvITmk8BRC+U8eJn2QKP5XTE8mCNXYdR2nkFkSXN/yT1xeE4xUEtKkTiHE=,iv:jRWPrThOp5YPkvEVi0uQgFiG/UvXC+JFuWjcbL6F3qg=,tag:l84BXDy5BL2ru7prbZMF3g==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
