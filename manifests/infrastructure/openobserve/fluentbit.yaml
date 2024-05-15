@@ -103,7 +103,7 @@ spec:
         [OUTPUT]
           Name                 opentelemetry
           Match                *
-          Host                 openobserve-collector-gateway-collector.openobserve.svc.local.kronform.pius.dev
+          Host                 openobserve-collector-gateway-collector
           Port                 4418
           Log_response_payload True
           Tls                  On
