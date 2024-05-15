@@ -9,11 +9,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:k8eFgGfHAI1IErG9V0WDE1jKjkTBD8O87FPY22UZvcnUplAktH5Yha3q7JOw7JTY1kMXEkMLEtbxoQ==,iv:JQ4YUAtEYKEvUxy28atr55ELStkbcRySYp1lZxWOXKk=,tag:FaR+nY4VWfrcKVZVdZA8zw==,type:str]
+          Authorization: ENC[AES256_GCM,data:5HRZO4qTuGfn+F3gS9joPM4uYMVLSvzP9p5oAVjfCPsgXZldjyT0jNbCRvwfv37LPdAk+MD0ciHemg==,iv:Zb4bdaX89M8VqMGkfwd0632xBPhYw3sc4CyQ70DoE4k=,tag:P0PVyMply3Di0WdklJ+pqA==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:4+DprQQY03vmAPFyzkXgNh40kHQlakL4oudCooEryt3SZBIi5jQvfKMTFBqbAvR+2u7e2VsmdhA+MA==,iv:m3WZ04h2i4og50S05VZfJjPjuXR3PVjhVbAzN+KHETY=,tag:MKaqk8CeKCJw/mGVkHwOYQ==,type:str]
+          Authorization: ENC[AES256_GCM,data:c9p6k8vCcvmBQe/u8pHm8dX2kKRnM8l7rfMV2CDj4EpmaJuLTSXyQCEJ2rK5OPYnZ2LAVFqFu+g5pA==,iv:NDXtq0GyeFd9hlnJQzFBtb0ahGmhWCU4SvdXrJBA1pA=,tag:efAvZyG6K9yPKifxZV7LYw==,type:str]
           stream-name: k8s_events
     processors:
       batch:
@@ -290,28 +290,20 @@ spec:
       scrapeInterval: 30s
       serviceMonitorSelector: {}
     resources: {}
-  tolerations:
-    - effect: NoSchedule
-      key: exampleKey1
-      operator: Equal
-      value: "true"
   upgradeStrategy: automatic
   volumeMounts:
     - mountPath: /hostfs
       name: hostfs
-    - mountPath: /var/log
-      name: varlog
-    - mountPath: /var/lib/docker/containers
-      name: varlibdockercontainers
-      readOnly: true
+    - mountPath: /var/log/pods
+      name: varlogpods
   volumes:
     - hostPath:
         path: /
       name: hostfs
     - hostPath:
-        path: /var/log
+        path: /var/log/pods
         type: ""
-      name: varlog
+      name: varlogpods
     - hostPath:
         path: /var/lib/docker/containers
         type: ""
@@ -325,23 +317,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBucURha3RnYnoyS3NvakZO
-        enBjdHp0RENQUzRnTjU2L1lIbDhEQXBYaUJJCmxMR1FDTGhkOHZSc1lZaTdVem9n
-        YUxMR3VyZmsreEFqMDJjSGNZcm1saVUKLS0tIE5Ea05nbzlMamdqTVlBM1F0a3Fa
-        RHlUdnJQWU5DbmxBRHM3ekJrQkU0WkkKbU0dqUtPidiAn2CjHNIRFMY4JYel6weW
-        GeIeWGOVYSxLhpKs5tIdSlg0jzFx3Z/q8t3CIbiqpR2/DZROpEfNLg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLbXZzYThudktkWUZBaXVZ
+        VklEbU00L2FXK095TlNmRFRsNmZxMUl0V3owCmNlbXNkTFdid0x4cEdFYlBTUStP
+        MjJielo4TityMURHYWlwMkNTY2tXb28KLS0tIDhadTVzd09TWVJObjNUazRPNWV2
+        dlN2ZDFMK1c4Q2VXUFovNTE5eFBoY0kK7HK9NGBmFx/OYQrrT/e/kTl2d63WkzYZ
+        B4VCXCbOxKk2PtgiNsAEA001ZXWK/uzrMc+AeAnFeQDCVlxUtDxoFw==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpZ016NURTcmxCa3prZWFt
-        Mm9KSHZnVStTeTVTTEtZNGlMZG0vdGJxVUhJCmdvRXpUUDZYY3NTSHZLY3pFQXBq
-        WGhTdGJVdi84NHlMcjlTRUtsdlJ5WDQKLS0tIGRyMlQ4QTVLcXQwTlFqWVhtcHha
-        cTN4Mm12M1NydTVvS2U5dVpldDVvVGcKdVqP2g/uqMXoeuS+HMFVS6akPtwskIfa
-        0VIZRc3/3J+wTafHyAKhOgzZUMkzkzbl9QJCKi6oTmYnIB1feuwjFw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsZktPWTVUWFJDRTZEQVVp
+        Ym9tdUh6ZC9jVm4rckNYYmRHa1c2eFA2dlRFCk5EaEJXY0tYSThBY2p3WXdDSnJX
+        MGV0aHR2L3lwRGxyWlhLZDZ1M25VSFUKLS0tIE1DSHF0S3hzZ3RxSEFkczJoTHly
+        a2JLdGxmdEo1TVVnVmRDSGxYaDErajQKx4M9ts+AOMcjTkloO6+bv7QiFslTZhut
+        4HdaxmLSSVwUHXSfEjyp+KG0TOLru7XrozjRm3OrUvwFx3f8bUzM5A==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-15T21:04:46Z"
-  mac: ENC[AES256_GCM,data:B/5JL5/o3yAkQvIRY67kCdsak6g8qRTQyEbqQsfzzpSbMk6P9GQGnBUNdp3S2DhqfMJzAajFjL0fd8U66LHn7t1zc5C5sT52H78mRxAgkRvVuttJjZIz/nI3kZMLsSXrYnI56rXzA4lAoGlcGZq6qecngGN/ts8UflJEESIx2zQ=,iv:sElml+E861Qf+pKc4M7cP3LxvjtcgUWjksjxSH7sNXY=,tag:fogn6U25QB6VZRGFM/Av0A==,type:str]
+  lastmodified: "2024-05-15T21:19:45Z"
+  mac: ENC[AES256_GCM,data:MdwDbSH31YLImVGm4mquGOvhfUTklil/56JaLfupUPBvVaZgZfGAt24H34qshpK4yB4zAZP8K8dcds52xc5Uu/+fpEPUdca6b/p09fmVUOPX0BcjoJL4q6JH7vDizQwEwOeX7HHLlpTBKXhV81Gaz7EUI+Bi71tBEtvQnzVDZNI=,iv:sZk8jCyG0OLlvHs7MzJlSb8PbuBYkwa+06s3A8pm+ow=,tag:uQmoK7yZFN6ud3FLRoyhvQ==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
