@@ -119,7 +119,6 @@ spec:
           logs_trace_id_message_key trace_id
           logs_severity_text_message_key loglevel
           logs_severity_number_message_key lognum
-          Auto_Kubernetes_Labels on
 
     daemonSetVolumes:
       - name: varlog
