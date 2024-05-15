@@ -9,11 +9,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:ebTiAo+o1A1BnlLYGIG3yYb91SYmVNKlPiPe0WAJ89houfyr3iFA4ApURrXi8dTSCitD+CirkeKwlA==,iv:95q0ahu9shCZleTHKi60dtshXXjsL4KTC/h2bF0l8EU=,tag:8/imp2FJfNRr1T8cMpjLNA==,type:str]
+          Authorization: ENC[AES256_GCM,data:k8eFgGfHAI1IErG9V0WDE1jKjkTBD8O87FPY22UZvcnUplAktH5Yha3q7JOw7JTY1kMXEkMLEtbxoQ==,iv:JQ4YUAtEYKEvUxy28atr55ELStkbcRySYp1lZxWOXKk=,tag:FaR+nY4VWfrcKVZVdZA8zw==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:f4ibSx1UiimZv2/WrBGNjRS9ClYOYhMqFlmoY0rG4KGDcYU1F9aA/Uvzda5wT8HUusRBEsT9X9FT/A==,iv:6P41WV6mlY+KNxxYkSY1OK835RRxIU7AFjvusbDXKVo=,tag:qVmP8FLXH4VmDe45aA3ZPQ==,type:str]
+          Authorization: ENC[AES256_GCM,data:4+DprQQY03vmAPFyzkXgNh40kHQlakL4oudCooEryt3SZBIi5jQvfKMTFBqbAvR+2u7e2VsmdhA+MA==,iv:m3WZ04h2i4og50S05VZfJjPjuXR3PVjhVbAzN+KHETY=,tag:MKaqk8CeKCJw/mGVkHwOYQ==,type:str]
           stream-name: k8s_events
     processors:
       batch:
@@ -309,7 +309,7 @@ spec:
         path: /
       name: hostfs
     - hostPath:
-        path: /var/host-log
+        path: /var/log
         type: ""
       name: varlog
     - hostPath:
@@ -325,23 +325,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiQXo2Slp0eUlnMzJTNkxN
-        ZW5jRGNuMHl5elAycWRQL21rWFNkK0tCTTNzCnVSdFRWNkROZTZzdjlDU1RNWFJL
-        U3diU1Bwd1ZJYmI0bENYc1diREh3WHMKLS0tIDIxNDJadDBzVU1GcWNNZHliOEQz
-        ZU82MFZVd2RXSFJENTUrK3I4NS9yZWMKXelV/9XG1KUTOKFz0IGopu/4AHHb5ljo
-        Lb5zNsvRbQf+UD+J+zc9T7sPhEXRhhq3AP7r4Tb7HKZthINxFSQ5uw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBucURha3RnYnoyS3NvakZO
+        enBjdHp0RENQUzRnTjU2L1lIbDhEQXBYaUJJCmxMR1FDTGhkOHZSc1lZaTdVem9n
+        YUxMR3VyZmsreEFqMDJjSGNZcm1saVUKLS0tIE5Ea05nbzlMamdqTVlBM1F0a3Fa
+        RHlUdnJQWU5DbmxBRHM3ekJrQkU0WkkKbU0dqUtPidiAn2CjHNIRFMY4JYel6weW
+        GeIeWGOVYSxLhpKs5tIdSlg0jzFx3Z/q8t3CIbiqpR2/DZROpEfNLg==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOZFJROCtCZFhLN3ZtU015
-        VHlZejJhVXhkeUdmZldreFdHczdzRXRVUkhrClFlbFpMZHpyakR4amRiZHRjOERD
-        VVVyZWZZZGQreFdMb3Q2NktuWU1IMjQKLS0tIFBXcVN2OVBJRmFVN0t2dDdNbi9y
-        emVzMFZaK2ppN01OUExnWVNiRGRMencKPQQdEEQDPsL72pQvPq7b9BKCMnFt7lt2
-        D70vPcv0Zx47tDNDPz0Nb0rk/PKoeRgfx3Yu4ffzrelnwtnxu1M8jg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpZ016NURTcmxCa3prZWFt
+        Mm9KSHZnVStTeTVTTEtZNGlMZG0vdGJxVUhJCmdvRXpUUDZYY3NTSHZLY3pFQXBq
+        WGhTdGJVdi84NHlMcjlTRUtsdlJ5WDQKLS0tIGRyMlQ4QTVLcXQwTlFqWVhtcHha
+        cTN4Mm12M1NydTVvS2U5dVpldDVvVGcKdVqP2g/uqMXoeuS+HMFVS6akPtwskIfa
+        0VIZRc3/3J+wTafHyAKhOgzZUMkzkzbl9QJCKi6oTmYnIB1feuwjFw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-15T13:05:28Z"
-  mac: ENC[AES256_GCM,data:Fpp3Pjsmcx/gVIpPUmPACt+2YGHE9DY0LLHyqv13jCcCeiCaFS3+LFoUGh5C7GVM0Fwi/oqmcWUJvo2dqAR0bMXe2sqse/akjbHY6wkyCog+Zh0kDmTStep9VP2hJIMbtUT30NF52WYrVFh1vPvlZZVf+UbHzZ878N10+nZpJ/w=,iv:qxrseEQuIQ84NDNF0d8bHJ95454/4erG2hximoqamhg=,tag:5jdG/jOlZI6FU0IiIZjWbg==,type:str]
+  lastmodified: "2024-05-15T21:04:46Z"
+  mac: ENC[AES256_GCM,data:B/5JL5/o3yAkQvIRY67kCdsak6g8qRTQyEbqQsfzzpSbMk6P9GQGnBUNdp3S2DhqfMJzAajFjL0fd8U66LHn7t1zc5C5sT52H78mRxAgkRvVuttJjZIz/nI3kZMLsSXrYnI56rXzA4lAoGlcGZq6qecngGN/ts8UflJEESIx2zQ=,iv:sElml+E861Qf+pKc4M7cP3LxvjtcgUWjksjxSH7sNXY=,tag:fogn6U25QB6VZRGFM/Av0A==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
