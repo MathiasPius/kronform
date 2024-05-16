@@ -53,7 +53,7 @@ spec:
         [INPUT]
           Name          tail
           Alias         kubernetes
-          Path          /var/log/pods/*/*/*.log
+          Path          /var/log/containers/*.log
           Parser        containerd
           Tag           kubernetes.*
 
@@ -69,7 +69,7 @@ spec:
           Name                kubernetes
           Alias               kubernetes
           Match               kubernetes.*
-          Kube_Tag_Prefix     kubernetes.var.log.pods.
+          Kube_Tag_Prefix     kubernetes.var.log.containers.
           Use_Kubelet         Off
           Merge_Log           On
           Merge_Log_Trim      On
