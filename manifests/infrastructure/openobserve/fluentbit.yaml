@@ -113,8 +113,8 @@ spec:
           logs_severity_text_message_key loglevel
           logs_severity_number_message_key lognum
 
-    livenessProbe: {}
-    readinessProbe: {}
+    livenessProbe: null
+    readinessProbe: null
 
     daemonSetVolumes:
       - name: varlog
