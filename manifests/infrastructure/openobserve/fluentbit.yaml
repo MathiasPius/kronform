@@ -107,12 +107,14 @@ spec:
           Port                 4418
           Log_response_payload True
           Tls                  Off
-          Tls.verify           Off
           logs_body_key $message
           logs_span_id_message_key span_id
           logs_trace_id_message_key trace_id
           logs_severity_text_message_key loglevel
           logs_severity_number_message_key lognum
+
+    livenessProbe: {}
+    readinessProbe: {}
 
     daemonSetVolumes:
       - name: varlog
