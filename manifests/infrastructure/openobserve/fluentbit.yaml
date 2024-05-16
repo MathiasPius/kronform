@@ -53,7 +53,7 @@ spec:
         [INPUT]
           Name          tail
           Alias         kubernetes
-          Path          /var/log/containers/*.log
+          Path          /var/log/pods/*/*/*.log
           Parser        containerd
           Tag           kubernetes.*
 
