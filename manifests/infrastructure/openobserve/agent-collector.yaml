@@ -9,11 +9,11 @@ spec:
       otlphttp/openobserve:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:1i/w8SDpBUl4xV0poS/YojvZMmTVpEmVP96bYMHciGA4aX+imiOYY2WHFFIc1pQas0p59JOpDEtYdg==,iv:XkxggLTqPqtfEXvs5POkt/VnLMt1SKc6gP+RSC0ZioU=,tag:jGCKQtDMuqH6EMWarlsxlg==,type:str]
+          Authorization: ENC[AES256_GCM,data:ONypvFw8ENxJrCJ1zvGQrp14k1uInkll5DtyYeJjZMLVsvZggAy8GFG24+1tRttFkReB483oRPISpg==,iv:JE5TAdoYBd1MeNM5gzlgfMB/Am7RpATkkLo3D5A5ASA=,tag:jWC1DRrbque+SIqTYvOz3g==,type:str]
       otlphttp/openobserve_k8s_events:
         endpoint: http://openobserve-openobserve-standalone.openobserve.svc.local.kronform.pius.dev:5080/api/default/
         headers:
-          Authorization: ENC[AES256_GCM,data:ApxU5vsB6XyrTZBN34UGjGzkozW+tJh4CDu4PofWuihQqRadRqPZWhZhSXavBfckKO+EipfbXwg3sA==,iv:Izkr/FNgrkWvZWaI7QfmAxuXyJcKqmdSxQoLuujzgOs=,tag:NjpAnMe4KakKVTXeYajnpQ==,type:str]
+          Authorization: ENC[AES256_GCM,data:vU5Q+Xj2mgQVe4vRz9fLCW2SE0D5FGUhUGdkHePv4H2ZRqtkfplozpKa8sdQjhrZZwVPrWscXOMKVg==,iv:sG4zM5TugXjNyMdt5pWx2MIVx5jWrHZkCsnbSZyCYgM=,tag:q+Tk+y1MiDNvTT+vhD5Dcw==,type:str]
           stream-name: k8s_events
     processors:
       batch:
@@ -272,6 +272,9 @@ spec:
     maxUnavailable: 1
   replicas: 1
   resources: {}
+  securityContext:
+    runAsUser: 0
+    runAsGroup: 0
   serviceAccount: openobserve-collector
   targetAllocator:
     allocationStrategy: consistent-hashing
@@ -306,23 +309,23 @@ sops:
     - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLUGVxSkQ4dkpEMS9MZ1pL
-        TmRYSE5ta3RuVHIvWE5Wc21YajE1QlErUEdZCnJhZUVvZkR6cXl2Ny9GOWNoWkRP
-        RXNtSGlRcmozZldvLzVvRU9uQXVQU3cKLS0tIHZWYk1UUjFlOGY0eHkxT2gvcndp
-        V3R1K09zNlEvM1JOZURPb3IvcGM4d0UKZH/hHBj6uaTH4IHmJ+iyAC0Pp8S07p1Z
-        7mIGvSqBUOgjRuX4ioPvHqL75+2eNCIqjqzbjfQuVn6QYb7EaFfTdw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaNSswL09QZ09vUTZ1YndO
+        dDFJZ3EwdGdCdFNmMThOOUMxT29LTXFwRFE0CnBQWkZqV0YrMHBpZUo5RUQyNkxh
+        Q0xkUTVGM2JwQTNPMnRjaE5WZU5EL3cKLS0tIG94TXFmWmpuRlRMd0orcGxxUG5Z
+        OHpNMFFvbFFLMWlWcGx1N0Q1cDd6Nk0K4R9T7rLNlYeP8HA6lGMJhipYhSqoMLoq
+        iYbaffl1UXPLeZb4tlNkBikuikdxjRzp/qWG5vAdEPJEoIl2qd/9hA==
         -----END AGE ENCRYPTED FILE-----
     - recipient: age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBxMkptN0RPeDlqaEtqQmlN
-        NUhQVTByYS9QZG1nWkQybUdIMHhFUVdHUjJnCmJjdDlrSmc4bEN1WE8xRTlBcjAr
-        TWlRTTN2SHJUVXdoSlVXTmlkcGtIbWcKLS0tIG5KL2dJVkxXWllDOWxoNjZzZXVt
-        UFhPN1Y1alFPZHVzY0hOZkJqOXNXNWcKgR7TH/4j5Yp7ztaMR1FKJG0+CFKAN1HV
-        QMO1rJOjAl1OXNQyEOZQoq3YY15YU9JbXW0JF3W1aJeiAmEsk6ZW2g==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNYlJyUXFjSjJQcktyb1Ey
+        Nmh0S2oxZVZ2RUNtTklEZ0pWTTA5eTY0NTJnCldEUXpwWlZPWnB1OFRyRmpWS3Vp
+        WEErZGZFUUZseXp5SUQ3ZEpKY2U4cFUKLS0tIEpES3pvNEYxZkIvc1lqM0NFcnps
+        aVRXWDNsYWN3MWxJRkhVOUdGVXltM0EKNeuqoRevd5pjPB5w3OdbSfVvoOj+Gda+
+        Ab/lNFX1PU1k9umMbg7VEkUz2QDJncoTbVLWIGSFvt9njPDq7Zdnzw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2024-05-22T19:21:51Z"
-  mac: ENC[AES256_GCM,data:Y//iGNLqIPZ/6ESBgnIg8Qc3iYLcUFwmLIsRRto5PyEwIdZ6+v3V3jNAR8UHWB78bd9cAgcrrxI1hEKgYz6oPo1NJiEqb1UY1Fyh6vJ3DEub0I6Aos8vd4EFk/nbFniXeuOS1g+R/wymYR5mWOgCqZpZpmMX8MO1+uAAdSsB63Q=,iv:lGUx49xuFjJDZ57EaUgJH+HOgMrnVc8hJrOS2rXlsUA=,tag:azukOdufI3TcVLvetaaBKg==,type:str]
+  lastmodified: "2024-05-23T06:55:28Z"
+  mac: ENC[AES256_GCM,data:TwU/8RJG5a9oZoFIuW4O+vaoHVcd0xBeJgfAgufITMkWFSbEGidb6RWOCsZZGkWBI1M19EFK4FuVsgQ4q9fKjjSQ1ijGoiRxxq1ueL0nHQFJsZpltMMnPEy1K92+H1Ub7NLTih0lHojkZBilbeFphdUhlj4MjIOk6LC7RsfMqQw=,iv:OWvFBDaPn9WvsrLraidUCKmBDwOnqoeXjp+U4EUEeas=,tag:hPSY//NZ9w4bk9986R+mcg==,type:str]
   pgp: []
   encrypted_regex: ^(data|stringData|Authorization)$
   version: 3.8.1
