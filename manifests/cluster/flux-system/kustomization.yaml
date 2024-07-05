@@ -15,3 +15,4 @@ resources:
   - postgres.yaml
   - renovate.yaml
   - openobserve.yaml
+  - kubizone.yaml

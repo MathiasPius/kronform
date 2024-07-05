@@ -1,0 +1,8 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://raw.githubusercontent.com/kubi-zone/kubizone-crds/v0.13.1/crds/kubi.zone/v1alpha1/Record.yaml
+  - https://raw.githubusercontent.com/kubi-zone/kubizone-crds/v0.13.1/crds/kubi.zone/v1alpha1/Zone.yaml
+  - namespace.yaml
+  - secret.yaml

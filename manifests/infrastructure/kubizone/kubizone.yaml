@@ -1,0 +1,59 @@
+# manifests/infrastructure/kubizone/kubizone.yaml
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: kubizone
+  namespace: kubizone
+spec:
+  interval: 5m0s
+  url: https://charts.kubi.zone/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubizone
+  namespace: kubizone
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kubizone
+      version: "<0.2.0"
+      sourceRef:
+        kind: HelmRepository
+        name: kubizone
+        namespace: kubizone
+      interval: 1m
+  values:
+    externaldns:
+      enabled: true
+      webhookEndpoint: "http://localhost:8888"
+      sidecars:
+        - name: hetzner-webhook
+          image: ghcr.io/mconfalonieri/external-dns-hetzner-webhook:v0.6.0
+          ports:
+            - containerPort: 8888
+              name: webhook
+            - containerPort: 8080
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          env:
+            - name: DOMAIN_FILTER
+              value: "kubi.zone"
+            - name: HETZNER_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hetzner-credentials
+                  key: HCLOUD_TOKEN
