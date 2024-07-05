@@ -55,5 +55,5 @@ spec:
             - name: HETZNER_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: hetzner-credentials
+                  name: hcloud-token
                   key: HCLOUD_TOKEN
