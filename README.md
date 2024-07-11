@@ -14,3 +14,4 @@ The process for setting up the cluster was/is being documented in a blog series 
 * [Part VII: Private Registry with Harbor](https://datavirke.dk/posts/bare-metal-kubernetes-part-7-private-registry-with-harbor/)
 * [Part VIII: Containerizing our Work Environment](https://datavirke.dk/posts/bare-metal-kubernetes-part-8-containerizing-our-work-environment/)
 * [Part IX: Renovating old Deployments](https://datavirke.dk/posts/bare-metal-kubernetes-part-9-renovating-old-deployments/)
+* [Part X: Metrics and Monitoring with OpenObserve](https://datavirke.dk/posts/bare-metal-kubernetes-part-10-metrics-and-monitoring-with-openobserve/)
