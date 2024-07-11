@@ -1,0 +1,43 @@
+apiVersion: kubi.zone/v1alpha1
+kind: Zone
+metadata:
+  name: kronform-pius-dev
+  namespace: kubizone
+spec:
+  domainName: kronform.pius.dev.
+  delegations:
+    - records:
+        - pattern: "*"
+---
+apiVersion: kubi.zone/v1alpha1
+kind: Record
+metadata:
+  name: kube-apiserver-n1
+  namespace: kube-system
+spec:
+  class: IN
+  domainName: api.kronform.pius.dev.
+  rdata: 159.69.60.182
+  type: A
+---
+apiVersion: kubi.zone/v1alpha1
+kind: Record
+metadata:
+  name: kube-apiserver-n2
+  namespace: kube-system
+spec:
+  class: IN
+  domainName: api.kronform.pius.dev.
+  rdata: 88.99.105.56
+  type: A
+---
+apiVersion: kubi.zone/v1alpha1
+kind: Record
+metadata:
+  name: kube-apiserver-n3
+  namespace: kube-system
+spec:
+  class: IN
+  domainName: api.kronform.pius.dev.
+  rdata: 46.4.77.66
+  type: A

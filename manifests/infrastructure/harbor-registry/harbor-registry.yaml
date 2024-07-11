@@ -1,4 +1,4 @@
-# manifests/infrastructure/external-dns/external-dns.yaml
+# manifests/infrastructure/harbor-registry/harbor-registry.yaml
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
@@ -47,6 +47,5 @@ spec:
       core:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns.alpha.kubernetes.io/hostname: registry.kronform.pius.dev
         hostname: registry.kronform.pius.dev
         tls: true

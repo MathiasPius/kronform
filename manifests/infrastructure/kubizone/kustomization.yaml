@@ -7,3 +7,4 @@ resources:
   - namespace.yaml
   - secret.yaml
   - kubizone.yaml
+  - kronform.pius.dev.yaml
