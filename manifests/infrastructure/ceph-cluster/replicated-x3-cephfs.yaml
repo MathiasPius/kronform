@@ -103,6 +103,7 @@ spec:
     priorityClassName: system-cluster-critical
     livenessProbe:
       disabled: false
+      failureThreshold: 20
     startupProbe:
       disabled: false
   # Filesystem mirroring settings
