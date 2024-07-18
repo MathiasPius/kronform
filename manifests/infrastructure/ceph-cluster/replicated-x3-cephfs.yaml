@@ -145,7 +145,7 @@ parameters:
 
   # Ceph pool into which the volume shall be created
   # Required for provisionVolume: "true"
-  pool: replicated-x3-cephfs-data
+  pool: replicated-x3-filesystem-data
 
   # The secrets contain Ceph admin credentials. These are generated automatically by the operator
   # in the same namespace as the cluster.
