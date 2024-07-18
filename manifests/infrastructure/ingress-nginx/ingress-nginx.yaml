@@ -39,6 +39,7 @@ spec:
         enable-ssl-passthrough: ""
       config:
         use-forwarded-headers: "true"
+        forwarded-for-header: "proxy_protocol"
         compute-full-forwarded-for: "true"
         enable-real-ip: "true"
         proxy-real-ip-cidr: "10.96.0.0/12"
