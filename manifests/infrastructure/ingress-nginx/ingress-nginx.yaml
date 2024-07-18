@@ -37,7 +37,8 @@ spec:
         enabled: false
       extraArgs:
         enable-ssl-passthrough: ""
+      config:
         use-forwarded-headers: "true"
-        compute-full-forwarded-for: "true"
+        compute-full-forwarded-for: ""
         enable-real-ip: "true"
         proxy-real-ip-cidr: "10.96.0.0/12"
