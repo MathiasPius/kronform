@@ -40,4 +40,4 @@ spec:
         use-forwarded-headers: "true"
         compute-full-forwarded-for: "true"
         enable-real-ip: "true"
-        proxy-real-ip-cidr: "0.0.0.0/1"
+        proxy-real-ip-cidr: "10.96.0.0/12"
