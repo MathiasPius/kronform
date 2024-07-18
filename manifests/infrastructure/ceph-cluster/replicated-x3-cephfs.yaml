@@ -102,8 +102,7 @@ spec:
         memory: "1024Mi"
     priorityClassName: system-cluster-critical
     livenessProbe:
-      disabled: false
-      failureThreshold: 20
+      disabled: true
     startupProbe:
       disabled: false
   # Filesystem mirroring settings
