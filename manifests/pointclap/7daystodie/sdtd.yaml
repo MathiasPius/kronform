@@ -30,10 +30,10 @@ data:
       <property name="ServerAdminSlotsPermission"     value="0"/>      <!-- Required permission level to use the admin slots above -->
 
       <!-- Admin interfaces -->
-      <property name="WebDashboardEnabled"          value="false"/>    <!-- Enable/disable the web dashboard -->
+      <property name="WebDashboardEnabled"          value="true"/>    <!-- Enable/disable the web dashboard -->
       <property name="WebDashboardPort"             value="8080"/>     <!-- Port of the web dashboard -->
-      <property name="WebDashboardUrl"              value=""/>         <!-- External URL to the web dashboard if not just using the public IP of the server, e.g. if the web dashboard is behind a reverse proxy. Needs to be the full URL, like "https://domainOfReverseProxy.tld:1234/". Can be left empty if directly using the public IP and dashboard port -->
-      <property name="EnableMapRendering"           value="false"/>    <!-- Enable/disable rendering of the map to tile images while exploring it. This is used e.g. by the web dashboard to display a view of the map. -->
+      <property name="WebDashboardUrl"              value="https://sdtd.pointclap.org"/>         <!-- External URL to the web dashboard if not just using the public IP of the server, e.g. if the web dashboard is behind a reverse proxy. Needs to be the full URL, like "https://domainOfReverseProxy.tld:1234/". Can be left empty if directly using the public IP and dashboard port -->
+      <property name="EnableMapRendering"           value="true"/>    <!-- Enable/disable rendering of the map to tile images while exploring it. This is used e.g. by the web dashboard to display a view of the map. -->
 
       <property name="TelnetEnabled"                value="false"/>    <!-- Enable/Disable the telnet -->
       <property name="TelnetPort"                   value="8081"/>     <!-- Port of the telnet server -->
