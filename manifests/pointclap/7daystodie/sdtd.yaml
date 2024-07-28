@@ -401,43 +401,43 @@ spec:
   selector:
     app.kubernetes.io/name: sdtd
   type: NodePort
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sdtd-map
-  namespace: pointclap
-spec:
-  ports:
-    - name: sdtd-dashboard
-      protocol: TCP
-      port: 8080
-      targetPort: 8080
-  selector:
-    app.kubernetes.io/name: sdtd
-  type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: sdtd-map
-  namespace: pointclap
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: 7dtd.pointclap.org
-      http:
-        paths:
-          - backend:
-              service:
-                name: sdtd-map
-                port:
-                  name: sdtd-dashboard
-            path: /
-            pathType: ImplementationSpecific
-  tls:
-    - hosts:
-        - 7dtd.pointclap.org
-      secretName: 7dtd.pointclap.org-tls
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sdtd-map
+#   namespace: pointclap
+# spec:
+#   ports:
+#     - name: sdtd-dashboard
+#       protocol: TCP
+#       port: 8080
+#       targetPort: 8080
+#   selector:
+#     app.kubernetes.io/name: sdtd
+#   type: ClusterIP
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: sdtd-map
+#   namespace: pointclap
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-production
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#     - host: 7dtd.pointclap.org
+#       http:
+#         paths:
+#           - backend:
+#               service:
+#                 name: sdtd-map
+#                 port:
+#                   name: sdtd-dashboard
+#             path: /
+#             pathType: ImplementationSpecific
+#   tls:
+#     - hosts:
+#         - 7dtd.pointclap.org
+#       secretName: 7dtd.pointclap.org-tls
