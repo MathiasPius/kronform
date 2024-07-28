@@ -10,7 +10,7 @@ data:
       <!-- Server representation -->
       <property name="ServerName"                     value="PointClap"/>               <!-- Whatever you want the name of the server to be. -->
       <property name="ServerDescription"              value="A 7 Days to Die server"/>  <!-- Whatever you want the server description to be, will be shown in the server browser. -->
-      <property name="ServerWebsiteURL"               value=""/>                        <!-- Website URL for the server, will be shown in the serverbrowser as a clickable link -->
+      <property name="ServerWebsiteURL"               value="https://sdtd.pointclap.org"/>                        <!-- Website URL for the server, will be shown in the serverbrowser as a clickable link -->
       <property name="ServerPassword"                 value="gayben"/>                  <!-- Password to gain entry to the server -->
       <property name="ServerLoginConfirmationText"    value="" />                       <!-- If set the user will see the message during joining the server and has to confirm it before continuing. For more complex changes to this window you can change the "serverjoinrulesdialog" window in XUi -->
       <property name="Region"                         value="Europe" />                 <!-- The region this server is in. Values: NorthAmericaEast, NorthAmericaWest, CentralAmerica, SouthAmerica, Europe, Russia, Asia, MiddleEast, Africa, Oceania -->
@@ -338,7 +338,7 @@ spec:
               containerPort: 32602
               protocol: UDP
             - name: sdtd-map
-              containerPort: 8082
+              containerPort: 8080
               protocol: TCP
           volumeMounts:
             - name: saves
@@ -401,3 +401,41 @@ spec:
   selector:
     app.kubernetes.io/name: sdtd
   type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdtd-map
+  namespace: pointclap
+spec:
+  ports:
+    - name: sdtd-dashboard
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: sdtd
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sdtd-map
+  namespace: pointclap
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sdtd.pointclap.org
+      http:
+        paths:
+          - backend:
+              service:
+                name: sdtd-map
+                port:
+                  name: http
+            path: /
+            pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - sdtd.pointclap.org
+      secretName: sdtd.pointclap.org-tls
