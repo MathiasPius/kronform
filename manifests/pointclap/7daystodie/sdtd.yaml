@@ -422,6 +422,8 @@ kind: Ingress
 metadata:
   name: sdtd-map
   namespace: pointclap
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   ingressClassName: nginx
   rules:
