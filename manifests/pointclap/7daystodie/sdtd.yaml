@@ -10,7 +10,7 @@ data:
       <!-- Server representation -->
       <property name="ServerName"                     value="PointClap"/>               <!-- Whatever you want the name of the server to be. -->
       <property name="ServerDescription"              value="A 7 Days to Die server"/>  <!-- Whatever you want the server description to be, will be shown in the server browser. -->
-      <property name="ServerWebsiteURL"               value="https://sdtd.pointclap.org"/>                        <!-- Website URL for the server, will be shown in the serverbrowser as a clickable link -->
+      <property name="ServerWebsiteURL"               value="https://7dtd.pointclap.org"/>                        <!-- Website URL for the server, will be shown in the serverbrowser as a clickable link -->
       <property name="ServerPassword"                 value="gayben"/>                  <!-- Password to gain entry to the server -->
       <property name="ServerLoginConfirmationText"    value="" />                       <!-- If set the user will see the message during joining the server and has to confirm it before continuing. For more complex changes to this window you can change the "serverjoinrulesdialog" window in XUi -->
       <property name="Region"                         value="Europe" />                 <!-- The region this server is in. Values: NorthAmericaEast, NorthAmericaWest, CentralAmerica, SouthAmerica, Europe, Russia, Asia, MiddleEast, Africa, Oceania -->
@@ -32,7 +32,7 @@ data:
       <!-- Admin interfaces -->
       <property name="WebDashboardEnabled"          value="true"/>    <!-- Enable/disable the web dashboard -->
       <property name="WebDashboardPort"             value="8080"/>     <!-- Port of the web dashboard -->
-      <property name="WebDashboardUrl"              value="https://sdtd.pointclap.org"/>         <!-- External URL to the web dashboard if not just using the public IP of the server, e.g. if the web dashboard is behind a reverse proxy. Needs to be the full URL, like "https://domainOfReverseProxy.tld:1234/". Can be left empty if directly using the public IP and dashboard port -->
+      <property name="WebDashboardUrl"              value="https://7dtd.pointclap.org"/>         <!-- External URL to the web dashboard if not just using the public IP of the server, e.g. if the web dashboard is behind a reverse proxy. Needs to be the full URL, like "https://domainOfReverseProxy.tld:1234/". Can be left empty if directly using the public IP and dashboard port -->
       <property name="EnableMapRendering"           value="true"/>    <!-- Enable/disable rendering of the map to tile images while exploring it. This is used e.g. by the web dashboard to display a view of the map. -->
 
       <property name="TelnetEnabled"                value="false"/>    <!-- Enable/Disable the telnet -->
@@ -425,7 +425,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: sdtd.pointclap.org
+    - host: 7dtd.pointclap.org
       http:
         paths:
           - backend:
@@ -437,5 +437,5 @@ spec:
             pathType: ImplementationSpecific
   tls:
     - hosts:
-        - sdtd.pointclap.org
-      secretName: sdtd.pointclap.org-tls
+        - 7dtd.pointclap.org
+      secretName: 7dtd.pointclap.org-tls
