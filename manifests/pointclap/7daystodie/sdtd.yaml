@@ -234,7 +234,7 @@ spec:
       initContainers:
         - name: sdtd-init-settings
           imagePullPolicy: IfNotPresent
-          image: docker.io/vinanrra/7dtd-server:v0.7.7
+          image: docker.io/vinanrra/7dtd-server:v0.7.8
           command:
             [
               "/bin/bash",
@@ -264,7 +264,7 @@ spec:
               mountPath: /home/sdtdserver/serverfiles/
         - name: sdtd-init
           imagePullPolicy: IfNotPresent
-          image: docker.io/vinanrra/7dtd-server:v0.7.7
+          image: docker.io/vinanrra/7dtd-server:v0.7.8
           securityContext:
             seccompProfile:
               type: RuntimeDefault
@@ -300,7 +300,7 @@ spec:
       containers:
         - name: sdtd
           imagePullPolicy: IfNotPresent
-          image: docker.io/vinanrra/7dtd-server:v0.7.7
+          image: docker.io/vinanrra/7dtd-server:v0.7.8
           #securityContext:
           #  runAsNonRoot: true
           #  runAsUser: 1000
