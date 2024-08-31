@@ -32,7 +32,7 @@ spec:
     persistence:
       persistentVolumeClaim:
         registry:
-          size: 50Gi
+          size: 200Gi
     core:
       updateStrategy:
         type: Recreate
