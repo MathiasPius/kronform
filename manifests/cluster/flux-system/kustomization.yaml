@@ -6,6 +6,7 @@ resources:
   - pull-secrets.yaml
   - cilium.yaml
   - ingress.yaml
+  - flux-capacitor.yaml
   - pointclap.yaml
   - rook-ceph.yaml
   - harbor-registry.yaml
