@@ -9,7 +9,6 @@ spec:
   url: oci://ghcr.io/gimlet-io/capacitor-manifests
   ref:
     semver: "<=0.4.0"
-    semverFilter: "capacitor\\-.*"
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
