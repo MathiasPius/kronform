@@ -6,8 +6,9 @@ resources:
   - namespace.yaml
   - secret.yaml
   - openobserve.yaml
-  - prometheus-operator-crds.yaml
   - agent-collector.yaml
   - gateway-collector.yaml
   - collector-sa.yaml
   - https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.99.0/opentelemetry-operator.yaml
+  - https://github.com/prometheus-operator/prometheus-operator/blob/v0.74.0/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
+  - https://github.com/prometheus-operator/prometheus-operator/blob/v0.74.0/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
