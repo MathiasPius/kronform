@@ -274,7 +274,7 @@ spec:
       containers:
         - name: factorio
           imagePullPolicy: IfNotPresent
-          image: factoriotools/factorio:2.0.15
+          image: factoriotools/factorio:2.0.14
           securityContext:
             runAsNonRoot: true
             runAsUser: 845
