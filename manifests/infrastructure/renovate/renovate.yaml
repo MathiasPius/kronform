@@ -41,7 +41,17 @@ spec:
           },
           "flux": {
             "fileMatch": ["^manifests/.+\\.yaml$"]
-          }
+          },
+          "customManagers": [
+            {
+              "customType": "regex",
+              "fileMatch": ["^manifests/.+\\.yaml$"],
+              "matchStrings": [
+                "https://github.com/(?<depName>[^/]+/[^/]+)/releases/download/(?<currentValue>[^/]+)?/.*"
+              ],
+              "datasourceTemplate": "github-releases"
+            }
+          ]
         }
       securityContext:
         runAsNonRoot: true
