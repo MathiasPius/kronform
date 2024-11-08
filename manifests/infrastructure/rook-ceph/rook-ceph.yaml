@@ -29,3 +29,5 @@ spec:
     crds:
       enabled: true
     enableDiscoveryDaemon: true
+    monitoring:
+      enabled: true

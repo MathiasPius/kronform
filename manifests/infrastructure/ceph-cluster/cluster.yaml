@@ -7,14 +7,16 @@ metadata:
 spec:
   cephVersion:
     image: quay.io/ceph/ceph:v18.2.4
+  monitoring:
+    enabled: true
   dataDirHostPath: /var/lib/rook
   mon:
     count: 3
     allowMultiplePerNode: false
   mgr:
     modules:
-    - name: rook
-      enabled: true
+      - name: rook
+        enabled: true
   dashboard:
     enabled: true
   storage:
@@ -23,6 +25,6 @@ spec:
   placement:
     all:
       tolerations:
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/control-plane
-        operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
