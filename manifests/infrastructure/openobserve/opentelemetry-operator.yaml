@@ -1,0 +1,46 @@
+# manifests/infrastructure/openobserve/opentelemetry-operator.yaml
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: opentelemetry
+  namespace: openobserve
+spec:
+  interval: 5m0s
+  url: https://open-telemetry.github.io/opentelemetry-helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: opentelemetry-operator
+  namespace: openobserve
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: opentelemetry-operator
+      version: <0.73.1
+      sourceRef:
+        kind: HelmRepository
+        name: opentelemetry
+        namespace: openobserve
+      interval: 1m
+  values:
+    crds:
+      create: true
+    admissionWebhooks:
+      create: true
+      certManager:
+        enabled: true
+      autoGenerateCert:
+        enabled: true
+    manager:
+      collectorImage:
+        repository: otel/opentelemetry-collector-k8s
+      securityContext:
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+            - ALL
