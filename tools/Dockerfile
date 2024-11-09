@@ -5,10 +5,10 @@ FROM debian:bookworm-slim AS installer
 # Using arguments allows us to update the tools easily in the future.
 ARG KUBECTL_VERSION="1.31.2"
 ARG TALOSCTL_VERSION="1.8.2"
-ARG YQ_VERSION="4.40.5"
-ARG SOPS_VERSION="3.8.1"
+ARG YQ_VERSION="4.44.5"
+ARG SOPS_VERSION="3.9.1"
 ARG FLUX_VERSION="2.4.0"
-ARG HELM_VERSION="3.14.4"
+ARG HELM_VERSION="3.16.2"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN apt-get update \
