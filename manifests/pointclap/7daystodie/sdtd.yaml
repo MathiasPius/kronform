@@ -219,7 +219,7 @@ metadata:
     app.kubernetes.io/name: sdtd
 spec:
   serviceName: sdtd
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app.kubernetes.io/name: sdtd
