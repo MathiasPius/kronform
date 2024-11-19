@@ -65,6 +65,6 @@ spec:
       - secretRef:
           name: renovate-env
     securityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
+      runAsUser: 12021
+      runAsGroup: 12021
+      fsGroup: 12021
