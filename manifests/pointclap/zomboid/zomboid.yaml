@@ -27,8 +27,7 @@ spec:
       interval: 1m
   values:
     service:
-      enable: true
-      type: NodePort
+      enable: false
     server:
       image: lis314/project-zomboid-docker@sha256:aa2089c37920dcd610209b12dddc3f2bd426e50b810112976a86d6d46b9dbc9f
     resources:
@@ -41,6 +40,8 @@ spec:
     ServerVolume:
       StorageClass: replicated-x3-block-store
     Config:
+      Port: "30814"
+      UDPPort: "30815"
       ServerName: PointClap
       Password: null
       PasswordSecret: zomboid-secrets
@@ -51,3 +52,5 @@ spec:
     ini:
       PVP: "false"
       SaveWorldEveryMinutes: "10"
+      DefaultPort: "30814"
+      UDPPort: "30815"

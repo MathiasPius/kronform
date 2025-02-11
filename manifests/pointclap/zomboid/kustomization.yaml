@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - zomboid.yaml
   - secrets.yaml
+  - service.yaml

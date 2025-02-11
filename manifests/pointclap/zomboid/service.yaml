@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zomboid-pzserver
+  namespace: pointclap
+spec:
+  ports:
+    - name: pzserver
+      nodePort: 30814
+      port: 30814
+      protocol: UDP
+      targetPort: pzserver
+    - name: pzplayer
+      nodePort: 30815
+      port: 30815
+      protocol: UDP
+      targetPort: pzplayer
+  selector:
+    app: pzserver
+  type: NodePort
