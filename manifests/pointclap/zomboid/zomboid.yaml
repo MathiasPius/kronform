@@ -56,3 +56,4 @@ spec:
       SaveWorldEveryMinutes: "10"
       DefaultPort: "30814"
       UDPPort: "30815"
+      server_browser_announced_ip: "159.69.60.182"
