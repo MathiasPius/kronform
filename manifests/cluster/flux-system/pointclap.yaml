@@ -82,3 +82,7 @@ spec:
   targetNamespace: pointclap
   dependsOn:
     - name: pointclap-namespace
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
