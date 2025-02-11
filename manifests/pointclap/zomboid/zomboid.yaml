@@ -40,6 +40,7 @@ spec:
     ServerVolume:
       StorageClass: replicated-x3-block-store
     Config:
+      Branch: "unstable"
       Port: "30914"
       UDPPort: "30915"
       ServerName: PointClap
