@@ -50,6 +50,8 @@ spec:
       AdminPasswordSecretKey: admin-password
       SteamVAC: "false"
     ini:
+      PublicName: "Point Clap Zombie Spa & Resort"
+      Public: "true"
       PVP: "false"
       SaveWorldEveryMinutes: "10"
       DefaultPort: "30814"
