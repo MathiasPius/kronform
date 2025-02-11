@@ -1,0 +1,53 @@
+# manifests/pointclap/zomboid.yaml
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: zomboid
+  namespace: pointclap
+spec:
+  interval: 5m0s
+  url: https://gitlab.com/api/v4/projects/64552889/packages/helm/release
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: zomboid
+  namespace: pointclap
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: pzserver
+      version: "0.1.17"
+      sourceRef:
+        kind: HelmRepository
+        name: zomboid
+        namespace: pointclap
+      interval: 1m
+  values:
+    service:
+      enable: true
+      type: NodePort
+    server:
+      image: lis314/project-zomboid-docker:sha256:aa2089c37920dcd610209b12dddc3f2bd426e50b810112976a86d6d46b9dbc9f
+    resources:
+      memory:
+        limit: 4096m
+      requests:
+        cpu: 2000m
+    DataVolume:
+      StorageClass: replicated-x3-block-store
+    ServerVolume:
+      StorageClass: replicated-x3-block-store
+    Config:
+      ServerName: Point Clap Zombie Spa & Resort
+      Password: null
+      PasswordSecret: zomboid-secrets
+      PasswordSecretKey: server-password
+      AdminPasswordSecret: zomboid-secrets
+      AdminPasswordSecretKey: admin-password
+      SteamVAC: "false"
+    ini:
+      PVP: "false"
+      SaveWorldEveryMinutes: "10"
