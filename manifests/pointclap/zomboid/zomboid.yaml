@@ -41,7 +41,7 @@ spec:
     ServerVolume:
       StorageClass: replicated-x3-block-store
     Config:
-      ServerName: Point Clap Zombie Spa & Resort
+      ServerName: PointClap
       Password: null
       PasswordSecret: zomboid-secrets
       PasswordSecretKey: server-password
