@@ -49,11 +49,11 @@ spec:
       AdminPasswordSecret: zomboid-secrets
       AdminPasswordSecretKey: admin-password
       SteamVAC: "false"
-    ini:
-      PublicName: "Point Clap Zombie Spa & Resort"
-      Public: "true"
-      PVP: "false"
-      SaveWorldEveryMinutes: "10"
-      DefaultPort: "30814"
-      UDPPort: "30815"
-      server_browser_announced_ip: "159.69.60.182"
+      ini:
+        PublicName: "Point Clap Zombie Spa & Resort"
+        Public: "true"
+        PVP: "false"
+        SaveWorldEveryMinutes: "10"
+        DefaultPort: "30814"
+        UDPPort: "30815"
+        server_browser_announced_ip: "159.69.60.182"
