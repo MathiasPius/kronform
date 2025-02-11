@@ -40,8 +40,8 @@ spec:
     ServerVolume:
       StorageClass: replicated-x3-block-store
     Config:
-      Port: "30814"
-      UDPPort: "30815"
+      Port: "30914"
+      UDPPort: "30915"
       ServerName: PointClap
       Password: null
       PasswordSecret: zomboid-secrets
@@ -54,6 +54,6 @@ spec:
         Public: "true"
         PVP: "false"
         SaveWorldEveryMinutes: "10"
-        DefaultPort: "30814"
-        UDPPort: "30815"
+        DefaultPort: "30914"
+        UDPPort: "30915"
         server_browser_announced_ip: "159.69.60.182"

@@ -6,13 +6,13 @@ metadata:
 spec:
   ports:
     - name: pzserver
-      nodePort: 30814
-      port: 30814
+      nodePort: 30914
+      port: 30914
       protocol: UDP
       targetPort: pzserver
     - name: pzplayer
-      nodePort: 30815
-      port: 30815
+      nodePort: 30915
+      port: 30915
       protocol: UDP
       targetPort: pzplayer
   selector:
