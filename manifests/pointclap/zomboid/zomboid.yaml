@@ -30,7 +30,7 @@ spec:
       enable: true
       type: NodePort
     server:
-      image: lis314/project-zomboid-docker:sha256:aa2089c37920dcd610209b12dddc3f2bd426e50b810112976a86d6d46b9dbc9f
+      image: lis314/project-zomboid-docker@sha256:aa2089c37920dcd610209b12dddc3f2bd426e50b810112976a86d6d46b9dbc9f
     resources:
       memory:
         limit: 4096m
