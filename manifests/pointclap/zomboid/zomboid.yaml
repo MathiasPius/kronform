@@ -57,9 +57,34 @@ spec:
         DefaultPort: "30914"
         UDPPort: "30915"
         server_browser_announced_ip: "159.69.60.182"
-        In order: Common Sense, True Actions, Proximity Inventory, Repair any clothes, Skill Recovery Journal, Kill Milestones, Jay's Building Expansion
+        # Mods: In order: Common Sense, True Actions, Proximity Inventory, Repair any clothes, Skill Recovery Journal, Kill Milestones, Jay's Building Expansion
         WorkshopItems: 2875848298;2487022075;2847184718;2142622992;2503622437;3340134879;3189275874
         Mods: BB_CommonSense;SkillRecoveryJournal;RepairAnyClothes;ProximityInventory;KMZ;BetterSortCC42;JaysMoreVanillaBuilding
+        AntiCheatProtectionType1: "false"
+        AntiCheatProtectionType2: "false"
+        AntiCheatProtectionType3: "false"
+        AntiCheatProtectionType4: "false"
+        AntiCheatProtectionType5: "false"
+        AntiCheatProtectionType6: "false"
+        AntiCheatProtectionType7: "false"
+        AntiCheatProtectionType8: "false"
+        AntiCheatProtectionType9: "false"
+        AntiCheatProtectionType10: "false"
+        AntiCheatProtectionType11: "false"
+        AntiCheatProtectionType12: "false"
+        AntiCheatProtectionType13: "false"
+        AntiCheatProtectionType14: "false"
+        AntiCheatProtectionType15: "false"
+        AntiCheatProtectionType16: "false"
+        AntiCheatProtectionType17: "false"
+        AntiCheatProtectionType18: "false"
+        AntiCheatProtectionType19: "false"
+        AntiCheatProtectionType20: "false"
+        AntiCheatProtectionType21: "false"
+        AntiCheatProtectionType22: "false"
+        AntiCheatProtectionType23: "false"
+        AntiCheatProtectionType24: "false"
+
       SandboxVars: |-
         SandboxVars = {
           VERSION = 5,
