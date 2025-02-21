@@ -59,7 +59,7 @@ spec:
         server_browser_announced_ip: "159.69.60.182"
         In order: Common Sense, True Actions, Proximity Inventory, Repair any clothes, Skill Recovery Journal, Kill Milestones, Jay's Building Expansion
         WorkshopItems: 2875848298;2487022075;2847184718;2142622992;2503622437;3340134879;3189275874
-        Mods: BB_CommonSense;SkillRecoveryJournal;RepairAnyClothes;ProximityInventory;KMZ;BetterSortCC42
+        Mods: BB_CommonSense;SkillRecoveryJournal;RepairAnyClothes;ProximityInventory;KMZ;BetterSortCC42;JaysMoreVanillaBuilding
       SandboxVars: |-
         SandboxVars = {
           VERSION = 5,
