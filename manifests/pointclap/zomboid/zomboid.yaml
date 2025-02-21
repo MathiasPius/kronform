@@ -57,9 +57,5 @@ spec:
         DefaultPort: "30914"
         UDPPort: "30915"
         server_browser_announced_ip: "159.69.60.182"
-        WorkshopItems:
-          - 2875848298 # Common Sense
-          - 2487022075 # True Actions
-          - 2847184718 # Proximity Inventory
-          - 2142622992 # Repair any clothes
-          - 2503622437 # Skill Recovery Journal
+        In order: Common Sense, True Actions, Proximity Inventory, Repair any clothes, Skill Recovery Journal
+        WorkshopItems: 2875848298;2487022075;;2847184718;;2142622992;2503622437;
