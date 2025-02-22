@@ -131,6 +131,16 @@ spec:
             - port: "443"
               protocol: "TCP"
 
+    # Allow SMTP access from anywhere
+    # This is part of a DMARC project
+    - fromEntities:
+        - world
+        - cluster
+      toPorts:
+        - ports:
+            - port: "25"
+              protocol: "TCP"
+
     # Allow access from inside the cluster to
     # the admission controller
     - fromEntities:
