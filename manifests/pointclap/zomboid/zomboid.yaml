@@ -743,7 +743,7 @@ spec:
               RecoverProfessionAndTraitsBonuses = false,
               TranscribeTVXP = false,
               -- Minimum=-1 Maximum=100 Default=0
-              RecoverPassiveSkills = 0,
+              RecoverPassiveSkills = -1,
               -- Minimum=-1 Maximum=100 Default=-1
               RecoverCombatSkills = -1,
               -- Minimum=-1 Maximum=100 Default=-1
