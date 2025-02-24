@@ -15,3 +15,15 @@ The process for setting up the cluster was/is being documented in a blog series 
 * [Part VIII: Containerizing our Work Environment](https://datavirke.dk/posts/bare-metal-kubernetes-part-8-containerizing-our-work-environment/)
 * [Part IX: Renovating old Deployments](https://datavirke.dk/posts/bare-metal-kubernetes-part-9-renovating-old-deployments/)
 * [Part X: Metrics and Monitoring with OpenObserve](https://datavirke.dk/posts/bare-metal-kubernetes-part-10-metrics-and-monitoring-with-openobserve/)
+
+
+# Upgrading Flux
+
+Upgrade the Flux version in the tools container, and run the following command inside the container:
+
+```bash
+flux install \
+    --cluster-domain local.kronform.pius.dev \
+    --components-extra image-reflector-controller,image-automation-controller \
+    --export > manifests/cluster/flux-system/gotk-components.yaml
+```
