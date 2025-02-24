@@ -6,9 +6,9 @@ FROM debian:bookworm-slim AS installer
 ARG KUBECTL_VERSION="1.31.2"
 ARG TALOSCTL_VERSION="1.8.2"
 ARG YQ_VERSION="4.44.5"
-ARG SOPS_VERSION="3.9.1"
-ARG FLUX_VERSION="2.4.0"
-ARG HELM_VERSION="3.16.2"
+ARG SOPS_VERSION="3.9.4"
+ARG FLUX_VERSION="2.5.0"
+ARG HELM_VERSION="3.17.1"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN apt-get update \
@@ -35,7 +35,6 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
     && tar -xf flux.tar.gz \
     && rm flux.tar.gz \
     && chmod u+x flux
-
 
 RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
     && tar -xf helm.tar.gz \
