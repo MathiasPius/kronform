@@ -10,4 +10,4 @@ resources:
   - gateway-collector.yaml
   - collector-sa.yaml
   - opentelemetry-operator.yaml
-  - https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.81.0/bundle.yaml
+  - https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.82.0/bundle.yaml
