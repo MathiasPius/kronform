@@ -1,11 +1,12 @@
 # manifests/infrastructure/harbor-registry/harbor-registry.yaml
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: OCIRepository
+kind: HelmRepository
 metadata:
   name: harbor-registry
   namespace: harbor-registry
 spec:
+  type: "oci"
   interval: 5m0s
   url: oci://registry-1.docker.io/bitnamicharts/harbor
   ref:
