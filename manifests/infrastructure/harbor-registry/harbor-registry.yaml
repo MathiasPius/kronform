@@ -20,7 +20,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: "<26.0.0"
+      version: "<25.0.0"
       sourceRef:
         kind: HelmRepository
         name: harbor-registry
