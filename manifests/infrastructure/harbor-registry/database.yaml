@@ -13,12 +13,3 @@ spec:
         name: harbor-secrets-postgres
   storage:
     size: 8Gi
-  externalClusters:
-    - name: original-harbor
-      connectionParameters:
-        host: harbor-registry-postgresql
-        user: postgres
-        dbname: registry
-      password:
-        name: harbor-secrets
-        key: postgres-password
