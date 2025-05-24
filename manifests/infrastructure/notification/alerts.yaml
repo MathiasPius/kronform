@@ -5,7 +5,8 @@ metadata:
   name: fluxcd-alert
   namespace: notification
 spec:
-  summary: "FluxCD Error"
+  eventMetadata:
+    summary: "FluxCD Error"
   providerRef:
     name: telegram-provider
   eventSeverity: error
