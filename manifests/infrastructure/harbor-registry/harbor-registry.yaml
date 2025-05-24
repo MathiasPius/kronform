@@ -8,7 +8,7 @@ metadata:
 spec:
   type: "oci"
   interval: 5m0s
-  url: oci://registry-1.docker.io/bitnamicharts/harbor
+  url: oci://registry-1.docker.io/bitnamicharts
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
