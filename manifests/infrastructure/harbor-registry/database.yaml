@@ -1,0 +1,24 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: harbor-postgresql
+  namespace: harbor-registry
+spec:
+  instances: 1
+  bootstrap:
+    initdb:
+      database: registry
+      owner: bn_harbor
+      secret:
+        name: harbor-secrets-postgres
+  storage:
+    size: 8Gi
+  externalClusters:
+    - name: original-harbor
+      connectionParameters:
+        host: harbor-registry-postgresql
+        user: postgres
+        dbname: registry
+      password:
+        name: harbor-secrets
+        key: postgres-password

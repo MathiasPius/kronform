@@ -29,7 +29,14 @@ spec:
   values:
     clusterDomain: local.kronform.pius.dev
     externalURL: https://registry.kronform.pius.dev
-    adminPassword: changeme
+    existingEnvVarsSecret: "harbor-secrets"
+    postgresql:
+      enabled: false
+    externalDatabase:
+      host: harbor-postgresql-rw
+      coreDatabase: registry
+      existingSecret: harbor-secrets
+      existingSecretPasswordKey: postgres-password
     persistence:
       persistentVolumeClaim:
         registry:
