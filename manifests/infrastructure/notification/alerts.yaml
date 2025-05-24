@@ -3,7 +3,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
   name: fluxcd-alert
-  namespace: notification
+  namespace: flux-system
 spec:
   eventMetadata:
     summary: "FluxCD Error"
