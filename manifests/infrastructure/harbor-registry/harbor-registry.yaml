@@ -1,13 +1,15 @@
 # manifests/infrastructure/harbor-registry/harbor-registry.yaml
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: harbor-registry
   namespace: harbor-registry
 spec:
   interval: 5m0s
-  url: https://charts.bitnami.com/bitnami
+  url: oci://registry-1.docker.io/bitnamicharts/harbor
+  ref:
+    semver: "<26.0.0"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -16,15 +18,9 @@ metadata:
   namespace: harbor-registry
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: harbor
-      version: "<26.0.0"
-      sourceRef:
-        kind: HelmRepository
-        name: harbor-registry
-        namespace: harbor-registry
-      interval: 1m
+  chartRef:
+    kind: OCIRepository
+    name: harbor-registry
   values:
     clusterDomain: local.kronform.pius.dev
     externalURL: https://registry.kronform.pius.dev
