@@ -9,7 +9,7 @@ spec:
     summary: "FluxCD Error"
   providerRef:
     name: telegram-provider
-  eventSeverity: info
+  eventSeverity: error
   eventSources:
     - kind: GitRepository
       name: "*"
