@@ -36,16 +36,12 @@ spec:
           "labels": ["renovate", "dependencies"],
           "platform": "github",
           "repositories": ["MathiasPius/kronform"],
-          "kubernetes": {
-            "fileMatch": ["^manifests/.+\\.yaml$"]
-          },
-          "flux": {
-            "fileMatch": ["^manifests/.+\\.yaml$"]
-          },
+          "kubernetes": {"managerFilePatterns": ["/^manifests/.+\\.yaml$/"]},
+          "flux": {"managerFilePatterns": ["/^manifests/.+\\.yaml$/"]},
           "customManagers": [
             {
               "customType": "regex",
-              "fileMatch": ["^manifests/.+\\.yaml$"],
+              "managerFilePatterns": ["/^manifests/.+\\.yaml$/"],
               "matchStrings": [
                 "https://github.com/(?<depName>[^/]+/[^/]+)/releases/download/(?<currentValue>[^/]+)?/.*"
               ],
