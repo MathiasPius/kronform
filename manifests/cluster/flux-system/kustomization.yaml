@@ -12,7 +12,6 @@ resources:
   - harbor-registry.yaml
   - metrics-server.yaml
   - kubelet-cert-rotation.yaml
-  - notification.yaml
   - postgres.yaml
   - renovate.yaml
   - openobserve.yaml
