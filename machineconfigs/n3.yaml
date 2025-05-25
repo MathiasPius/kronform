@@ -259,7 +259,7 @@ machine:
                     # Optional registry authentication.
                     username: mathiaspius
                     # Optional registry authentication.
-                    password: ENC[AES256_GCM,data:MjyHK7+MtJjM2u2yhVlWE/5RXJwNOGq1Y2oyRdsrE9iKrQxj1mZpFFCVFvhp/Vl4sJfR9yzBdMUAaoyCTNVlGHMWs2YWKBMbNNVFr2iCS+ez19j5fVg8jEGs6xUt,iv:+Y7h7ICWb/BzC0DbSb2XAGmtPAsGtXLnKKlq2rXLDk0=,tag:tBXqYT7I9xT1jIxD/Eow/w==,type:str]
+                    password: ENC[AES256_GCM,data:A0fQ+KqHq3Jx8yNvDKQFdtFreUN5bl0kow/A92K1ToGwrG3v2hpskmqP/sEunNFk+HM/IFEk8ux6zqqg+7TKEJhyL+i1hYRLrsFbTFHu1GNeLwdpIYvGPB49/OqV,iv:oF+6XbINR+HmpGaXiaSG/gFocTa+iPhUc3X8Ya4GVbU=,tag:67VwJHhQ137mcoQAxd6hJw==,type:str]
                     # # The TLS configuration for the registry.
                     # tls:
                     #     # Enable mutual TLS authentication with the registry.
@@ -604,8 +604,8 @@ sops:
             UGhGUUJnZmQ0alMwbEo3Q2NKVldtZWsK8kGbJk4UTJysVvn1PmQ3TzmSlCgTsDM5
             GNGiaSS7zQneQia0gQaQfjo/fTFFjy57S6cZbhrRVULwfPtKuPNjaA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-11-09T14:07:28Z"
-    mac: ENC[AES256_GCM,data:clf+/yz+1yeuqafe+V6iT0URjOoGXrHnLDamMlfhVLG2p4QYezo3aKijOsx48wB3enZgsRIEW/xPEqQIGwAW6BqmPZ3AhVFGKlNZZ708uroJ0zUtj+PUx2GL9V7p9aWeYBwKdqhNWDmnOFbfZeo84ybaO6ZEPP5+if7Hx3qwuac=,iv:wzHBRa8ksxQ6LuP+ft+cVn6Kgcm6Md7uHeaYI5NJXN8=,tag:GFn72djxA0fBNChwwwxxuA==,type:str]
+    lastmodified: "2025-05-25T12:41:36Z"
+    mac: ENC[AES256_GCM,data:hp7yLlAR9hjHIPm9NPCD9cTdWPp7pYuCb5/Uqph1do9djn4e9JDdJiuSYyR+5E1J5TKJLtT9r/PuRUbI1FJle589yL6uKy75udzkMnzxOTKuSwhxcHCXci7i8cdJHxnNJbZOazbszHVyPZqquNAgMjA3m3Med9ymhDUgWSPQj8I=,iv:YEvAHpj8pi9QW5mwGSHwUQ8dE4sd29YFz91nH3mutn8=,tag:hBJcfMwylh+rnh+ZH4ULOg==,type:str]
     pgp: []
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
-    version: 3.8.1
+    version: 3.9.4
