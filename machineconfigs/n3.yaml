@@ -590,10 +590,6 @@ cluster:
 # adminKubeconfig:
 #     certLifetime: 1h0m0s # Admin kubeconfig certificate lifetime (default is 1 year).
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
           enc: |
@@ -604,8 +600,7 @@ sops:
             UGhGUUJnZmQ0alMwbEo3Q2NKVldtZWsK8kGbJk4UTJysVvn1PmQ3TzmSlCgTsDM5
             GNGiaSS7zQneQia0gQaQfjo/fTFFjy57S6cZbhrRVULwfPtKuPNjaA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-05-25T12:41:36Z"
-    mac: ENC[AES256_GCM,data:hp7yLlAR9hjHIPm9NPCD9cTdWPp7pYuCb5/Uqph1do9djn4e9JDdJiuSYyR+5E1J5TKJLtT9r/PuRUbI1FJle589yL6uKy75udzkMnzxOTKuSwhxcHCXci7i8cdJHxnNJbZOazbszHVyPZqquNAgMjA3m3Med9ymhDUgWSPQj8I=,iv:YEvAHpj8pi9QW5mwGSHwUQ8dE4sd29YFz91nH3mutn8=,tag:hBJcfMwylh+rnh+ZH4ULOg==,type:str]
-    pgp: []
+    lastmodified: "2025-05-26T21:25:23Z"
+    mac: ENC[AES256_GCM,data:H9Hwi6eL3Iawg5LnrD1x83CytLDSZ7iYa5bboEUfK06fmUkxi2G6mNW3Bx49gIvC3Y578EMg9MlgEt/5wxOn5KYW3pJ1+JwQ438vFV0lhxKPeF9mkmPB56ifLAMgDXB7vmD6fmUXy6loda9q7oE9if14SgmK8WLsJwcRXEXb+kQ=,iv:H1hU6F1FyhBlPsCrqTxzpadnSU8JUsDwxT+j8zDDiIM=,tag:80DEm/DwlbL30keBvn9ygw==,type:str]
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
-    version: 3.9.4
+    version: 3.10.2
