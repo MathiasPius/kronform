@@ -1,10 +1,14 @@
 # manifests/infrastructure/ceph-cluster/cluster.yaml
+---
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
 metadata:
   name: rook-ceph
   namespace: rook-ceph
 spec:
+  cephConfig:
+    global:
+      mon_data_avail_warn: "10"
   cephVersion:
     image: quay.io/ceph/ceph:v19.2.2
   monitoring:
@@ -14,6 +18,7 @@ spec:
     count: 3
     allowMultiplePerNode: false
   mgr:
+    count: 3
     modules:
       - name: rook
         enabled: true
