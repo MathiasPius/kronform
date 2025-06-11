@@ -35,20 +35,7 @@ spec:
           "extends": ["config:best-practices"],
           "labels": ["renovate", "dependencies"],
           "platform": "github",
-          "repositories": ["MathiasPius/kronform"],
-          "kubernetes": {"managerFilePatterns": ["/^manifests/.+\\.yaml$/"]},
-          "flux": {"managerFilePatterns": ["/^manifests/.+\\.yaml$/"]},
-          "dockerfile": { "managerFilePatterns": ["tools/Dockerfile"] },
-          "customManagers": [
-            {
-              "customType": "regex",
-              "managerFilePatterns": ["/^manifests/.+\\.yaml$/"],
-              "matchStrings": [
-                "https://github.com/(?<depName>[^/]+/[^/]+)/releases/download/(?<currentValue>[^/]+)?/.*"
-              ],
-              "datasourceTemplate": "github-releases"
-            }
-          ]
+          "repositories": ["MathiasPius/kronform"]
         }
       securityContext:
         runAsNonRoot: true
