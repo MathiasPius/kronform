@@ -2,12 +2,17 @@
 # our toolset. We'll later copy the tools to a separate stage designed for running.
 FROM debian:bookworm-slim AS installer
 
-# Using arguments allows us to update the tools easily in the future.
+# renovate: datasource=github-tags depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION="1.31.2"
+# renovate: datasource=github-releases depName=siderolabs/talos
 ARG TALOSCTL_VERSION="1.10.2"
+# renovate: datasource=github-releases depName=mikefarah/yq
 ARG YQ_VERSION="4.45.4"
+# renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION="3.10.2"
+# renovate: datasource=github-releases depName=fluxcd/flux2
 ARG FLUX_VERSION="2.6.1"
+# renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION="3.17.1"
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
