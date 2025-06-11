@@ -13,7 +13,7 @@ ARG SOPS_VERSION="3.10.2"
 # renovate: datasource=github-releases depName=fluxcd/flux2
 ARG FLUX_VERSION="2.6.1"
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION="3.17.1"
+ARG HELM_VERSION=v3.18.2
 
 # Install curl and CA certificates, so we can access GitHub over HTTPS.
 RUN apt-get update \
