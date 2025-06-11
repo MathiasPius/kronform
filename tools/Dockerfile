@@ -3,15 +3,15 @@
 FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef AS installer
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG KUBECTL_VERSION="1.31.2"
+ARG KUBECTL_VERSION=v1.31.2
 # renovate: datasource=github-releases depName=siderolabs/talos
-ARG TALOSCTL_VERSION="1.10.2"
+ARG TALOSCTL_VERSION=v1.10.2
 # renovate: datasource=github-releases depName=mikefarah/yq
-ARG YQ_VERSION="4.45.4"
+ARG YQ_VERSION=v4.45.4
 # renovate: datasource=github-releases depName=getsops/sops
-ARG SOPS_VERSION="3.10.2"
+ARG SOPS_VERSION=v3.10.2
 # renovate: datasource=github-releases depName=fluxcd/flux2
-ARG FLUX_VERSION="2.6.1"
+ARG FLUX_VERSION=2.6.1
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=v3.18.2
 
@@ -27,13 +27,13 @@ WORKDIR /tools
 RUN curl -L -o kubectl https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
     && chmod u+x kubectl
 
-RUN curl -L -o talosctl https://github.com/siderolabs/talos/releases/download/v${TALOSCTL_VERSION}/talosctl-linux-amd64 \
+RUN curl -L -o talosctl https://github.com/siderolabs/talos/releases/download/${TALOSCTL_VERSION}/talosctl-linux-amd64 \
     && chmod u+x talosctl
 
-RUN curl -L -o yq https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 \
+RUN curl -L -o yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
     && chmod u+x yq
 
-RUN curl -L -o sops https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64 \
+RUN curl -L -o sops https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64 \
     && chmod u+x sops
 
 RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${FLUX_VERSION}/flux_${FLUX_VERSION}_linux_amd64.tar.gz \
@@ -41,7 +41,7 @@ RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${
     && rm flux.tar.gz \
     && chmod u+x flux
 
-RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz \
     && tar -xf helm.tar.gz \
     && rm helm.tar.gz \
     && mv linux-amd64/helm helm \
