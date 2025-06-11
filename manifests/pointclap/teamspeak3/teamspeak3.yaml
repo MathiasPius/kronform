@@ -68,7 +68,7 @@ spec:
       serviceAccountName: teamspeak3
       initContainers:
         - name: restore-database
-          image: litestream/litestream:0.3.13
+          image: litestream/litestream:0.3.13@sha256:027eda2a89a86015b9797d2129d4dd447e8953097b4190e1d5a30b73e76d8d58
           args:
             [
               "restore",
@@ -96,7 +96,7 @@ spec:
       containers:
         - name: teamspeak3
           imagePullPolicy: IfNotPresent
-          image: teamspeak:3.13
+          image: teamspeak:3.13@sha256:6756c50d1a0a7e48db95cf4b38d4c6d59ac0b560bc3b9e986ed069d2c16206f5
           env:
             - name: TS3SERVER_LICENSE
               value: accept
@@ -115,7 +115,7 @@ spec:
             - name: data
               mountPath: /var/ts3server
         - name: litestream
-          image: litestream/litestream:0.3.13
+          image: litestream/litestream:0.3.13@sha256:027eda2a89a86015b9797d2129d4dd447e8953097b4190e1d5a30b73e76d8d58
           args: ["replicate"]
           volumeMounts:
             - name: data
