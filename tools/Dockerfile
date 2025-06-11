@@ -33,7 +33,7 @@ RUN curl -L -o talosctl https://github.com/siderolabs/talos/releases/download/${
 RUN curl -L -o yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
     && chmod u+x yq
 
-RUN curl -L -o sops https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64 \
+RUN curl -L -o sops https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64 \
     && chmod u+x sops
 
 RUN curl -L -o flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v${FLUX_VERSION}/flux_${FLUX_VERSION}_linux_amd64.tar.gz \

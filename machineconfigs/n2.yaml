@@ -20,7 +20,7 @@ machine:
     # Used to provide additional options to the kubelet.
     kubelet:
         # The `image` field is an optional reference to an alternative kubelet image.
-        image: ghcr.io/siderolabs/kubelet:v1.31.2
+        image: ghcr.io/siderolabs/kubelet:v1.33.1
         # The `extraArgs` field is used to provide additional flags to the kubelet.
         extraArgs:
             rotate-server-certificates: "true"
@@ -82,13 +82,13 @@ machine:
               #     busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
               # # select a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
               # deviceSelector:
-              #     hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-              #     driver: virtio # Kernel driver, supports matching by wildcard.
+              #     hardwareAddr: '*:f0:ab' # Device hardware (MAC) address, supports matching by wildcard.
+              #     driver: virtio_net # Kernel driver, supports matching by wildcard.
               # # select a device with bus prefix 00:*, a device with mac address matching `*:f0:ab` and `virtio` kernel driver.
               # deviceSelector:
               #     - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
-              #     - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-              #       driver: virtio # Kernel driver, supports matching by wildcard.
+              #     - hardwareAddr: '*:f0:ab' # Device hardware (MAC) address, supports matching by wildcard.
+              #       driver: virtio_net # Kernel driver, supports matching by wildcard.
               # # Assigns static IP addresses to the interface.
               # addresses:
               #     - 10.5.0.0/16
@@ -108,8 +108,8 @@ machine:
               #     # Picks a network device using the selector.
               #     deviceSelectors:
               #         - busPath: 00:* # PCI, USB bus prefix, supports matching by wildcard.
-              #         - hardwareAddr: '*:f0:ab' # Device hardware address, supports matching by wildcard.
-              #           driver: virtio # Kernel driver, supports matching by wildcard.
+              #         - hardwareAddr: '*:f0:ab' # Device hardware (MAC) address, supports matching by wildcard.
+              #           driver: virtio_net # Kernel driver, supports matching by wildcard.
               #     mode: 802.3ad # A bond option.
               #     lacpRate: fast # A bond option.
               # # Bridge specific options.
@@ -118,9 +118,12 @@ machine:
               #     interfaces:
               #         - enxda4042ca9a51
               #         - enxae2a6774c259
-              #     # A bridge option.
+              #     # Enable STP on this bridge.
               #     stp:
               #         enabled: true # Whether Spanning Tree Protocol (STP) is enabled.
+              # # Configure this device as a bridge port.
+              # bridgePort:
+              #     master: br0 # The name of the bridge master interface
               # # DHCP specific options.
               # dhcpOptions:
               #     routeMetric: 1024 # The priority of all routes received via DHCP.
@@ -161,6 +164,10 @@ machine:
             # nameservers:
             #     - 8.8.8.8
             #     - 1.1.1.1
+            # # Used to statically set arbitrary search domains.
+            # searchDomains:
+            #     - example.org
+            #     - example.com
             # # Allows for extra entries to be added to the `/etc/hosts` file
             # extraHostEntries:
             #     - ip: 192.168.1.100 # The IP of the host.
@@ -188,9 +195,6 @@ machine:
         # extraKernelArgs:
         #     - talos.platform=metal
         #     - reboot=k
-        # # Allows for supplying additional system extension images to install on top of base Talos image.
-        # extensions:
-        #     - image: ghcr.io/siderolabs/gvisor:20220117.0-v1.0.0 # System extension image.
     # Used to configure the machine's container image registry mirrors.
     registries:
         # Specifies mirror configuration for each registry host namespace.
@@ -329,19 +333,6 @@ machine:
     #         containers:
     #             - image: nginx
     #               name: nginx
-    # # Used to partition, format and mount additional disks.
-    # # MachineDisks list example.
-    # disks:
-    #     - device: /dev/sdb # The name of the disk to use.
-    #       # A list of partitions to create on the disk.
-    #       partitions:
-    #         - mountpoint: /var/mnt/extra # Where to mount the partition.
-    #           
-    #           # # The size of partition: either bytes or human readable representation. If `size:` is omitted, the partition is sized to occupy the full disk.
-    #           # # Human readable representation.
-    #           # size: 100 MB
-    #           # # Precise value in bytes.
-    #           # size: 1073741824
     # # Allows the addition of user specified files.
     # # MachineFiles usage example.
     # files:
@@ -423,6 +414,14 @@ machine:
     #       # The `value` field is used to provide the seccomp profile.
     #       value:
     #         defaultAction: SCMP_ACT_LOG
+    # # Override (patch) settings in the default OCI runtime spec for CRI containers.
+    # # override default open file limit
+    # baseRuntimeSpecOverrides:
+    #     process:
+    #         rlimits:
+    #             - hard: 1024
+    #               soft: 1024
+    #               type: RLIMIT_NOFILE
     # # Configures the node labels for the machine.
     # # node labels example.
     # nodeLabels:
@@ -479,7 +478,7 @@ cluster:
     # API server specific configuration options.
     apiServer:
         # The container image used in the API server manifest.
-        image: registry.k8s.io/kube-apiserver:v1.31.2
+        image: registry.k8s.io/kube-apiserver:v1.33.1
         # Extra certificate subject alternative names for the API server's certificate.
         certSANs:
             - api.kronform.pius.dev
@@ -511,20 +510,45 @@ cluster:
             kind: Policy
             rules:
                 - level: Metadata
+                  # # Configure the API server authorization config. Node and RBAC authorizers are always added irrespective of the configuration.
+                  # authorizationConfig:
+                  #     - type: Webhook # Type is the name of the authorizer. Allowed values are `Node`, `RBAC`, and `Webhook`.
+                  #       name: webhook # Name is used to describe the authorizer.
+                  #       # webhook is the configuration for the webhook authorizer.
+                  #       webhook:
+                  #         connectionInfo:
+                  #             type: InClusterConfig
+                  #         failurePolicy: Deny
+                  #         matchConditionSubjectAccessReviewVersion: v1
+                  #         matchConditions:
+                  #             - expression: has(request.resourceAttributes)
+                  #             - expression: '!(\''system:serviceaccounts:kube-system\'' in request.groups)'
+                  #         subjectAccessReviewVersion: v1
+                  #         timeout: 3s
+                  #     - type: Webhook # Type is the name of the authorizer. Allowed values are `Node`, `RBAC`, and `Webhook`.
+                  #       name: in-cluster-authorizer # Name is used to describe the authorizer.
+                  #       # webhook is the configuration for the webhook authorizer.
+                  #       webhook:
+                  #         connectionInfo:
+                  #             type: InClusterConfig
+                  #         failurePolicy: NoOpinion
+                  #         matchConditionSubjectAccessReviewVersion: v1
+                  #         subjectAccessReviewVersion: v1
+                  #         timeout: 3s
     # Controller manager server specific configuration options.
     controllerManager:
         # The container image used in the controller manager manifest.
-        image: registry.k8s.io/kube-controller-manager:v1.31.2
+        image: registry.k8s.io/kube-controller-manager:v1.33.1
     # Kube-proxy server-specific configuration options
     proxy:
         # Disable kube-proxy deployment on cluster bootstrap.
         disabled: true
         # The container image used in the kube-proxy manifest.
-        image: registry.k8s.io/kube-proxy:v1.31.2
+        image: registry.k8s.io/kube-proxy:v1.33.1
     # Scheduler server specific configuration options.
     scheduler:
         # The container image used in the scheduler manifest.
-        image: registry.k8s.io/kube-scheduler:v1.31.2
+        image: registry.k8s.io/kube-scheduler:v1.33.1
     # Configures cluster member discovery.
     discovery:
         # Enable the cluster membership discovery feature.
@@ -544,7 +568,7 @@ cluster:
             crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJmVENDQVNTZ0F3SUJBZ0lSQU1qU1JNRUZ5RXpDSHRDcUJidDVWN293Q2dZSUtvWkl6ajBFQXdJd0R6RU4KTUFzR0ExVUVDaE1FWlhSalpEQWVGdzB5TXpBMk1qSXhNak01TXpOYUZ3MHpNekEyTVRreE1qTTVNek5hTUE4eApEVEFMQmdOVkJBb1RCR1YwWTJRd1dUQVRCZ2NxaGtqT1BRSUJCZ2dxaGtqT1BRTUJCd05DQUFURThzVHdiRjVaCkh0QXVoSTRhNXdsZkNCa3JRY1JhSVd0UDIwc1lOOWhtL2tFREQ0b3IyQ09yWmJnMDc5SmQ5eGFhNmxMQzhVM2UKQm9QMjAzc2oxcU5mbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSApBd0VHQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkhOZXovakNKcmFZClI4WXRaUDhHdndROThDSi9NQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJRTVmbHdSMEpsRGdYOHM2UG1tVE1MSUsKbHBtSElNSlQ5U1A2YTY3ZjZvQXFBaUFzbm9nOWRzS1B4ZTE2bHQzTXY5eGZ3YnR1Z3Y4c3dSaHFNSXArdHJqWgp0Zz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
             key: ENC[AES256_GCM,data:LS9gkoznLlc8hl8PwK22Aij1YPnu/fIr3aNygBoSRa/r+AS1Pfx8cTQKKhxNyEcBcGvrL/yK7vi1wRXJGJ1HgmZ/cZrn4AZVREuiFRbAUiGpXuB1R1O9MJ2NvjGiiNGoBU0r46LkfCSRomaq2P2AUbWLkdSY1vXdljToPEvfuwKQguGRUgCTOjDDMFWuj1LGzKSiP3XVV9O8b9c1zvmZHJ7CN8dN4gZEKfx3FEE5pRh6itRKJYGCsUx/qVpxZLyIAASzwWlbnVKyEbtyj1YjU+G0Ov1yljoKzlySOQgyzbQeBHFjDuSoBVE/K6lzL4x9EHAeqigvDUu9Ss0zOACLwdABuExNWV76xa0Tmw4lu4Nz1C8wSWbIJmSq4f0dPUZhuw820uKtAAh3GpivF3yfsw==,iv:Vz6jwvfrz/t+1dYaIJ387Ugdkb0Pw9pA4wtFFw15+NY=,tag:e0TwKwBm62dXAkL3hevL4g==,type:str]
             # # The container image used to create the etcd service.
-            # image: gcr.io/etcd-development/etcd:v3.5.16
+            # image: gcr.io/etcd-development/etcd:v3.5.21
             # # The `advertisedSubnets` field configures the networks to pick etcd advertised IP from.
             # advertisedSubnets:
             #     - 10.0.0.0/8
@@ -555,7 +579,7 @@ cluster:
 # aescbcEncryptionSecret: z01mye6j16bspJYtTB/5SFX8j7Ph4JXxM2Xuu4vsBPM=
 # # Core DNS specific configuration options.
 # coreDNS:
-#     image: registry.k8s.io/coredns/coredns:v1.11.3 # The `image` field is an override to the default coredns image.
+#     image: registry.k8s.io/coredns/coredns:v1.12.1 # The `image` field is an override to the default coredns image.
 # # External cloud provider configuration.
 # externalCloudProvider:
 #     enabled: true # Enable external cloud provider.
@@ -593,7 +617,7 @@ sops:
             aTdMcVphbVJZQ2xHNnpCSytFZjJpRkkKjFWwSubO//RR2oWC3BZUJnDVbihEElNm
             7t4bEyDLERWrSgtaNWFJDPTybBmJZb6gCZc014DyxJHq1saZTab5fA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-05-26T21:25:23Z"
-    mac: ENC[AES256_GCM,data:DkWcl8nr/dXxO+IPW6Eh86ysZWyipXitCdL6I+AfTsYHxesaEynqYQrEpQJbUzch0tj511hCbOrBPHsHGI6JuuD+QycOGsjMxgvzUohtee2fsdeQDzbotoQqXhADwMFZN6YtBYojnDijAWbStu+DyJY0RwnUE/9t3DFvM3/bj34=,iv:gzqsLwjLLvf0QE3MOiRk2MlG4BdRe4VBsrArqGspgZM=,tag:0Vmnq5tqR5Q1oOLkNYiVsw==,type:str]
+    lastmodified: "2025-06-11T18:43:37Z"
+    mac: ENC[AES256_GCM,data:PGRJ7fqdtVJ+fOTryqFLYodE+8mwYTIzOYkaK5NnGV/0kImlQMHovea+xJe+CLcpXM71zrYoDf0kyrsetwnsBhbH87+6gXdWevHq81n1mf65O8FJG4KzLmnXI1sO6z3KKWvePEaqID16wRvDwKPhv9KBfrtVsChu54hnI6Cylv4=,iv:h7oYTWQdpiqz9TrPXb1HOqOD1m98UYsPLmyUNDGa+Sk=,tag:IyW4Py6M1o4Kltsw8nYDUA==,type:str]
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     version: 3.10.2
