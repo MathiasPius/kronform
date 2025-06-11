@@ -2,7 +2,7 @@
 # our toolset. We'll later copy the tools to a separate stage designed for running.
 FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef AS installer
 
-# renovate: datasource=github-tags depName=kubernetes/kubernetes
+# renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION="1.31.2"
 # renovate: datasource=github-releases depName=siderolabs/talos
 ARG TALOSCTL_VERSION="1.10.2"
@@ -24,7 +24,7 @@ RUN apt-get update \
 RUN mkdir -p /tools
 WORKDIR /tools
 
-RUN curl -L -o kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
+RUN curl -L -o kubectl https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
     && chmod u+x kubectl
 
 RUN curl -L -o talosctl https://github.com/siderolabs/talos/releases/download/v${TALOSCTL_VERSION}/talosctl-linux-amd64 \
