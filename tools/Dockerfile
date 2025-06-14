@@ -1,6 +1,6 @@
 # This stage is responsible for downloading all the binaries which make up
 # our toolset. We'll later copy the tools to a separate stage designed for running.
-FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef AS installer
+FROM debian:bookworm-slim AS installer
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION=v1.33.1
