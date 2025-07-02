@@ -61,3 +61,18 @@ spec:
     - hosts:
         - webhook.flux.kronform.pius.dev
       secretName: webhook.flux.kronform.pius.dev-tls
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-cert-manager-github-resolver
+  namespace: "flux-system"
+spec:
+  podSelector:
+    matchLabels:
+      acme.cert-manager.io/http01-solver: "true"
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app.kubernetes.io/instance: cert-manager
