@@ -1,6 +1,6 @@
 # This stage is responsible for downloading all the binaries which make up
 # our toolset. We'll later copy the tools to a separate stage designed for running.
-FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef AS installer
+FROM debian:bookworm-slim@sha256:6ac2c08566499cc2415926653cf2ed7c3aedac445675a013cc09469c9e118fdd AS installer
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION=v1.33.1
@@ -51,7 +51,7 @@ RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.
 # Stage which contains only the tools required, set up to run as the default
 # non-root linux user, so that mounting our working directory into it won't
 # cause all kinds of ownership issues.
-FROM debian:bookworm-slim@sha256:e5865e6858dacc255bead044a7f2d0ad8c362433cfaa5acefb670c1edf54dfef AS workspace
+FROM debian:bookworm-slim@sha256:6ac2c08566499cc2415926653cf2ed7c3aedac445675a013cc09469c9e118fdd AS workspace
 ENV EDITOR=vim
 
 # Install vim for editing
