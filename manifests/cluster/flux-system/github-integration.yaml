@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: github-webhook-receiver
+  name: webhook-receiver
   namespace: flux-system
 spec:
   type: ClusterIP
@@ -41,7 +41,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: github-webhook-receiver
+  name: webhook-receiver
   namespace: flux-system
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
@@ -54,7 +54,7 @@ spec:
             path: /
             backend:
               service:
-                name: github-webhook-receiver
+                name: webhook-receiver
                 port:
                   number: 80
   tls:
@@ -65,7 +65,7 @@ spec:
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: allow-cert-manager-github-resolver
+  name: allow-cert-manager-resolver
   namespace: "flux-system"
 spec:
   podSelector:
@@ -76,3 +76,19 @@ spec:
         - namespaceSelector:
             matchLabels:
               app.kubernetes.io/instance: cert-manager
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  type: github
+  events:
+    - "ping"
+    - "push"
+  secretRef:
+    name: webhook-token
+  resources:
+    - kind: GitRepository
+      name: flux-system
