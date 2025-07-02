@@ -16,3 +16,4 @@ resources:
   - renovate.yaml
   - openobserve.yaml
   - kubizone.yaml
+  - commit-status.yaml
