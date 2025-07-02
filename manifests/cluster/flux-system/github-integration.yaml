@@ -35,7 +35,7 @@ spec:
     - host: webhook.flux.kronform.pius.dev
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
               service:
