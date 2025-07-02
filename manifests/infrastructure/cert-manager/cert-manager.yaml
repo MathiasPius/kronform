@@ -27,6 +27,7 @@ spec:
       interval: 1m
   values:
     installCRDs: true
-    featureGates:
-      ExperimentalCertificateSigningRequestControllers: true
-      ACMEHTTP01IngressPathTypeExact: false
+    config:
+      featureGates:
+        ExperimentalCertificateSigningRequestControllers: true
+        ACMEHTTP01IngressPathTypeExact: false
