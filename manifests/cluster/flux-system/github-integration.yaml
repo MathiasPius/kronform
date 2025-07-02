@@ -60,7 +60,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              app.kubernetes.io/instance: cert-manager
+              kubernetes.io/metadata.name: cert-manager
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Receiver
