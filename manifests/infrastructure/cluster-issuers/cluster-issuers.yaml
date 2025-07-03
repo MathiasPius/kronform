@@ -11,9 +11,13 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-      - http01:
-          ingress:
-            ingressClassName: nginx
+      - dns01:
+          webhook:
+            groupName: dns.hetzner
+            solverName: hetzner
+            config:
+              secretName: hetzner-secret
+              apiUrl: https://dns.hetzner.com/api/v1
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -26,6 +30,10 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-production
     solvers:
-      - http01:
-          ingress:
-            ingressClassName: nginx
+      - dns01:
+          webhook:
+            groupName: dns.hetzner
+            solverName: hetzner
+            config:
+              secretName: hetzner-secret
+              apiUrl: https://dns.hetzner.com/api/v1
