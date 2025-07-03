@@ -13,8 +13,7 @@ spec:
     solvers:
       - http01:
           ingress:
-            class: nginx
-            serviceType: ClusterIP
+            ingressClassName: nginx
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -29,5 +28,4 @@ spec:
     solvers:
       - http01:
           ingress:
-            class: nginx
-            serviceType: ClusterIP
+            ingressClassName: nginx
