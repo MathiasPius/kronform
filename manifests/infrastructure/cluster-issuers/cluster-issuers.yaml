@@ -11,9 +11,10 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-    - http01:
-        ingress:
-          class:  nginx
+      - http01:
+          ingress:
+            class: nginx
+            serviceType: ClusterIP
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -26,6 +27,7 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-production
     solvers:
-    - http01:
-        ingress:
-          class:  nginx
+      - http01:
+          ingress:
+            class: nginx
+            serviceType: ClusterIP
