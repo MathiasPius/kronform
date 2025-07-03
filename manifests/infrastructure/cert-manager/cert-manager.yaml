@@ -27,6 +27,11 @@ spec:
       interval: 1m
   values:
     installCRDs: true
+    podDnsPolicy: None
+    podDnsConfig:
+      nameservers:
+        - 1.1.1.1
+        - 8.8.8.8
     config:
       featureGates:
         ExperimentalCertificateSigningRequestControllers: true
