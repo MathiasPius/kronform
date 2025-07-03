@@ -55,7 +55,12 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      acme.cert-manager.io/http01-solver: "true"
+      app: notification-controller
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app.kubernetes.io/instance: ingress-nginx
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1
 kind: Receiver
