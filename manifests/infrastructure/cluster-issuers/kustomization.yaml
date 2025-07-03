@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cluster-issuers.yaml
   - secret.yaml
+  - hetzner-webhook.yaml
