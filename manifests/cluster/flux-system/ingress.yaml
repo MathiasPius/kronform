@@ -43,3 +43,7 @@ spec:
       kind: HelmRelease
       name: cert-manager
       namespace: cert-manager
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
