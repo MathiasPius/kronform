@@ -3,7 +3,7 @@
 FROM debian:bookworm-slim@sha256:2424c1850714a4d94666ec928e24d86de958646737b1d113f5b2207be44d37d8 AS installer
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG KUBECTL_VERSION=v1.33.1
+ARG KUBECTL_VERSION=v1.33.3
 # renovate: datasource=github-releases depName=siderolabs/talos
 ARG TALOSCTL_VERSION=v1.10.2
 # renovate: datasource=github-releases depName=mikefarah/yq
