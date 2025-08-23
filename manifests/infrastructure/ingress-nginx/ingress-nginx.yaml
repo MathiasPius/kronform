@@ -40,3 +40,6 @@ spec:
       config:
         enable-real-ip: true
         forwarded-for-header: proxy_protocol
+        # Disable strict path validation, to work around a bug in ingress-nginx
+        # https://github.com/kubernetes/ingress-nginx/issues/11176
+        strict-validate-path-type: false

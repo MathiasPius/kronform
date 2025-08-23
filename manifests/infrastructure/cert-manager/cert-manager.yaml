@@ -35,4 +35,3 @@ spec:
     config:
       featureGates:
         ExperimentalCertificateSigningRequestControllers: true
-        ACMEHTTP01IngressPathTypeExact: false
