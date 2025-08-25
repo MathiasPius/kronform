@@ -11,7 +11,7 @@ ARG YQ_VERSION=v4.47.1
 # renovate: datasource=github-releases depName=getsops/sops
 ARG SOPS_VERSION=v3.10.2
 # renovate: datasource=github-releases depName=fluxcd/flux2
-ARG FLUX_VERSION=2.6.3
+ARG FLUX_VERSION=2.6.4
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=v3.18.4
 
