@@ -5397,7 +5397,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/source-controller:v1.6.2
+          image: ghcr.io/fluxcd/source-controller:v1.6.2@sha256:11c8e14df885eff86586533d9941293ec8a1e9fff71bacf119edc79fdf3c63e3
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -7355,7 +7355,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/kustomize-controller:v1.6.1
+          image: ghcr.io/fluxcd/kustomize-controller:v1.6.1@sha256:1a50730537bafb7827365b9af95c4eb71ca3d9b0bed9bc9bc765880e976972ef
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -11276,7 +11276,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/helm-controller:v1.3.0
+          image: ghcr.io/fluxcd/helm-controller:v1.3.0@sha256:db55d9d9f9b5106acd8c21da6916b8e285fcfc5572f214361ececd1a8571a4f0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -13272,7 +13272,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/notification-controller:v1.6.0
+          image: ghcr.io/fluxcd/notification-controller:v1.6.0@sha256:80174ff676407af7a6feff67b0c2f100de9f7f89df4c26fc871e4d4c4006544d
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -14401,7 +14401,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/image-reflector-controller:v0.35.2
+          image: ghcr.io/fluxcd/image-reflector-controller:v0.35.2@sha256:4df89798b23a1ba7ec86bab327dcb50417af1517fe7986e511e28f62f40b8f61
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -15256,7 +15256,7 @@ spec:
                 resourceFieldRef:
                   containerName: manager
                   resource: limits.memory
-          image: ghcr.io/fluxcd/image-automation-controller:v0.41.2
+          image: ghcr.io/fluxcd/image-automation-controller:v0.41.2@sha256:e5b90e065e0d91690dbcd83dab3d03207ed030b068e26e9dac88c8d7b4fdfbe4
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
