@@ -5,7 +5,7 @@ FROM debian:bookworm-slim@sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION=v1.33.1
 # renovate: datasource=github-releases depName=siderolabs/talos
-ARG TALOSCTL_VERSION=v1.10.2
+ARG TALOSCTL_VERSION=v1.11.1
 # renovate: datasource=github-releases depName=mikefarah/yq
 ARG YQ_VERSION=v4.47.1
 # renovate: datasource=github-releases depName=getsops/sops
