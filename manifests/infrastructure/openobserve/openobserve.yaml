@@ -47,7 +47,7 @@ spec:
   chart:
     spec:
       chart: openobserve-standalone
-      version: <0.15.1
+      version: <0.15.2
       sourceRef:
         kind: HelmRepository
         name: openobserve
