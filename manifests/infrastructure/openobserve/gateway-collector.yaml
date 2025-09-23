@@ -222,7 +222,7 @@ spec:
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
-  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.134.1@sha256:440197291e082dcd225339cc7caabfa8d13414e29779e8b493716cfea385fd9c
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.136.0@sha256:45392d534c1edcc809c2d112394029246bc679d2ae5ea7081414a1fc74f2c621
   ingress:
     route: {}
   managementState: managed
