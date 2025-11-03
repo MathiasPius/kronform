@@ -7,18 +7,18 @@ creation_rules:
       age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez,
       age1c8rjkuv9px2gfyrlqn75ajhv26l8fdmeugcdegt237c20l8uc4wq6y9h6d
 
-  - path_regex: talosconfig
+  - path_regex: configs/talosconfig.yaml
     encrypted_regex: ^key$
     age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
 
-  - path_regex: kubeconfig
-    encrypted_regex: ^client-key-data$
-    age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
-
-  - path_regex: secrets.yaml
+  - path_regex: configs/talossecrets.yaml
     encrypted_regex: ^(secret|bootstraptoken|secretboxencryptionsecret|token|key)$
     age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
 
-  - path_regex: machineconfigs/.*.yaml
+  - path_regex: configs/kubeconfig.yaml
+    encrypted_regex: ^client-key-data$
+    age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
+
+  - path_regex: machines/.*.yaml
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
