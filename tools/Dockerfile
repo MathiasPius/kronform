@@ -52,11 +52,11 @@ RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.
 # non-root linux user, so that mounting our working directory into it won't
 # cause all kinds of ownership issues.
 FROM debian:bookworm-slim@sha256:df52e55e3361a81ac1bead266f3373ee55d29aa50cf0975d440c2be3483d8ed3 AS workspace
-ENV EDITOR=vim
+ENV XDG_RUNTIME_DIR=/run/user/1000/
 
 # Install vim for editing
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends $EDITOR \
+    && apt-get -y install --no-install-recommends git openssh-client neovim zsh \
     && apt-get clean
 
 # Create group and user.
@@ -64,7 +64,7 @@ ARG UID=1000
 ARG GID=1000
 
 RUN groupadd -g ${GID} user
-RUN useradd -m -s /bin/bash -u ${UID} -g ${GID} user
+RUN useradd -m -s /usr/bin/zsh -u ${UID} -g ${GID} user
 
 # We'll mount the kronform repository in /data
 RUN mkdir /data && chown user:user /data

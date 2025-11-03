@@ -7,7 +7,7 @@ mkdir /home/user/.kube
 sops -d --input-type=yaml --output-type=yaml configs/kubeconfig.yaml > /home/user/.kube/config
 
 if [ $# -eq 0 ]; then
-    bash
+    $SHELL
 else
     $@
 fi

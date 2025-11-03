@@ -10,11 +10,19 @@ build:
 # /etc/resolv.conf won't work with plain DNS traffic, breaking
 # resolution within the container.
 tools:
-    docker run -it --rm                                 \
-    --dns 8.8.8.8			                            \
-    -v $(pwd):/data                                     \
-    -v /run/user/1000/:/run/user/1000/:ro               \
-    -v $HOME/.config/sops:/home/user/.config/sops:ro    \
+    docker run -it --rm                                                 \
+    --hostname "kronform"                                               \
+    --dns 8.8.8.8			                                            \
+    -v $(pwd):/data                                                     \
+    -v /run/user/1000/:/run/user/1000/:ro                               \
+    -v $HOME/.ssh/known_hosts:/home/user/.ssh/known_hosts:ro            \
+    -v $HOME/.gitconfig:/home/user/.gitconfig:ro                        \
+    -v $HOME/.zshrc:/home/user/.zshrc:ro                                \
+    -v $HOME/.oh-my-zsh:/home/user/.oh-my-zsh:ro                        \
+    -v $HOME/.zshenv:/home/user/.zshenv:ro                              \
+    -v $HOME/.zsh_history:/home/user/.zsh_history                       \
+    -v $HOME/.zshrc.pre-oh-my-zsh:/home/user/.zshrc.pre-oh-my-zsh:ro    \
+    -v $HOME/.config/sops:/home/user/.config/sops:ro                    \
     tools:latest || true
 
 rotate-keys:
