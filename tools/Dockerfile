@@ -3,15 +3,15 @@
 FROM debian:bookworm-slim@sha256:df52e55e3361a81ac1bead266f3373ee55d29aa50cf0975d440c2be3483d8ed3 AS installer
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-ARG KUBECTL_VERSION=v1.33.1
+ARG KUBECTL_VERSION=v1.34.1
 # renovate: datasource=github-releases depName=siderolabs/talos
-ARG TALOSCTL_VERSION=v1.10.2
+ARG TALOSCTL_VERSION=v1.11.2
 # renovate: datasource=github-releases depName=mikefarah/yq
-ARG YQ_VERSION=v4.47.2
+ARG YQ_VERSION=v4.48.1
 # renovate: datasource=github-releases depName=getsops/sops
-ARG SOPS_VERSION=v3.10.2
+ARG SOPS_VERSION=v3.11.0
 # renovate: datasource=github-releases depName=fluxcd/flux2
-ARG FLUX_VERSION=2.6.4
+ARG FLUX_VERSION=2.7.3
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=v3.19.0
 
