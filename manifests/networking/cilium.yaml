@@ -45,6 +45,14 @@ spec:
     kubeProxyReplacement: true
     operator:
       relicas: 1
+    gatewayAPI:
+      enabled: true
+      hostNetwork:
+        enabled: true
+    envoy:
+      securityContext:
+        capabilities:
+          keepCapNetBindService: true
     securityContext:
       capabilities:
         ciliumAgent:
@@ -52,6 +60,7 @@ spec:
           - KILL
           - NET_ADMIN
           - NET_RAW
+          - NET_BIND_SERVICE
           - IPC_LOCK
           - SYS_ADMIN
           - SYS_RESOURCE
