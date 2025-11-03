@@ -8,11 +8,11 @@ machine:
     # Defines the role of the machine within the cluster.
     type: controlplane
     # The `token` is used by a machine to join the PKI of the cluster.
-    token: ENC[AES256_GCM,data:m8O/MlUmIVW/eFKv01aJ1tBReko3vX8=,iv:Td18iBKe4nIqbZ4t0PxCssQ7P+Ob0mgFuObk/+/X/wQ=,tag:tdA8V6hGF0JZYduHE/3t2g==,type:str]
+    token: ENC[AES256_GCM,data:ugvR/q7KDmLdDsE7AqkH4iURHSTB4OY=,iv:tYIkE4Fb/USTSQvZQbfWlgV9KhdSc3LXBKo27qA3Ess=,tag:ggp5t34sRlu4U94j93U9Dw==,type:str]
     # The root certificate authority of the PKI.
     ca:
         crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQakNCOGFBREFnRUNBaEJIeXMrTXlxQk9jWU4vNndZRDVnd2VNQVVHQXl0bGNEQVFNUTR3REFZRFZRUUsKRXdWMFlXeHZjekFlRncweU5URXhNREV4T1RVMk1qZGFGdzB6TlRFd016QXhPVFUyTWpkYU1CQXhEakFNQmdOVgpCQW9UQlhSaGJHOXpNQ293QlFZREsyVndBeUVBbnhheWRyRkZwL2Z3aFFPK0xwS0V2ck1KLzNMaUJJQVJsTnZnCml4ZXlnQWlqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVeHo2cWpod0JEc0g1SHIzMQo3SzB3YXBhUVR2RXdCUVlESzJWd0EwRUFvZ0xZZE04SW9rek9PNHBWWmNIaDhocFRyZDFLZmdFK3RIYXhxcmhnCkRSNmtvZFhESlVPL1I1ZjlQc1E4UDFyQkppclBvcGQxVnFja3VxWkdhNWx5RGc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-        key: ENC[AES256_GCM,data:OtBssykdphDw39e2F0fJ254jnKcH4f/uJ8blSI8PgpfeFg4sIyGlia5GaTYLLTTbrXKM3Zmc5OjNoH6NjzWaDAMx39LPhikpDt7UVLl5EOM2OJkqgBEEVkAM9cpbD7w4s9XXsHyoBlt8TRKuElez4qeQ7buYD5QgoQh8svJn+CeZR6oiNXTwm/kvMdeXnUShIVSFyuLentlt0xnOJLh8v8+N7nppjjYMjG0/oaKpfdRYc26c,iv:YoMjdQWt3l7o+p/cdQL62Sy/qeYigF1DC1oLR6TlZm8=,tag:UePYJXKi31Ieku1O5FlRdg==,type:str]
+        key: ENC[AES256_GCM,data:N8xg593JFPB2nBjNHo057Hf/aUyQHwG0h5Dx0fjcTfj+C6JWbdnTGSsLhmiS9KoYyxNbx7S69pXcnKJRShnNF6zpcwiGsE/G7XB32PdcTRu2GKWjzffFFWLx3W+k0NcLdoQKHPexAkUrfe7MGbzXnp+Jjxtv1UaniupsoVac6rt51zy5e94Xrzuvif0nKxI7UuznaqGmURTLXsPhQeZLNyNLBniFwTbBp2m6BBKATKSLD8VS,iv:YF0ivVY+FxhzjRDnwoJvg6Ee+/XTG6F+XAcVyjqYEV0=,tag:yudEx7by6ryys/yzU4RYOA==,type:str]
     # Extra certificate subject alternative names for the machine's certificate.
     certSANs:
         - 192.168.110.60
@@ -310,57 +310,57 @@ machine:
     #     net/ipv6/conf/eth0.100/disable_ipv6: "1"
     sysctls:
         net.core.bpf_jit_harden: 1
-    # # Used to configure the machine's sysfs.
-    # # MachineSysfs usage example.
-    # sysfs:
-    #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
-    # # Configures the udev system.
-    # udev:
-    #     # List of udev rules to apply to the udev system
-    #     rules:
-    #         - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
-    # # Configures the logging system.
-    # logging:
-    #     # Logging destination.
-    #     destinations:
-    #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
-    #           format: json_lines # Logs format.
-    # # Configures the kernel.
-    # kernel:
-    #     # Kernel modules to load.
-    #     modules:
-    #         - name: brtfs # Module name.
-    kernel:
-        modules:
-            - name: zfs
-              # # Configures the seccomp profiles for the machine.
-              # seccompProfiles:
-              #     - name: audit.json # The `name` field is used to provide the file name of the seccomp profile.
-              #       # The `value` field is used to provide the seccomp profile.
-              #       value:
-              #         defaultAction: SCMP_ACT_LOG
-              # # Override (patch) settings in the default OCI runtime spec for CRI containers.
-              # # override default open file limit
-              # baseRuntimeSpecOverrides:
-              #     process:
-              #         rlimits:
-              #             - hard: 1024
-              #               soft: 1024
-              #               type: RLIMIT_NOFILE
-              # # Configures the node annotations for the machine.
-              # # node annotations example.
-              # nodeAnnotations:
-              #     customer.io/rack: r13a25
-              # # Configures the node taints for the machine. Effect is optional.
-              # # node taints example.
-              # nodeTaints:
-              #     exampleTaint: exampleTaintValue:NoSchedule
+        # # Used to configure the machine's sysfs.
+        # # MachineSysfs usage example.
+        # sysfs:
+        #     devices.system.cpu.cpu0.cpufreq.scaling_governor: performance
+        # # Configures the udev system.
+        # udev:
+        #     # List of udev rules to apply to the udev system
+        #     rules:
+        #         - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
+        # # Configures the logging system.
+        # logging:
+        #     # Logging destination.
+        #     destinations:
+        #         - endpoint: tcp://1.2.3.4:12345 # Where to send logs. Supported protocols are "tcp" and "udp".
+        #           format: json_lines # Logs format.
+        # # Configures the kernel.
+        # kernel:
+        #     # Kernel modules to load.
+        #     modules:
+        #         - name: brtfs # Module name.
+        # kernel:
+        #     modules:
+        #         - name: zfs
+        # # Configures the seccomp profiles for the machine.
+        # seccompProfiles:
+        #     - name: audit.json # The `name` field is used to provide the file name of the seccomp profile.
+        #       # The `value` field is used to provide the seccomp profile.
+        #       value:
+        #         defaultAction: SCMP_ACT_LOG
+        # # Override (patch) settings in the default OCI runtime spec for CRI containers.
+        # # override default open file limit
+        # baseRuntimeSpecOverrides:
+        #     process:
+        #         rlimits:
+        #             - hard: 1024
+        #               soft: 1024
+        #               type: RLIMIT_NOFILE
+        # # Configures the node annotations for the machine.
+        # # node annotations example.
+        # nodeAnnotations:
+        #     customer.io/rack: r13a25
+        # # Configures the node taints for the machine. Effect is optional.
+        # # node taints example.
+        # nodeTaints:
+        #     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
     # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
     id: uLkCoLOQxggGQercSRAOGDFophuQ3K0-GQEB1iq3aec=
     # Shared secret of cluster (base64 encoded random 32 bytes).
-    secret: ENC[AES256_GCM,data:3thcHkdYLhkvfV/I4ENJulE4arOFYc0xMp+vUOWzoJLkRjIbpHIO8qF8grA=,iv:ypnnY3e8EQlnRY66FtW3lk0Xy0tmNU24tiwGDsISPy0=,tag:fFYYYWPw9BPgT5yGV5L1yg==,type:str]
+    secret: ENC[AES256_GCM,data:/UMOwYjgWyVTeMrGXmfHfDDirOuUgxtTyQJxj+BUVrWvseFu1HEjF89sOP8=,iv:K5n7R5WX9Ah1253KSgovfxG4I+RgnZ8y0xcb8SQtvkk=,tag:kl+ebLFBw4pENlhxXCKXFw==,type:str]
     # Provides control plane specific configuration options.
     controlPlane:
         # Endpoint is the canonical controlplane endpoint, which can be an IP address or a DNS hostname.
@@ -386,20 +386,20 @@ cluster:
             #     urls:
             #         - https://docs.projectcalico.org/archive/v3.20/manifests/canal.yaml
     # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
-    token: ENC[AES256_GCM,data:WDxqs8t9nzu/2n3VB+rWEB+Zt4BGsSg=,iv:/u4lbYNhj3Ye5z88rIUuf9yJ5vI6HWiGP5dvqQ6wTO8=,tag:wS2LF3cVp2maEfpV+Ig+DQ==,type:str]
+    token: ENC[AES256_GCM,data:0u1dnKkXTLRaYU344W49bvPOFmQG0iA=,iv:7jHmNhsAiv3F3emWayLimnAfqUZVYg/Fd6ZD6+e827E=,tag:0TGnrVNOysQEXOHg3Ub+hw==,type:str]
     # A key used for the [encryption of secret data at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/).
-    secretboxEncryptionSecret: ENC[AES256_GCM,data:5QANTBJRBQs1t8S4Is95dSnP6nNuwmp3rjuKd79oYkV0eDcJebzlgN37S00=,iv:nMRcAgTcYyOexHyviSehOGnWviWmdhx3JENq5wnhiio=,tag:6LxlC605cOrE/8t80cucvA==,type:str]
+    secretboxEncryptionSecret: ENC[AES256_GCM,data:q9zh7wLhFRvhuZyjHj9zgjvrvnz71ywPcdVoSALD+DowU1SN+yur4gVUROw=,iv:BlYSAEA3EpFy/8a0TXEKMrQIaNI/veUjoKfXZ72vS/0=,tag:9ppEXIK3RH8tGuR3g8ChFw==,type:str]
     # The base64 encoded root certificate authority used by Kubernetes.
     ca:
         crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpakNDQVRDZ0F3SUJBZ0lSQUpKalQvajNnTGZVSG5Tdy95amg1RUl3Q2dZSUtvWkl6ajBFQXdJd0ZURVQKTUJFR0ExVUVDaE1LYTNWaVpYSnVaWFJsY3pBZUZ3MHlOVEV4TURFeE9UVTJNamRhRncwek5URXdNekF4T1RVMgpNamRhTUJVeEV6QVJCZ05WQkFvVENtdDFZbVZ5Ym1WMFpYTXdXVEFUQmdjcWhrak9QUUlCQmdncWhrak9QUU1CCkJ3TkNBQVRuZ2t1Z0JKbEtjazFxTTUyVHV5VmMzbUYwWk1OSXBUamxJWGc2d3ZFR3JDcmpHbFJGU3RCQjB0UWkKbU1IcUh4Nkd0bExNcEhYRXJRMWdRRWVwV0svQW8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbApCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPCkJCWUVGRnV1Zm5sRnN4RnFUYTgvbVB1eE01cGFZRGd1TUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFDMU9kN1AKenZRR0RkbWllY1VBa1VoQ0s1L2RGL2cxeXB6SXVvOEY0VTg3YmdJZ2ZSY1JmczU0eURGVGx0cUtVU3pTV3poQwo5a1hZejBKb1hLNGZQWTUzdVNBPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-        key: ENC[AES256_GCM,data:3ZfembZTO+uegqsNFAtfFnUiL1zMYB5+Kz8VP8Z/DCmU205dDmEepVr3/IbYx6DqYQxamuGHuZyePKtPGV8AcUmjGvKBDaQ1RsviBP9aAUDOxUS//MsXZdKDU5qYSBKi24gqqq/9YKxDg0nb/i0xScppkwzlWiBx7KqpbXbQY2H1rgBW9Nr3E5gpbuiU+PiOC2bSnoPSnLEvs79Qrzx3PmbkJWt1DEWEhqN2buYT5CHkSoqv0y+9sJifHUoP5ahPm/dhm3E5nZo5qbP7ufUqR8xptJfB/4aGlitP6tRlXpgeS6q6BQKDean1qY8QAcIKAPm0dRCIb8tZPaG6ZecIi5v+gJ+QbKCvq/3DXSGapGiJw4p/uS9i7pNPjz96o0gPwbAKU1DOb3j4ZPHPx9ojag==,iv:4WbE7UeqHo2ETbQk8Z1XYZhn0IvG8xeoDlyMn76M514=,tag:h8rQ82k62f/HMNRuK41TYQ==,type:str]
+        key: ENC[AES256_GCM,data:lEt6UMOm1DaIn1aOt++maBqiTNYzkb5r0YgU+OWyLkwxm+rJpw2dxE4rmq3Hbf/fdKwDDgqF5FLsE8fzFo+dwkj1ZDLTewZiJKAojg+hln2dOWT5mOm6Jf1KIuG9/YqIKm4oHt6EXOKTiy7ICQqUaswG1z03iENwafg0aNH6tlGLPaMMAj6TRHcqjCagx36qtCpxYyTHygf/awHBSuUH/hcNe9DZAQnRUZaN6x3uqgGgrSzPeBaN1nalWdFEreCVlA+0o8xFbGFJPxs9HaFzMZvy/P/00TirQjwEKSFPoFNbSDfMqe5UcXcm62f6ZnXMZUmIAnBL9dzdKLbfV7h/9oDgpGrLVyLRa3U0C4uqRPhm2Cm9qrqSpvL92N0+SSr7rmA3wBpcuskzOxryUfaL7g==,iv:6C0ZVh5TojBZeUtU/eQ03RfQ8/D7aort3Z5BkajsBFs=,tag:yPxk2saPzCvQRbqsr/le6g==,type:str]
     # The base64 encoded aggregator certificate authority used by Kubernetes for front-proxy certificate generation.
     aggregatorCA:
         crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJZRENDQVFhZ0F3SUJBZ0lSQU5DSzRHYit0cUk0Ym5BblFkcXBBTWN3Q2dZSUtvWkl6ajBFQXdJd0FEQWUKRncweU5URXhNREV4T1RVMk1qZGFGdzB6TlRFd016QXhPVFUyTWpkYU1BQXdXVEFUQmdjcWhrak9QUUlCQmdncQpoa2pPUFFNQkJ3TkNBQVNMdEphWmdvaVZvRFptTkJLeERVc0E1VldYWUthTDFkMkJhVHYxL01nRFZoV20xRU5ZCkxjMGZWTzZKeGZUUktmMTAzYkxpeWw4ekgwWS9wUDVIV3p4WG8yRXdYekFPQmdOVkhROEJBZjhFQkFNQ0FvUXcKSFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BOEdBMVVkRXdFQi93UUZNQU1CQWY4dwpIUVlEVlIwT0JCWUVGRFRWTWV0RVVlVVNjbk1zWUtGbGZwQjE1ZzV5TUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDCklIQkcyb2hMOGFkTkYwL213RS9yLzMzYVpjMkh3dHUvYmpTTnk1eG1uMXp0QWlFQXdDQm8wSitaS0dhWWdMZDQKYmJHRGp3aFRMZFFGR0o1VjZpK1hDU1JKRzNzPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-        key: ENC[AES256_GCM,data:OfnpNwmo/Ez9LZ9fg947/9s80oJDbSt3Oo4wsOe8pFFlQSElK/KSoHPGwBNUNilWeSf8DQFTnrhYyTzp2HpdFSJiXvMwP2viXcq7bs3bFS4P86+7yivCT7nxsSkAzeQYI6v9erxOMZ76PdFX/kaRfCuoG+bN2UCJRHnwvvTC5+faf99lYGaoTnTF9plExohuWY+9jg49oKrvQ74/7yQdnfcmoGx5FZYQJh5mviqf4MoZa/5us7N2bt5WwhxJa+yarrP4Dtdueqe/TzT0WXp6T0LJs5eVjPCWKDEZ14qd52tKXE5ZkiqWcxCqT4MNwLXencXWZLtBhMu/D3FR456SesaOqdL1nuFfYE17TY8OxB5Eo9585MImyzcDHIEagfKSKomZP5CTaktfMDDgVlTseg==,iv:UN9JP6uzHf7sCWK0kxAlzBirLm3+/ux0zzpw4K+cNAw=,tag:dLmvziT4wt68CzJQiIQo+A==,type:str]
+        key: ENC[AES256_GCM,data:SRC5jepVMCUc64Qviaa/a99uSp+Jlc/VA5PUNizBJnAqRGP7TPq33zDUfXtaROOpSIfg/Gtm4kyy7OQVWhK717839QoalN4L9cyZKPAU7O+kAEPHptU0dazOTcMZyEWWaVNmq9aCkIIw5gwI7tjvRYfd85paHTSazNhkhmhddimBZgqutBMCzrtXfN4h1BIaa4wR6LLNg7i0BM0CLT2/HIbDohWCp6ygHtg9wVN0C6u/TcYY2167D25I+Phqa93s3pAz5l0Vxlf9WKYxQ1xoNIWW4NgXFLVj9805p6Fa8z0r8E96yc88N3pHS8MmfPiaWX+JcHL7OtS0wETtvlZ/I78glcF11+d3Pae8bvlLrkYd9aP52FoGAVI1fLeC0OWzIcUXru4eO0THeE1cQq0eLg==,iv:auiGbhOOippqZt90GPaK2peiKlbDESzViDBIKDoeV8I=,tag:FUEUHR7ajgzzI7wu6dpRIw==,type:str]
     # The base64 encoded private key for service account token generation.
     serviceAccount:
-        key: ENC[AES256_GCM,data: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,iv:kSm1n0mA0XaFPBmLBbXxqqufAGF+BL7DsPAt0h62Y7c=,tag:3+bdBL1yP4yalwS38yi2Rw==,type:str]
+        key: ENC[AES256_GCM,data:ioHv6i4IQMjWp6TZODP+aq5JnRmpgj7zvPpiKvz9m8TjwkDcNPL8YG1zSSmod9+hXWq6paMbTXDi1krUFEZQ15okG37+b4I4jRkM8UYqkpaUQQPowaitPAdi2YKUKJtnJYh91p1xpCzkQkmdNecJw6CI0jZ4qYjala8hfkaRazpboN/rz8aRvgWmtwewBtQc9GUY87XPAtUgTzwf5OZCztLUOsSONRyh6Q9vNgILX0Swp0yFDDN0P4AFB62wX2eFxUUOINyStvL0mvQ3k8pbp4z2ogsIOK9rPN0a/kYFt9LJoAuorhygHScMYQCKBCwTK1jZPe22FqODj3ESCdFUEj+pk8BJ2e3i0bOL5cm0M6ajTp7Ls/z1YIZLw8pidql2vbJr+aQIl7zBaHB6IGFMHvuSLldUb/oaQOGjn3WfQRjF3OS1SQ05+syFUXCjWTXqo2A5wFxmZAfiQ00H2Tl6KKaiMMxg4atfcmebecxjCytWumIW6N34hkEkIQPdl96jU6/TdlR3dwDxMKgx/Kc10L64f2o3l0e29F0VCuQfoudUW+XJxza64gCF9UD0QSaUkLsaQuFHkViBRN328PW6mTjapNOLgF9yC+tbam/iUjra3U3gIG3bS6apUEz6FlMUVUYroh1GuX4nboVyJbY/1KHo4xkiNXwk1xnhCQJBemX9PpRR5yuX61grTUPOuRfmqwSHGJYLbNrOl+0PXLZIF7Fjg9wRIFI272XySv0s1lFY4KMd52IKmhfAo7fK/Qp7/aYStbeHaI+TFETOAKAGRCWkOrLBsgr3OdaZgZ5LKW15iaFBrdLib7ev7TNB/naBK5UeUcc+c4T4V3bITfmpQdQhUh2xq/6RkmcfdWqhwAhCHwru1iIppvPEpbG6rk208GMr+b3Ssi1+mVOJtOZLiEbQ8vJa2eea/ujKFJlkjiO9Q/WZp0ZkTKsplcUnsrRRKBYAFHm3HIG4M717GQivncZgc8bpl7mHW2HKuledcg96loKjGHL97wB5W0qKGAUxS6unjEfHztAzkXjOuCentRIJG/jD7V6KJy2uqJvsJwapeLtNrSaI5HHrWKdkdmXeNZYhfBu4kv2TQE8Jfra3TqApQm5K3kc4iIPxuqdLvgsOo7ODXRndRnosQj2GCf4Nr+el2qyOII1JE6gKCOJWNlO//nL6HrgjiLua0lGqKZaNnh8gv1mUEgtacZsu3IT1uRZ4VDw+Soy6+lKZpLpr7W/dOgsc5SNEeoW94yttzQrNWnAcgjHFis+rgiIwq8EjhLJ4JEvqpJ9Oy7teRfJXuy3KCA0mA7YLq4cVcAfTIgFcwF4l25GWgXdh03Fjf3oyilTykFTTUXjBfxULG6fINleexZBURMiZxh4vIztC2CIOMThJUTdaKOUKVVkwFhgFp6RHwJawa9LBiX1Inbh4Sr/AGXuuBx/snknMdYImnfDyWiOP6BYDvPHEyKDtVGOViCyspOT8VhuDBvIxzyzSoTajlEagaxatOG3N5Ac/TNVEQkFPOiD9LtbDH6Bu7J7niseMb7NFONBYHplTj0k0y/fmflOltIGklgcxj4Scbo66+3dVyvxlcCB4KzZLg3KNk/DmgAK3XGPbAVSwNB5jxUWTo+KegkHejisSasNsmqZCbHX9tK8iCyxNAjunHLsPH08VgIxFbM/nj6QhTAwhzETQKHXt5ZBIy5cyhP4VFfLrK1C0lRZm5BxAZtXZeJ3RHjyIyEqsNKP/1pDldRfNJlOLN8UvqI507iwYm0PIpZ9oOlS0qygvgUgZjADGuCydNzgp6lM/7TwYfA19vV03YwNvHiuN4iGQp3NTuniIyNulFWsJ90KEuqGoIaXWxZCjAVYk3n0AsZRXEcrCsPvXfZwVcTxfYBiBEDB6Gekh3N177xaluBCzjkAgfjIK8j+79EGdsbIB6zW0BM2y8OpBnWGoWq7CQlSWfBp36otFwmy6Q7FQXhpzLH1yr5f3qrUIMkRKKFfe+9Kzo8WRcvrp8LSYUFZ6+Gc76bLNWBdtxVT90TgG6+QoVpI/ihADMxLn72hiw3NoqjBy40deZcIWewctyllKF8RR1//OB3mGpLF91/lzbgO9DFgqiW+zuN/wYEi91dYVkadd2Pg+GIULo7qa3fjFPh1xMQF8LLCJztb3B49m8MAc3fibU/d9yAF6IJm98TUxbflmSz3Qmu4XrujqAUgeATfoHLS9yscqhZkFklSulpSq2dJo5GIvNoQ11Ei0QbEjAMH13ords3yR8mSv6FQ3NZWKrPEVxit7DPi67PMaMZrh4TroYaQJ7LU5MySSCVnobZF+XKhBBle+UmOOr5RDxATLf45RVtSOk+sPxNFx3WJZ1+dxQcqA/mhVb+JF+HcSEhjF9EZ8NPUZjF7SOcK+x6NpF8bOvfFkw3/LjK896NRaB/hM17YKEWmaABgFYaLupJ6i1Sq/pccLzmhEW0s5LU19hSpVQF1qNPEO9Y66+/lmjWYJ5Mm3oeZlDXSjuFTpvAwXmGpAy/KJoMDSVVIUlLuuFu2pxNQOzcmcs8wDqIVu6i0zDByHRnwuC20RQSphEFROsammZPnztvebBqWKSnKOixd9mlYwiRVrPU05tbPi0R9fzztqXVUMcFKCUkqiA4JkCmSjIUcG8FXLLrkY0/3K+xNICXe+QwqQJLnbwrLDzl+9vnWlP+Bd/2SPFFGTD440KCLsFN15pK/orXnmT12HvLc7ELou+w1mpjCALd6uxddGWXY2dKvF/aRRiT7KZd9REX26W/Q64w0DHRyQl5dgUfnKG328gX6fdCboDDOqt9pSWGDly9OtezkoK/fDejXhW4nB8QbZldqLXdp9Er8tNbQS9ZaW1Q5lterkE5DIniHllKo3QsMIusk6RUI8MJkSpHl5ahUWQJg6vASxtrjM9GGSVVqIIVSlrSf2bMu8UnTWJrQkmkzW8WYednvCwmOKszsnVSCROLtOVu+27bQTt4TAprX46WaHj8cMLOJtvk2fQiEl7LiyC7zPFYXcQ3TtyZEPgacsTV0tlJ8pkSQswTSvsYiBXkhFo0HAcWJure+JcI9cfIbA1TJlpLqJIfi5VxUFXtSDRpoL6R73gXHI7xmN4mRJj+ACJLtAob6vAe0drzCw9KksNv7v8TAIONVJK5zOlN4z1nVu2gq1zTYwPxKEEN84Jc8X3xSKjO5m2Nx9aC2IGkh5C626TfdmaGGo/in1H/PTGxxlt3Yc8GHV6gWivZXw5B/ih8goPQ+qdIqyRQXhO/5LuMGMkzYOCjLSTRr+ukY+bssp00piavgZg4rSum6Npe9X/zGbDh9SLxqPcpVcNx4FIJFB8457W/TD3v3elu7Vd5tenH/5fW8MHGIQlatcjgLZcZU+oX1j5qWCeuAtulMomNkwE5CS3xj7jTmRwPpHxxIdx56TgvM/TEMnD/FcWY/kIGek8kKos07QuuuqrLIuxyknVsXcfPrCEzwyg95uL+2jG5p3fyVFUnFTWcyH2Ws4lj7TycGbMa5ZPKGBg0lqUmKB8+XHbUNWZwebJDXeWiJ4E1NFQErae5pMOdw/m+Ces2FF38HC5yinpRwiWjc5O3A1KnrezoqtlOfURwBwj+50+ZRTHyFocDRsc8HvauVqDGlMCyNrCXaktqBVhwR7Y53+VKbWVWqkKMhJF8OOh5GShzZKWD5bg1eByo+ixNVrUuGDua8Nk2yloUhdzrOG7ggmGVEg5x2p09GaSBYee5t6wrBnprIUzt76ADgS64BLL9z9J8zBrNRMsT+CuJN7Fc3ZoFMkzcQ+CJVrKrqVFmcxvSlZPqkl285lOJDKeIEJqjrLLx3Z5Y159CtOo5+AekIaiDOTfbZpk9lw5Ov87lwkdU53qlVbi0Wya6dkxl1Orhj+TVwL/yc2LswCnVYP5/ITij/ffISPd3fKhFwheKutFHxZJ/917/1InYYJvKCcy9TbB59/QTLSO0qs8tw5wBGggWHIGq/b8k5JZZGjuey8wzGROyXUf9/JJwGaCywVlzpUnxGsBw76T+t3cEjmI7yDaiMmr29zdkw9aOxLDqcJPaLVOh6x42qhGgSfLm3ysIicLO1UWl4QJO+yKJbiu88+gW0MTpCFAtK7L1kEKFowS86S2Ed7f2hyykBeZR+vl1z0hDoqQPn0SDO+eIpCWgvRhM9IZ49y5CChqkMnQiLb0CO28Lc9WgJlYbZUJDGXsGpL9VnusMiW7KhR68waHh8IOxtRez97rGDoZYEuDZDV8hmeSX9Pb3wXFet9sppUbv1vGIK4zKkp0x2FRLnoaukk2H9YpSCV2MiaaahyClJlY0TgDcJMxw3YD6LhGIg0nk6ydWgsfbIae3NvZjUwh3ZxM1OVONzszFdcSK7s3p7GNwQOSNUctT/OJJZPyrERJoaic6yZTjfBUvYCD6gU/+XGomqzy/nXAt2mpuvnJ+bp/4+xjO8pif9O6gDPWaugHD+lw93aE5qy2U7nndYeGKhl6y1pQuOFM9fhbvJqnWt4gAtKlHh/SPF+Sg08Yt3Q4fbj8F5PrHddX6dHdswdwae0FQdWGO2WYRfuHqQP4WhSipHlMjzpLnOAuMdYisxnvLAz/VVCXhbzw/nCB5SMZPi7Z2YVEdVPLu1y9AYbqC4FOXEc3OLe0obBmVBQwLsVaBLnGWZeERGyfxOPuGDPuiQR6k1PVc2Q/ysrGFlwnhqCyRSahZPdx4b5LE4za5mFHLiL/OfepdeWfsugTvxt11/PDLdmW4hw1kMop+g6I/pLmDKeNaRzZGFu6s/iZo/9QtDlp+IPUfszcaHoom9DG+jbkXILugUEZoWxOLveBV+6PKoDFVAE3kfjhCgDHT7Mk0loYjAmYuo/Y0xwaKmHP4KGon746s7zXrTkMwmUYzefp690LUJhibenOxOqH2e//5AcowexnCUF24N88meOXcn6vqPWYOajZ5nKsCMoWv4HulR7uvsAX3LLBEHKWjtotlyqLOU+nAtLOgVo3kpPy5lPT3Xnx4xVxTCnzVbEyC1GOT858loxheBYqWlKc6aBR5ba1hmM1zePU8Q/Hyly1HZ3/XlFXp3/OSlPnOQeoAe0JoaO3Mnsdc1h4GXBSxLFsyOZHOvviQsPtQe8cpGHq/8+vesyBl3dgt+vz5ANR7WoMPLaQeCVoucwDBsXW9usxRY9QDYTb/hXugBO2i6PMHdV4+nnrGadhOjDWbJ+bUbaQdP+EaFLmLP/IhfMYcfjdc0m+1cWoPg6iHNbfJJNVU2G2u3rm2nIc42HnL2ZpaWGNLRa6dC5i+eknQrOvfD7vtTuoZ1t4x0SWRHbwlxZXA+BMjBxpkZpOIwaE3LDjOm+PPlzGeRuqUbbr4TB9hcnH/cbAI4mSXZ/Mh5CUWPxiv161uzkEFYRZ6D4zCeKOcX78B3SZECP8GkIMItfdGIO03R9T3gkQK1V60ie8IX0AJo7tgwLfUCPVR9EkUUuCzTiIoIpzm4sZ9+2FqGESkVuGiZndA5yhuVb2nZ7PAt74Xg7ETZlZpSkpD49IhV0uMh2nzWtJHIdpFUnUpxiiLDlSYn3TPDpsA1TSm55Vc0pVj9aI42cMwiqjXSksKj78Uxu8ES6NvmPX/KAeVmCMiu0gbUs8OXr7U6kVrgGOGCafWVIdnMMW41pGbMjC7icgO5Zf2pgvChbEr8xZ6vo2ekW+vjy/0NBanfMyLGHgA/yrxJyQtgUsDAyoO1NJ6IQec5DZKxdvYIhqfvfjMwXOcadPg7JltwhgF33tv84D6/bjZg8sg==,iv:+UR6j30Ki1pP7CHMYRIn9CBlgyZHzCAYY66ZvkM0Bfw=,tag:L70SAjPuYxjdmmlm0R+Lcw==,type:str]
     # API server specific configuration options.
     apiServer:
         # The container image used in the API server manifest.
@@ -495,7 +495,7 @@ cluster:
         # The `ca` is the root certificate authority of the PKI.
         ca:
             crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJmakNDQVNPZ0F3SUJBZ0lRQ2U2Vlo5aGVGWEgvc1ZMeEd5Wm5yVEFLQmdncWhrak9QUVFEQWpBUE1RMHcKQ3dZRFZRUUtFd1JsZEdOa01CNFhEVEkxTVRFd01URTVOVFl5TjFvWERUTTFNVEF6TURFNU5UWXlOMW93RHpFTgpNQXNHQTFVRUNoTUVaWFJqWkRCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBQk5oRXFFZlN2b21oCitpQVNISm92Q01YdHMvWjRoK21JUHpBT3NXUGszUHZTMUFJRm1ZeHB1Y1U1OGZLWTl2Zkl1dkYrU1NZTnNYdG4KUDl0cW9FcmxqaTJqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjRApBUVlJS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVU0tsOXlLOWRMa2JZCkhHejJRblpnaERqY3h6RXdDZ1lJS29aSXpqMEVBd0lEU1FBd1JnSWhBTGY2RGc4aDM3bzJHZ0I5WkNUdlJZZ1IKNmdqcXI4SmVhNVNBMldLYmpKVEZBaUVBcFJTZk1LeldrTTdrU2pVeW4rbzRNNTRDRXM0aXFxZkV3SWpET1dHVApDeVU9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
-            key: ENC[AES256_GCM,data:6qFIGll44uU05qZoPkld/bCY7IlCVrcXMVu/1rRvs/zje/e67Sp6Yy7t0WNgKZMxnpLLXwZxCmykgvD1ukq8z8mcqGMFkCJzWuDsxWaRYrVbbCGqebjaY1e7cuknZb9EXbcPgRtbR7qIPJNSnBWif02SlFSgU+W1bvh5b9ilHS4kVp/84/yLuwauoE4NztUOa6raBfzzej5oPUxLRpEmC8lOVtYwgZ3ObuETWiWMS0djj/y5sZpJjyqjQmC5TWBAh1h7KHOV7SP81BHvVyQbJvfAo5Wcay2g3IE5tnsosRbwcr/0CSEAcfel/aYRLMfd4Ui7DZcBIDAiZ4a8eVuHksKBtXUJO6Eaj1/vdxndOdHTmSU0xyEJ+m1XeVz8JDIGzKH7HybBrcogGo0iusj1XQ==,iv:CK/eNfiySqdBkSGrB/dF7f+e7MfPONsCPU71K3nzqEc=,tag:q2hwFQqShkmS3ZcOVCO9vg==,type:str]
+            key: ENC[AES256_GCM,data:p3PIYsicEkLYSWEA6474NTk/FwLcFhgeZfRlz2PCzyMNFGqQUthgWC+vC/+vf5G9s76DWC6LBWVbRP6ASkjkcT4AZCvjXFJ6vpk1w51qRRmAfxciP/iSK0joDpN2LPGVO47411KQMb283AicpaIRkb1ZizE01xG+KIEtjIqzOOtYCA31EWDddVIPowqNp585feWDEJ96Vnm4Lu1ti4NwzpTIsxzbfRi9CZ9n5DjOwjHaeuib2WuR5OTXND6y7xkRj7qCTFEIsjibzQveooIf8bePx+1ZechFkRqMgxgZbt6V2JbgYra7Bf9OcjI5UJPcvZTxBLa39+9mF0iR106lm3fkLC0Mp/R5Usu0kOIyxlrVjISRCzn/6pKw4YLwR3mBQTTnO7R8yCuE3YEDFBsgQA==,iv:sfQMyoQ8rRgRh3XHRolDpgOrInYNXq5uJFZLHgcWaew=,tag:K5Sg47z/sXP1xkKoimLXGQ==,type:str]
             # # The container image used to create the etcd service.
             # image: gcr.io/etcd-development/etcd:v3.6.5
             # # The `advertisedSubnets` field configures the networks to pick etcd advertised IP from.
@@ -540,13 +540,13 @@ sops:
         - recipient: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
           enc: |
               -----BEGIN AGE ENCRYPTED FILE-----
-              YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGbnF6UFZqOFoyc08xcDlz
-              eks5VTNqMy9mK0dHL2ZXMGRiRjZPak8xeDBzCmRMMnR5V0tHY1haalZ1Ujdmc2g0
-              ZXQzYnlkTlV4MXNzTk5pNGxISXhHTTAKLS0tIFNUWVk0Q1lnNXo5blI0NWtmK2Jl
-              U2RNbkloUVBsYmxYdXY2SndaU1FSU1UK/+dlNmriwF0f/oSIax+TA7GXpDjpydvB
-              AAjcdWHhEPrHgMnwY5z+Z2qoNC4h0OYErRuYGpGnimgUiUVhB46JlQ==
+              YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVVlo0N1NVbS82RHBKNU9D
+              d1JYcjQ5YzhpTkRWZS9FMDBVRTZMYmRrSm40CjRRVkxWYythS2tDU2hSeDFMSytr
+              cGkwY0VxOUZPSFU3blA2d3Q4UTgzUWcKLS0tIC9mOVJhTnBaZytwcWRaR1NpQzV3
+              Y29qSTdMMUxyUlZTaUVkOFVLSU56MEUKKa2FTEobVDTj/UxXdYT7QQeoysawE/0m
+              RzD990GWvSVAV6T9j57OS54QGxQWeKJBOEoKR/UqcHND4m85Scx7lg==
               -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-11-03T21:09:57Z"
-    mac: ENC[AES256_GCM,data:cWqqPqY+Ycyf8glnd6tWYX5X0Rp4JL4eMmIo15pwEMnxzqS7+NyAYg0KiHB+ADHm5GpR9O+L7Xfd9NyrUTb6/iWVKG95YMABqqct4RsIjDgUTAUtOb3oJ3ou9947/SJi1M0/LAaJ67O7ihk/unFVba2322rJer0b3eO3kVwkWd8=,iv:0D3DkmJM/vEs8kHOAo9fCdnBVsqt6lCS9oREFr8C1r4=,tag:jsDP6YJMrV9Sx0rAdmWNwA==,type:str]
+    lastmodified: "2025-11-03T21:28:48Z"
+    mac: ENC[AES256_GCM,data:GgYjUXFG9/F336SNBAZfWElBnWrTKLme426O9VTNPv1dV1aqvkhH6bqkZPPN98qOU7nlS1YRYonZFR+WtXkJ5utprAsy6bAEM2itSqfAyiDVGP/dFnxNA8SmLuUi8stSkWIS/KAZTW1t3Xh5RCy7f9L+DJcvKD2xklvmty2V2h8=,iv:poME2AaqgDGidMQFA9p72NHxifoBhFewCwKESwNhd48=,tag:E1lQsl1JcuXgB16Y+/DvsQ==,type:str]
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     version: 3.11.0
