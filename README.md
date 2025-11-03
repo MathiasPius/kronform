@@ -20,3 +20,9 @@ The process for setting up the cluster was/is being documented in a blog series 
 # Upgrading Flux
 
 Run `just upgrade-flux`
+
+
+
+# Resources
+
+* [Talos + Cilium + Multus](https://www.itguyjournals.com/installing-cilium-and-multus-on-talos-os-for-advanced-kubernetes-networking/)
