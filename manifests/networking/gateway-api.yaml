@@ -12,16 +12,30 @@ spec:
   ignore: |
     # Only include the thick daemonset
     /*
-    !/config/crd/
+    !/config/crd/standard
+    !/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: gateway-api
+  name: gateway-api-standard
   namespace: networking
 spec:
   interval: 10m0s
-  path: ./config/crd/
+  path: ./config/crd/standard
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: gateway-api
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: gateway-api-experimental
+  namespace: networking
+spec:
+  interval: 10m0s
+  path: ./config/crd/experimental
   prune: true
   sourceRef:
     kind: GitRepository
