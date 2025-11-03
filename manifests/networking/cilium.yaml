@@ -61,5 +61,5 @@ spec:
       autoMount:
         enabled: true
       hostRoot: /sys/fs/cgroup
-    k8sServiceHost: kronform-v2.pius.dev
-    k8sServicePort: "6443"
+    k8sServiceHost: localhost
+    k8sServicePort: "7445"
