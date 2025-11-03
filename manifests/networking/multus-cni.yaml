@@ -35,10 +35,11 @@ spec:
           namespace: kube-system
         spec:
           template:
-            volumes:
-              - name: host-run-netns
-                hostPath:
-                  path: /var/run/netns/
+            spec:
+              volumes:
+                - name: host-run-netns
+                  hostPath:
+                    path: /var/run/netns/
       target:
         kind: DaemonSet
         name: kube-multus-ds
