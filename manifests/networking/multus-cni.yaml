@@ -8,7 +8,7 @@ spec:
   interval: 1m0s
   ref:
     tag: v4.2.3
-  url: ssh://git@github.com:k8snetworkplumbingwg/multus-cni.git
+  url: ssh://git@github.com/k8snetworkplumbingwg/multus-cni.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -22,3 +22,26 @@ spec:
   sourceRef:
     kind: GitRepository
     name: multus-cni
+  patches:
+    - patch: |-
+        apiVersion: apps/v1
+        kind: DaemonSet
+        metadata:
+          name: kube-mutlus-ds
+        spec:
+          template:
+            initContainers:
+              - name: install-multus-binary
+                command:
+                  - "/usr/src/multus-cni/bin/install_multus"
+                  - "-d"
+                  - "/host/opt/cni/bin"
+                  - "-t"
+                  - "thick"
+            volumes:
+              - name: host-run-netns
+                hostPath:
+                  path: /var/run/netns/
+      target:
+        kind: DaemonSet
+        name: kube-multus-ds
