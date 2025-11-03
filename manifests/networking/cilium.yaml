@@ -43,6 +43,8 @@ spec:
       ui:
         enabled: true
     kubeProxyReplacement: true
+    operator:
+      relicas: 1
     securityContext:
       capabilities:
         ciliumAgent:
