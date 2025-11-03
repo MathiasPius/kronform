@@ -1,9 +1,0 @@
-# manifests/infrastructure/openobserve/namespace.yaml
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: openobserve
-  labels:
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/enforce-version: latest

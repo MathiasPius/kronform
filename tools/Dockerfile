@@ -5,7 +5,7 @@ FROM debian:bookworm-slim@sha256:df52e55e3361a81ac1bead266f3373ee55d29aa50cf0975
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 ARG KUBECTL_VERSION=v1.34.1
 # renovate: datasource=github-releases depName=siderolabs/talos
-ARG TALOSCTL_VERSION=v1.11.2
+ARG TALOSCTL_VERSION=v1.11.3
 # renovate: datasource=github-releases depName=mikefarah/yq
 ARG YQ_VERSION=v4.48.1
 # renovate: datasource=github-releases depName=getsops/sops
@@ -52,6 +52,7 @@ RUN curl -L -o helm.tar.gz https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.
 # non-root linux user, so that mounting our working directory into it won't
 # cause all kinds of ownership issues.
 FROM debian:bookworm-slim@sha256:df52e55e3361a81ac1bead266f3373ee55d29aa50cf0975d440c2be3483d8ed3 AS workspace
+# This is where we mount the ssh-agent.socket for git commits within the container.
 ENV XDG_RUNTIME_DIR=/run/user/1000/
 
 # Install vim for editing

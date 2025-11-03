@@ -19,6 +19,6 @@ creation_rules:
     encrypted_regex: ^client-key-data$
     age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez
 
-  - path_regex: machines/.*.yaml
+  - path_regex: configs/machine.yaml
     encrypted_regex: ^(secret|bootstraptoken|secretboxEncryptionSecret|token|key|password)$
     age: age10v5jyc5ylreyltm32kfj57fmqle0aumxqvg9lp67r50cl8ynlsmq9kx7ez

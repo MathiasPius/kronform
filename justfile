@@ -9,7 +9,7 @@ build:
 # uses DNS-over-TLS, which means the nameservers specified in
 # /etc/resolv.conf won't work with plain DNS traffic, breaking
 # resolution within the container.
-tools:
+@tools *args:
     docker run -it --rm                                                 \
     --hostname "kronform"                                               \
     --dns 8.8.8.8			                                            \
@@ -23,7 +23,7 @@ tools:
     -v $HOME/.zsh_history:/home/user/.zsh_history                       \
     -v $HOME/.zshrc.pre-oh-my-zsh:/home/user/.zshrc.pre-oh-my-zsh:ro    \
     -v $HOME/.config/sops:/home/user/.config/sops:ro                    \
-    tools:latest || true
+    tools:latest {{ args }} || true
 
 rotate-keys:
     find .                                  \
@@ -46,3 +46,7 @@ update-flux:
         --cluster-domain "local.kronform.pius.dev"      \
         --components-extra="image-reflector-controller,image-automation-controller" \
         --export > manifests/cluster/flux-system/gotk-components.yaml
+
+@kubeconfig:
+    just tools talosctl kubeconfig configs/kubeconfig.yaml --merge=false --force
+    just tools sops -e -i configs/kubeconfig.yaml
