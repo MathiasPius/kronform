@@ -32,16 +32,9 @@ spec:
         kind: DaemonSet
         metadata:
           name: kube-mutlus-ds
+          namespace: kube-system
         spec:
           template:
-            initContainers:
-              - name: install-multus-binary
-                command:
-                  - "/usr/src/multus-cni/bin/install_multus"
-                  - "-d"
-                  - "/host/opt/cni/bin"
-                  - "-t"
-                  - "thick"
             volumes:
               - name: host-run-netns
                 hostPath:
@@ -49,3 +42,4 @@ spec:
       target:
         kind: DaemonSet
         name: kube-multus-ds
+        namespace: kube-system
