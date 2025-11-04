@@ -12,7 +12,7 @@ spec:
   ignore: |
     # Only include the thick daemonset
     /*
-    !/config/crd/standard
+    !/config/crd/standard/*
     !/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
