@@ -10,7 +10,7 @@ spec:
     global:
       mon_data_avail_warn: "10"
   cephVersion:
-    image: quay.io/ceph/ceph:v19.2.3@sha256:af0c5903e901e329adabe219dfc8d0c3efc1f05102a753902f33ee16c26b6cee
+    image: quay.io/ceph/ceph:v20.2.1@sha256:0bae386bc859cd9a05b804d1ca16cca8853a64f90809044e2bf43095419dc337
   monitoring:
     enabled: true
   dataDirHostPath: /var/lib/rook
