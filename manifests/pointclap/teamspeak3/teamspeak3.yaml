@@ -96,7 +96,7 @@ spec:
       containers:
         - name: teamspeak3
           imagePullPolicy: IfNotPresent
-          image: teamspeak:3.13@sha256:6756c50d1a0a7e48db95cf4b38d4c6d59ac0b560bc3b9e986ed069d2c16206f5
+          image: teamspeak:3.13@sha256:15acbc64c92f57ef1fd8dd203791fa7f70a14707e60ee494132f26b5ca265c6b
           env:
             - name: TS3SERVER_LICENSE
               value: accept
